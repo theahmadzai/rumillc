@@ -1,0 +1,15 @@
+/.idea
+/.vscode
+/.vagrant
+/node_modules
+/vendor
+npm-debug.log
+yarn-error.log
+composer.lock
+yarn.lock
+package-lock.json
+.env
+*.map
+/storage/*.key
+/public/hot
+/public/storage

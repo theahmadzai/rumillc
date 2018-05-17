@@ -1,0 +1,26 @@
+@charset 'UTF-8';
+
+// Libraries
+//------------------------------------------------------------------------
+// @import '~@fortawesome/fontawesome-free-webfonts/scss/fontawesome';
+// @import '~bootstrap/scss/bootstrap';
+// @import "~bulma/bulma";
+//------------------------------------------------------------------------
+
+// Setting & Mixins
+@import 'settings',
+        'placeholders',
+        'animations',
+        'mixins';
+
+// Globals & Layouts
+@import 'global',
+        'layout';
+
+// Partials
+@import 'partials/header',
+        'partials/navbar',
+        'partials/footer',
+        'partials/group',
+        'partials/subscribe',
+        'partials/testimonials';

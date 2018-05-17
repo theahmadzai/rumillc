@@ -1,0 +1,1 @@
+<testimonials-component></testimonials-component>
