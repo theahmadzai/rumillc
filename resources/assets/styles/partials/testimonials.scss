@@ -28,6 +28,10 @@
     box-shadow: 0 6px 35px 3px rgba($secondary-color,0.9);
     perspective:1px;
 
+    &:hover{
+      @include animate(pulse, 300ms);
+    }
+
     &::before{
       content:'';
       position:absolute;
