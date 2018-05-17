@@ -7,8 +7,7 @@
     padding:1rem;
 
     &:hover{
-      background:#fff;
-      color: brown;
+      color: $primary-color;
     }
   }
   ul{
@@ -21,6 +20,7 @@
     position:relative;
     display:table-cell;
     padding:2rem 0;
+
     &:hover .submenu{
       display:block;
     }
