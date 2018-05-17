@@ -1,7 +1,7 @@
 <nav class="navbar">
     <ul class="menu">
         <li class="menu__item">
-            <a href="">Home</a>
+            <a href="/">Home</a>
         </li>
         <li class="menu__item">
             <a href="">About Us</a>
@@ -41,7 +41,7 @@
             <a href="">Photo Gallery</a>
         </li>
         <li class="menu__item">
-            <a href="">Contact Us</a>
+            <a href="/contact">Contact Us</a>
         </li>
     </ul>
 </nav>
