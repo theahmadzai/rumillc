@@ -16,6 +16,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('testimonials-component', require('./components/testimonials.vue'));
+Vue.component('slider-component', require('./components/slider.vue'));
 
 const app = new Vue({
     strict: true,
