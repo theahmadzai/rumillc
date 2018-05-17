@@ -1,6 +1,6 @@
 <template>
     <div class="testimonials">
-        <img class="next" v-bind:src="testimonials[prev].image" v-on:click="move(1)">
+        <img class="next" v-bind:src="testimonials[prev].image" v-on:click="move(-1)">
         <div class="testimonial">
             <img v-bind:src="testimonials[current].image" v-bind:alt="`${testimonials[current].name}'s Message`">
             <p>
@@ -10,7 +10,7 @@
             </p>
             <h3>- {{ testimonials[current].name }} -</h3>
         </div>
-        <img class="prev" v-bind:src="testimonials[next].image" v-on:click="move(-1)">
+        <img class="prev" v-bind:src="testimonials[next].image" v-on:click="move(1)">
     </div>
 </template>
 

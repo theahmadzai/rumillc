@@ -339,7 +339,7 @@ var render = function() {
       attrs: { src: _vm.testimonials[_vm.prev].image },
       on: {
         click: function($event) {
-          _vm.move(1)
+          _vm.move(-1)
         }
       }
     }),
@@ -372,7 +372,7 @@ var render = function() {
       attrs: { src: _vm.testimonials[_vm.next].image },
       on: {
         click: function($event) {
-          _vm.move(-1)
+          _vm.move(1)
         }
       }
     })
