@@ -5,6 +5,7 @@
   padding:6rem 0;
   background:rgb(216,165,80);
   overflow:hidden;
+  transform-style: preserve-3d;
 
   &::before{
     content:'';
