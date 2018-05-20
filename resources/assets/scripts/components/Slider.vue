@@ -1,15 +1,25 @@
 <template>
     <div class="slider">
-        <button v-on:click="move(-1)" class="prev">Prev</button>
-        <button v-on:click="move(1)" class="next">Next</button>
+        <div v-on:click="move(-1)" class="prev">
+            <svg class="arrow">
+                <path d="M 40 50 L 30 60 L 0 30 L 30 0 L 40 10 L 20 30 L 50 60"></path>
+            </svg>
+        </div>
+        <div v-on:click="move(1)" class="next">
+            <svg class="arrow">
+                <path d="M 0 10 L 10 0 L 40 30 L 10 60 L 0 50 L 20 30 L 0 10"></path>
+            </svg>
+        </div>
         <div class="loading" v-show="!loading"></div>
-        <img
-        v-bind:src="slides[current].img"
-        v-bind:alt="slides[current].alt"
-        v-on:load="loading = !loading"
-        v-on:mouseover="stopRotation"
-        v-on:mouseout="startRotation"
-        v-show="loading">
+        <transition name="slide">
+            <img class="slide"
+            v-bind:src="slides[current].img"
+            v-bind:alt="slides[current].alt"
+            v-on:load="loading = !loading"
+            v-on:mouseover="stopRotation"
+            v-on:mouseout="startRotation"
+            v-show="loading">
+        </transition>
     </div>
 </template>
 
