@@ -227,3 +227,28 @@
     transform:skewY(0.4deg);
   }
 }
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%,-50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%,-50%) rotate(360deg);
+  }
+}
+
+@keyframes fade{
+  from{
+    opacity:1;
+    transform: scale3d(1, 1, 1);
+  }
+  50%{
+    opacity:0.8;
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+  to{
+    opacity:1;
+    transform: scale3d(1, 1, 1);
+  }
+}
