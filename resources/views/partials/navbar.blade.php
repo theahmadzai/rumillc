@@ -38,7 +38,7 @@
             <a href="">Rumi Indonesia Office</a>
         </li>
         <li class="menu__item">
-            <a href="">Photo Gallery</a>
+            <a href="/gallery">Photo Gallery</a>
         </li>
         <li class="menu__item">
             <a href="/contact">Contact Us</a>
