@@ -1,10 +1,10 @@
 <nav class="navbar">
     <ul class="menu">
         <li class="menu__item">
-            <a href="/">Home</a>
+            <a href="{{ URL::route('home') }}">@lang('routes.home')</a>
         </li>
         <li class="menu__item">
-            <a href="">About Us</a>
+            <a href="{{ URL::route('about') }}">@lang('routes.about')</a>
             <ul class="submenu">
                 <li class="submenu__item">
                     <a href="">Menu 1</a>
@@ -18,7 +18,7 @@
             </ul>
         </li>
         <li class="menu__item">
-            <a href="">Products & Services</a>
+            <a href="{{ URL::route('services') }}">@lang('routes.services')</a>
             <ul class="submenu">
                 <li class="submenu__item">
                     <a href="">Menu 1</a>
@@ -32,16 +32,16 @@
             </ul>
         </li>
         <li class="menu__item">
-            <a href="">Rumi Dubai Office</a>
+            <a href="{{ URL::route('dubai') }}">@lang('routes.dubai')</a>
         </li>
         <li class="menu__item">
-            <a href="">Rumi Indonesia Office</a>
+            <a href="{{ URL::route('indonesia') }}">@lang('routes.indonesia')</a>
         </li>
         <li class="menu__item">
-            <a href="/gallery">Photo Gallery</a>
+            <a href="{{ URL::route('gallery') }}">@lang('routes.gallery')</a>
         </li>
         <li class="menu__item">
-            <a href="/contact">Contact Us</a>
+            <a href="{{ URL::route('contact') }}">@lang('routes.contact')</a>
         </li>
     </ul>
 </nav>
