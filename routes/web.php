@@ -11,8 +11,28 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+$locale = Request::segment(1);
 
-Route::get('/contact', 'ContactController@index');
+if(in_array($locale, Config::get('app.available_locales'))) {
+    App::setLocale($locale);
+} else {
+    $locale = null;
+}
 
-Route::get('/gallery', 'GalleryController@index');
+Route::group(['prefix' => $locale], function() {
+
+    Route::get('/', 'HomeController@index')->name('home');
+
+    Route::get('/contact', 'ContactController@index')->name('contact');
+
+    Route::get('/gallery', 'GalleryController@index')->name('gallery');
+
+    Route::get('/about', 'GalleryController@index')->name('about');
+
+    Route::get('/services', 'GalleryController@index')->name('services');
+
+    Route::get('/dubai', 'GalleryController@index')->name('dubai');
+
+    Route::get('/indonesia', 'GalleryController@index')->name('indonesia');
+
+});
