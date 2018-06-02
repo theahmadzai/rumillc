@@ -10,16 +10,16 @@
                 <path d="M 0 10 L 10 0 L 40 30 L 10 60 L 0 50 L 20 30 L 0 10"></path>
             </svg>
         </div>
-        <div class="loading" v-show="!loading"></div>
         <transition name="slide">
             <img class="slide"
-            v-bind:src="slides[current].img"
-            v-bind:alt="slides[current].alt"
+            v-if="loaded"
             v-on:load="loading = !loading"
             v-on:mouseover="stopRotation"
             v-on:mouseout="startRotation"
-            v-show="loading">
+            v-bind:src="slides[current].url"
+            v-bind:alt="slides[current].title">
         </transition>
+        <div class="loading" v-show="loading"></div>
     </div>
 </template>
 
@@ -29,25 +29,24 @@ export default {
     return {
       current: 0,
       size: null,
-      loading: false,
+      loaded: false,
+      loading: true,
       timer: null,
-      slides: [
-        { img: "/img/slider/s1.jpeg", alt: "image" },
-        { img: "/img/slider/s2.jpeg", alt: "image" },
-        { img: "/img/slider/s3.jpeg", alt: "image" },
-        { img: "/img/slider/s4.jpeg", alt: "image" },
-        { img: "/img/slider/s5.jpeg", alt: "image" },
-        { img: "/img/slider/s6.jpeg", alt: "image" },
-        { img: "/img/slider/s7.jpeg", alt: "image" },
-        { img: "/img/slider/s8.jpeg", alt: "image" },
-        { img: "/img/slider/s9.jpeg", alt: "image" },
-        { img: "/img/slider/s10.jpeg", alt: "image" }
-      ]
+      slides: []
     };
   },
   mounted: function() {
-    this.size = this.slides.length - 1;
-    this.startRotation();
+    axios
+      .get("/api/images")
+      .then(response => {
+        this.slides = response.data;
+        this.size = this.slides.length - 1;
+        this.startRotation();
+        this.loaded = true;
+      })
+      .catch(error => {
+        console.log(error);
+      });
   },
   methods: {
     move: function(pos = 1) {
@@ -58,7 +57,7 @@ export default {
         current = 0;
       }
       this.current = current;
-      this.loading = false;
+      this.loading = true;
     },
     startRotation: function() {
       this.timer = setInterval(this.move, 5000);
