@@ -5,7 +5,7 @@
 @section('content')
     @include('partials.slider')
     <div class="content">
-        Home Page
+        Home
     </div>
     @include('partials.testimonials')
     @include('partials.subscribe')
