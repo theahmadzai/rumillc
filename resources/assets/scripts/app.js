@@ -17,6 +17,12 @@ window.Vue = require('vue');
 
 Vue.component('testimonials-component', require('./components/testimonials.vue'));
 Vue.component('slider-component', require('./components/slider.vue'));
+Vue.component('contact-component', require('./components/contact.vue'));
+Vue.component('gmap-component', require('./components/gmap.vue'));
+
+const veeValidate = require('vee-validate');
+
+Vue.use(veeValidate);
 
 const app = new Vue({
     strict: true,
