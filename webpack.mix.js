@@ -20,6 +20,8 @@ mix.js('resources/assets/scripts/app.js', 'public/js')
         'axios',
         'bootstrap',
         'vue',
+        'vee-validate',
+        'google-maps',
         // 'vue-router',
         // '@fortawesome/fontawesome',
         // '@fortawesome/fontawesome-free-solid',
