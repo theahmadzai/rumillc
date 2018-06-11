@@ -6,7 +6,7 @@
         @include('partials.navbar')
         <div style="background:#efefef; padding:1rem; border-radius:5px;">
             <a href="/" style="text-decoration:none;color:black;">EN</a>/
-            <a href="/pa" style="text-decoration:none;color:black;">PA</a>
+            <a href="/ps" style="text-decoration:none;color:black;">PS</a>
         </div>
     </div>
 </header>
