@@ -11,15 +11,7 @@
 |
 */
 
-$locale = Request::segment(1);
-
-if(in_array($locale, Config::get('app.available_locales'))) {
-    App::setLocale($locale);
-} else {
-    $locale = null;
-}
-
-Route::group(['prefix' => $locale], function() {
+Route::group(['prefix' =>  LaravelLocalization::setLocale()], function() {
 
     Route::get('/', 'HomeController@index')->name('home');
 
