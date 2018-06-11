@@ -21,12 +21,7 @@ mix.js('resources/assets/scripts/app.js', 'public/js')
         'bootstrap',
         'vue',
         'vee-validate',
-        'google-maps',
-        // 'vue-router',
-        // '@fortawesome/fontawesome',
-        // '@fortawesome/fontawesome-free-solid',
-        // '@fortawesome/fontawesome-free-brands',
-        // '@fortawesome/fontawesome-free-regular'
+        'google-maps'
     ])
     .webpackConfig({
         devtool: 'source-map'
