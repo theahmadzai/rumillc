@@ -27,4 +27,11 @@ Route::group(['prefix' =>  LaravelLocalization::setLocale()], function() {
 
     Route::get('/indonesia', 'GalleryController@index')->name('indonesia');
 
+    // Admin
+    Route::get('/admin', 'Admin\AdminController@index')->name('admin');
+
+    Route::get('/admin/images', 'Admin\ImagesController@index')->name('admin.images');
+
+    Route::get('/admin/testimonials', 'Admin\TestimonialsController@index')->name('admin.testimonials');
+
 });
