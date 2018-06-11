@@ -14,13 +14,13 @@
             </div>
             <div class="group__item">
                 <h1>Menu</h1>
-                <a href="#">Home</a>
-                <a href="#">About Us</a>
-                <a href="#">Products & Services</a>
-                <a href="#">Rumi Dubai Office</a>
-                <a href="#">Rumi Indonesia Office</a>
-                <a href="#">Photo Gallery</a>
-                <a href="#">Contact Us</a>
+                <a href="{{ URL::route('home') }}">@lang('routes.home')</a>
+                <a href="{{ URL::route('about') }}">@lang('routes.about')</a>
+                <a href="{{ URL::route('services') }}">@lang('routes.services')</a>
+                <a href="{{ URL::route('dubai') }}">@lang('routes.dubai')</a>
+                <a href="{{ URL::route('indonesia') }}">@lang('routes.indonesia')</a>
+                <a href="{{ URL::route('gallery') }}">@lang('routes.gallery')</a>
+                <a href="{{ URL::route('contact') }}">@lang('routes.contact')</a>
             </div>
             <div class="group__item">
                 <h1>Follow Us</h1>
