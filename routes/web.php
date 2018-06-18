@@ -13,25 +13,35 @@
 
 Route::group(['prefix' =>  LaravelLocalization::setLocale()], function() {
 
-    Route::get('/', 'HomeController@index')->name('home');
+    $pages = ['contact', 'gallery', 'about', 'services', 'dubai', 'indonesia'];
 
-    Route::get('/contact', 'ContactController@index')->name('contact');
+    Route::get('/', 'PagesController@home')->name('home');
 
-    Route::get('/gallery', 'GalleryController@index')->name('gallery');
+    foreach($pages as $page) {
 
-    Route::get('/about', 'GalleryController@index')->name('about');
+        Route::get("/{$page}", "PagesController@{$page}")->name($page);
+    }
 
-    Route::get('/services', 'GalleryController@index')->name('services');
+    // Route::get('/contact', 'PagesController@contact')->name('contact');
 
-    Route::get('/dubai', 'GalleryController@index')->name('dubai');
+    // Route::get('/gallery', 'PagesController@gallery')->name('gallery');
 
-    Route::get('/indonesia', 'GalleryController@index')->name('indonesia');
+    // Route::get('/about', 'PagesController@about')->name('about');
 
-    // Admin
-    Route::get('/admin', 'Admin\AdminController@index')->name('admin');
+    // Route::get('/services', 'PagesController@services')->name('services');
 
-    Route::get('/admin/images', 'Admin\ImagesController@index')->name('admin.images');
+    // Route::get('/dubai', 'PagesController@dubai')->name('dubai');
 
-    Route::get('/admin/testimonials', 'Admin\TestimonialsController@index')->name('admin.testimonials');
+    // Route::get('/indonesia', 'PagesController@indonesia')->name('indonesia');
 
+});
+
+Route::group(['prefix' => '/admin'], function(){
+
+    Route::get('/', 'Admin\AdminController@index')->name('admin');
+
+    Route::get('/images', 'Admin\ImagesController@index')->name('admin.images');
+    Route::post('/images', 'Admin\ImagesController@insert')->name('admin.images.insert');
+
+    Route::get('/testimonials', 'Admin\TestimonialsController@index')->name('admin.testimonials');
 });
