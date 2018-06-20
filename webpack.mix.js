@@ -12,21 +12,21 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/scripts/app.js', 'public/js')
-    .sass('resources/assets/styles/app.scss', 'public/css')
-    .extract([
-        'lodash',
-        'jquery',
-        'popper.js',
-        'axios',
-        'bootstrap',
-        'vue',
-        'vee-validate',
-        'google-maps'
-    ])
-    .webpackConfig({
-        devtool: 'source-map'
-    })
-    .browserSync({
-        proxy: 'http://localhost:8000',
-        notify: false
-    });
+  .sass('resources/assets/styles/app.scss', 'public/css')
+  .extract([
+    'lodash',
+    'jquery',
+    'popper.js',
+    'axios',
+    'bootstrap',
+    'vue',
+    'vee-validate',
+    'google-maps'
+  ])
+  .webpackConfig({
+    devtool: 'source-map'
+  })
+  .browserSync({
+    proxy : 'http://localhost:8000',
+    notify: false
+  });
