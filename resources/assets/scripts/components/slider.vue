@@ -17,7 +17,7 @@
             v-on:mouseover="stopRotation"
             v-on:mouseout="startRotation"
             v-bind:src="slides[current].url"
-            v-bind:alt="slides[current].title">
+            v-bind:alt="slides[current].title"/>
         </transition>
         <div class="loading" v-show="loading"></div>
     </div>
@@ -25,19 +25,19 @@
 
 <script>
 export default {
-  data: function() {
+  data() {
     return {
       current: 0,
-      size: null,
-      loaded: false,
+      size   : null,
+      loaded : false,
       loading: true,
-      timer: null,
-      slides: []
+      timer  : null,
+      slides : []
     };
   },
-  mounted: function() {
+  mounted() {
     axios
-      .get("/api/images")
+      .get('/api/images?type=s')
       .then(response => {
         this.slides = response.data;
         this.size = this.slides.length - 1;
