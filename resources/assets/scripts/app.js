@@ -1,11 +1,10 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+import './bootstrap';
 
 window.Vue = require('vue');
 
@@ -15,16 +14,22 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('testimonials-component', require('./components/testimonials.vue'));
-Vue.component('slider-component', require('./components/slider.vue'));
-Vue.component('contact-component', require('./components/contact.vue'));
-Vue.component('gmap-component', require('./components/gmap.vue'));
+import Slider from './components/slider';
+import Testimonials from './components/testimonials';
+import GoogleMap from './components/gmap';
+import Contact from './components/contact';
 
-const veeValidate = require('vee-validate');
+Vue.component('slider-component', Slider);
+Vue.component('testimonials-component', Testimonials);
+Vue.component('gmap-component', GoogleMap);
+Vue.component('contact-component', Contact);
+
+
+import veeValidate from 'vee-validate';
 
 Vue.use(veeValidate);
 
-const app = new Vue({
-    strict: true,
-    el: '#app'
+new Vue({
+  strict: true,
+  el    : '#app'
 });
