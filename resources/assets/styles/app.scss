@@ -8,22 +8,22 @@
 //------------------------------------------------------------------------
 
 // Setting & Mixins
-@import 'settings',
-        'placeholders',
-        'animations',
-        'mixins';
+@import 'settings';
+@import 'placeholders';
+@import 'animations';
+@import 'mixins';
 
 // Globals & Layouts
-@import 'global',
-        'layout';
+@import 'global';
+@import 'layout';
 
 // Partials
-@import 'partials/header',
-        'partials/navbar',
-        'partials/footer',
-        'partials/group',
-        'partials/subscribe',
-        'partials/testimonials',
-        'partials/slider',
-        'partials/contact-form',
-        'partials/admin-panel';
+@import 'partials/header';
+@import 'partials/navbar';
+@import 'partials/footer';
+@import 'partials/group';
+@import 'partials/subscribe';
+@import 'partials/testimonials';
+@import 'partials/slider';
+@import 'partials/contact-form';
+@import 'partials/admin-panel';
