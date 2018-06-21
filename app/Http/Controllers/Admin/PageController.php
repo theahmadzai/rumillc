@@ -8,19 +8,14 @@ use App\Image;
 
 class PageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function home()
     {
         return view('admin.home');
-    }
-
-    public function login()
-    {
-        return view('admin.login');
-    }
-
-    public function logout()
-    {
-
     }
 
     public function images()
