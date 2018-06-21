@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Image;
 use Storage;
+use Validator;
 use App\Http\Resources\ImageResource;
 use Illuminate\Http\Request;
 
@@ -45,28 +46,15 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        $title = $request->title;
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|min:5|max:50',
+            'type' => 'required',
+            'image' => 'required|file|image'
+        ]);
 
-        if(!$request->filled('title')
-        || strlen($title) < 5
-        || strlen($title) > 255){
-            return redirect('admin/images')->withInput(
-                $request->except('image')
-            );
+        if($validator->fails()) {
+            return back()->withInput()->withErrors($validator);
         }
-
-        $image = $request->image;
-
-        if(!$request->hasFile('image')
-        || !$request->file('image')->isValid()
-        || !in_array($image->extension(), ['jpg','jpeg','png'])) {
-            return redirect('admin/images')->withInput(
-                $request->expect('image')
-            );
-        }
-
-        $type = $request->type;
-
 
         $dirs = [
             's' => 'slider',
@@ -74,12 +62,9 @@ class ImageController extends Controller
             'o' => 'others'
         ];
 
-        if(!in_array($type,array_keys($dirs))) {
-            return redirect('admin/images')->withInput(
-                $request->expect('image')
-            );
-        }
-
+        $title = $request->title;
+        $type = $request->type;
+        $image = $request->image;
         $path = $image->store($dirs[$type]);
 
         $i = new Image;
@@ -92,7 +77,7 @@ class ImageController extends Controller
 
         $i->save();
 
-        return redirect()->route('admin.images');
+        return back()->with('status', 'Image Added Successfully!');
     }
 
     /**
@@ -141,6 +126,6 @@ class ImageController extends Controller
 
         Image::destroy($image->id);
 
-        return redirect()->route('admin.images');
+        return back()->with('status', 'Image Deleted Successfully!');
     }
 }
