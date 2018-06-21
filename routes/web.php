@@ -1,5 +1,7 @@
 <?php
 
+use LaravelLocalization as Lang;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -9,39 +11,51 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
-Route::group(['prefix' =>  LaravelLocalization::setLocale()], function() {
+Route::prefix(Lang::setLocale())->group(function () {
 
-    $pages = ['contact', 'gallery', 'about', 'services', 'dubai', 'indonesia'];
+    Route::get('/', 'PageController@home')->name('home');
 
-    Route::get('/', 'PagesController@home')->name('home');
+    Route::get('/about', 'PageController@about')->name('about');
 
-    foreach($pages as $page) {
+    Route::get('/services', 'PageController@services')->name('services');
 
-        Route::get("/{$page}", "PagesController@{$page}")->name($page);
-    }
+    Route::get('/dubai-office', 'PageController@dubai')->name('dubai-office');
 
-    // Route::get('/contact', 'PagesController@contact')->name('contact');
+    Route::get('/indonesia-office', 'PageController@indonesia')->name('indonesia-office');
 
-    // Route::get('/gallery', 'PagesController@gallery')->name('gallery');
+    Route::get('/gallery', 'PageController@gallery')->name('gallery');
 
-    // Route::get('/about', 'PagesController@about')->name('about');
+    Route::get('/contact', 'PageController@contact')->name('contact');
 
-    // Route::get('/services', 'PagesController@services')->name('services');
+    // Auth
 
-    // Route::get('/dubai', 'PagesController@dubai')->name('dubai');
+    Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 
-    // Route::get('/indonesia', 'PagesController@indonesia')->name('indonesia');
+    Route::post('/register', 'Auth\RegisterController@register');
 
+    Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+
+    Route::post('/login', 'Auth\LoginController@login');
+
+    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+
+    Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+
+    Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+
+    Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+
+    Route::post('/password/reset', 'Auth\ResetPasswordController@reset');
 });
 
-Route::group(['prefix' => '/admin'], function(){
+Route::prefix('admin')->group(function () {
 
-    Route::get('/', 'Admin\AdminController@index')->name('admin');
+    Route::get('/', 'Admin\PageController@home')->name('admin.home');
 
-    Route::get('/images', 'Admin\ImagesController@index')->name('admin.images');
-    Route::post('/images', 'Admin\ImagesController@insert')->name('admin.images.insert');
+    Route::get('/images', 'Admin\PageController@images')->name('admin.images');
 
-    Route::get('/testimonials', 'Admin\TestimonialsController@index')->name('admin.testimonials');
+    Route::get('/testimonials', 'Admin\PageController@testimonials')->name('admin.testimonials');
+
 });
