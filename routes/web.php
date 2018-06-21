@@ -39,7 +39,7 @@ Route::prefix(Lang::setLocale())->group(function () {
 
     Route::post('/login', 'Auth\LoginController@login');
 
-    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+    Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
     Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 
@@ -57,5 +57,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/images', 'Admin\PageController@images')->name('admin.images');
 
     Route::get('/testimonials', 'Admin\PageController@testimonials')->name('admin.testimonials');
-
 });
+
+Route::resource('/api/images', 'ImageController');
