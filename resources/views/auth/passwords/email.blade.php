@@ -1,25 +1,31 @@
 @extends('layouts.master')
 
 @section('content')
+
     @if (session('status'))
         <div>
             {{ session('status') }}
         </div>
     @endif
 
-    <form method="POST" action="{{ route('password.email') }}">
+    <form method="POST" action="{{ route('password.email') }}" style="width:30%; padding:2rem;" novalidate>
         @csrf
 
-        <label for="email">E-Mail Address</label>
-        <input id="email" type="email" name="email" value="{{ old('email') }}" required>
+        <div class="field">
+            <label for="email" class="label">Email</label>
+            <div class="control">
+                <input id="email" type="email" name="email" value="{{ $email ?? old('email') }}" class="input" required autofocus>
+            </div>
+            @if ($errors->has('email'))
+                <p class="help is-danger">{{ $errors->first('email') }}</p>
+            @endif
+        </div>
 
-        @if ($errors->has('email'))
-            <span>
-                <strong>{{ $errors->first('email') }}</strong>
-            </span>
-        @endif
-
-        <input type="submit" value="Send Password Reset Link">
+        <div class="field">
+            <div class="control">
+                <button class="button is-link">Send Password Reset Link</button>
+            </div>
+        </div>
     </form>
 </div>
 @endsection
