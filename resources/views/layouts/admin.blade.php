@@ -3,7 +3,14 @@
 @section('title', 'Admin')
 
 @section('content')
-    <div class="admin-heading"><h1>Admin Panel</h1> <a href="/">(Logout)</a></div>
+    <div class="admin-heading">
+        <h1>Admin Panel</h1>
+        <h2>Welcome {{Auth::user()->name}}</h2>
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button>Logout</button>
+        </form>
+    </div>
     <div class="admin-panel">
         <div class="left-pane">
             <a href="{{ URL::route('admin.images') }}">Add Image</a>
