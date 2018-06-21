@@ -18,8 +18,16 @@ class PageController extends Controller
         return view('admin.home');
     }
 
-    public function images()
+    public function images(string $type = null)
     {
+        if(\Request::has('type')) {
+            $type = \Request::query('type');
+
+            if(in_array($type, ['o','s','g'])){
+                return view('admin.images', ['images' => Image::where('type', $type)->get()]);
+            }
+        }
+
         return view('admin.images', ['images' => Image::all()]);
     }
 
