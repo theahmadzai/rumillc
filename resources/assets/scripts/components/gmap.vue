@@ -6,6 +6,7 @@
 .google-map {
   width: 100%;
   height: 200px;
+
   @media (min-width: 40em) {
     width: 100%;
     height: 400px;
@@ -14,18 +15,18 @@
 </style>
 
 <script>
-import GoogleMapsLoader from "google-maps";
+import GoogleMapsLoader from 'google-maps';
 
 export default {
   data() {
     return {
-      KEY: "AIzaSyCyHWm6orZclDIdEbPHVroYgdTEMkKpzc4",
-      zoom: 15,
+      KEY   : 'AIzaSyCyHWm6orZclDIdEbPHVroYgdTEMkKpzc4',
+      zoom  : 15,
       coords: {
         lat: 34.544838,
         lng: 69.152089
       },
-      content: "Rumi Trading LLC"
+      content: 'Rumi Trading LLC'
     };
   },
 
@@ -33,14 +34,14 @@ export default {
     GoogleMapsLoader.KEY = this.KEY;
 
     GoogleMapsLoader.load(() => {
-      let map = new google.maps.Map(document.getElementById("google-map"), {
-        zoom: this.zoom,
+      let map = new google.maps.Map(document.getElementById('google-map'), {
+        zoom  : this.zoom,
         center: this.coords
       });
 
       let marker = new google.maps.Marker({
         position: this.coords,
-        map: map
+        map     : map
       });
 
       let infoWindow = new google.maps.InfoWindow({
