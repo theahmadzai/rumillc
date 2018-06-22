@@ -60,3 +60,4 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::resource('/api/images', 'ImageController');
+Route::resource('/api/testimonials', 'TestimonialController');
