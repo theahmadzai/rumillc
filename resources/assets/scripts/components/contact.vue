@@ -26,26 +26,26 @@ export default {
     return {
       nameRules: {
         required: true,
-        alpha: true,
-        min: 3,
-        max: 30
+        alpha   : true,
+        min     : 3,
+        max     : 30
       },
       emailRules: {
         required: true,
-        email: true
+        email   : true
       },
       subjectRules: {
         required: true,
-        min: 5,
-        max: 200
+        min     : 5,
+        max     : 200
       },
       messageRules: {
         required: true,
-        min: 5,
-        max: 2000
+        min     : 5,
+        max     : 2000
       },
-      name: null,
-      email: null,
+      name   : null,
+      email  : null,
       subject: null,
       message: null
     };
@@ -58,7 +58,7 @@ export default {
         return;
       }
 
-      alert("Submitted");
+      alert('Submitted');
     }
   }
 };
