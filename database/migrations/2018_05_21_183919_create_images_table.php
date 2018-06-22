@@ -20,8 +20,7 @@ class CreateImagesTable extends Migration
             $table->string('format');
             $table->integer('size');
             $table->enum('type', ['s','g','o'])->default('o');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamps();
         });
     }
 
