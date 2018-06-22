@@ -1,5 +1,5 @@
 <template>
-    <div class="testimonials">
+    <div class="testimonials" v-if="loaded">
         <img class="next" v-bind:src="testimonials[prev].image" v-on:click="move(-1)">
         <div class="testimonial">
             <img v-bind:src="testimonials[current].image" v-bind:alt="`${testimonials[current].name}'s Message`">
@@ -16,44 +16,35 @@
 
 <script>
 export default {
-  data: function() {
+  data() {
     return {
-      current: 1,
-      prev: 0,
-      next: 2,
-      size: null,
-      testimonials: [
-        {
-          image: "https://goo.gl/r2vho4",
-          name: "Mike Pence",
-          message:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, temporibus!"
-        },
-        {
-          image: "https://goo.gl/ReWcjN",
-          name: "John Doe",
-          message:
-            "The secret of life is honesty and fair dealing. If you can fake that, you've got it made."
-        },
-        {
-          image: "https://goo.gl/goRgoh",
-          name: "Donald J. Trump",
-          message:
-            "People really give you a hard time when you wear fake glasses out to a bar!"
-        }
-      ]
+      current     : 1,
+      prev        : 0,
+      next        : 2,
+      size        : null,
+      loaded      : false,
+      testimonials: []
     };
   },
-  mounted: function() {
-    this.size = this.testimonials.length - 1;
+  mounted() {
+    axios
+      .get('/api/testimonials')
+      .then(response => {
+        this.testimonials = response.data;
+        this.size = this.testimonials.length - 1;
+        this.loaded = true;
+      })
+      .catch(error => {
+        console.log(error);
+      });
   },
   methods: {
-    move: function(pos = 1) {
+    move(pos = 1) {
       this.prev = this.check(this.prev + pos);
       this.current = this.check(this.current + pos);
       this.next = this.check(this.next + pos);
     },
-    check: function(val) {
+    check(val) {
       if (val < 0) {
         val = this.size;
       } else if (val > this.size) {
