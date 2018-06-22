@@ -49,7 +49,7 @@ export default {
       });
   },
   methods: {
-    move: function(pos = 1) {
+    move(pos = 1) {
       let current = this.current + pos;
       if (current < 0) {
         current = this.size;
@@ -59,10 +59,10 @@ export default {
       this.current = current;
       this.loading = true;
     },
-    startRotation: function() {
+    startRotation() {
       this.timer = setInterval(this.move, 5000);
     },
-    stopRotation: function() {
+    stopRotation() {
       clearTimeout(this.timer);
       this.timer = null;
     }
