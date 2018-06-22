@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Image;
+use App\Testimonial;
+use App\User;
 
 class PageController extends Controller
 {
@@ -15,7 +17,11 @@ class PageController extends Controller
 
     public function home()
     {
-        return view('admin.home');
+        return view('admin.home', [
+            'images_count'=> Image::get()->count(),
+            'testimonials_count' => Testimonial::get()->count(),
+            'admins_count' => User::get()->count()
+        ]);
     }
 
     public function images(string $type = null)
@@ -33,6 +39,6 @@ class PageController extends Controller
 
     public function testimonials()
     {
-        return view('admin.testimonials');
+        return view('admin.testimonials', ['testimonials' => Testimonial::all()]);
     }
 }
