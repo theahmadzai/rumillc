@@ -2,7 +2,7 @@ module.exports = {
   extends: 'stylelint-config-standard',
   plugins: [ 'stylelint-order' ],
   rules  : {
-    indentation                           : 2,
+    'indentation'                         : 2,
     'string-quotes'                       : 'single',
     'no-duplicate-selectors'              : true,
     'color-hex-case'                      : 'lower',
@@ -14,7 +14,12 @@ module.exports = {
     'number-leading-zero'                 : 'always',
     'function-url-quotes'                 : 'always',
     'font-family-name-quotes'             : 'always-where-recommended',
-    'property-no-unknown'                 : [
+    'at-rule-no-unknown'                  : [
+      true, {
+        ignoreAtRules: [ 'function', 'if', 'each', 'include', 'mixin' ]
+      }
+    ],
+    'property-no-unknown': [
       true, {
         ignoreProperties: [ 'composes' ]
       }
