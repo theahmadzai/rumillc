@@ -14,16 +14,22 @@ let mix = require('laravel-mix');
 mix.js('resources/assets/scripts/app.js', 'public/js')
   .sass('resources/assets/styles/app.scss', 'public/css')
   .extract([
-    'lodash',
-    'jquery',
-    'popper.js',
     'axios',
-    'bootstrap',
+    'google-maps',
     'vue',
     'vee-validate',
-    'google-maps'
+    'vue-gallery',
+    'vue-popperjs'
   ])
+  .options({
+    extractVueStyles: true
+  })
   .webpackConfig({
+    resolve: {
+      alias: {
+        '@': path.resolve('resources/assets/styles')
+      }
+    },
     devtool: 'source-map'
   })
   .browserSync({
