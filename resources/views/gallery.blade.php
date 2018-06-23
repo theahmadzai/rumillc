@@ -3,9 +3,11 @@
 @section('title', 'Gallery')
 
 @section('content')
-    @include('partials.page-title', ['title'=>'Gallery', 'image'=>'img/slider/s16.jpeg'])
-    <div class="content">
-        Photo Gallery
+
+    <div class="container" style="width: 80%">
+        <gallery-component></gallery-component>
     </div>
-    @include('partials.testimonials')
+
+    <testimonials-component></testimonials-component>
+
 @endsection
