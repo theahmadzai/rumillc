@@ -3,8 +3,11 @@
 @section('title', 'About')
 
 @section('content')
+
     <div class="content">
         About
     </div>
-    @include('partials.testimonials')
+
+    <testimonials-component></testimonials-component>
+
 @endsection
