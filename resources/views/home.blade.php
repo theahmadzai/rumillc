@@ -3,10 +3,15 @@
 @section('title', 'Home')
 
 @section('content')
-    @include('partials.slider')
+
+    <slider-component></slider-component>
+
     <div class="content">
         Home
     </div>
-    @include('partials.testimonials')
-    @include('partials.subscribe')
+
+    <testimonials-component></testimonials-component>
+
+    <subscribe-component></subscribe-component>
+
 @endsection
