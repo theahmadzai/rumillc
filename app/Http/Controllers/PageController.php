@@ -33,7 +33,7 @@ class PageController extends Controller
 
     public function gallery()
     {
-        return view('gallery');
+        return view('gallery', ['images' => \App\Image::paginate(2)]);
     }
 
     public function contact()
