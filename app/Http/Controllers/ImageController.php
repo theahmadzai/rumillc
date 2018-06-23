@@ -18,13 +18,21 @@ class ImageController extends Controller
     public function index()
     {
         if(!\Request::has('type')) {
+
             return ImageResource::collection(Image::all());
         }
 
         $type = \Request::query('type');
+        $offset = \Request::query('offset');
+
+        if(!\Request::has('offset')){
+            if(in_array($type, ['o','s','g'])){
+                return ImageResource::collection(Image::where('type', $type)->get());
+            }
+        }
 
         if(in_array($type, ['o','s','g'])){
-            return ImageResource::collection(Image::where('type', $type)->get());
+            return ImageResource::collection(Image::where('type', $type)->Paginate($offset));
         }
     }
 
