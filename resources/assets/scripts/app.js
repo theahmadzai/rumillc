@@ -18,11 +18,15 @@ import Slider from './components/slider';
 import Testimonials from './components/testimonials';
 import GoogleMap from './components/gmap';
 import Contact from './components/contact';
+import Gallery from './components/gallery';
+import Subscribe from './components/subscribe';
 
 Vue.component('slider-component', Slider);
 Vue.component('testimonials-component', Testimonials);
 Vue.component('gmap-component', GoogleMap);
 Vue.component('contact-component', Contact);
+Vue.component('gallery-component', Gallery);
+Vue.component('subscribe-component', Subscribe);
 
 
 import veeValidate from 'vee-validate';
