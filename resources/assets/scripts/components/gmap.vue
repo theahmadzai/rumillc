@@ -2,23 +2,11 @@
     <div class="google-map" id="google-map"></div>
 </template>
 
-<style lang="scss" scoped>
-.google-map {
-  width: 100%;
-  height: 200px;
-
-  @media (min-width: 40em) {
-    width: 100%;
-    height: 400px;
-  }
-}
-</style>
-
 <script>
 import GoogleMapsLoader from 'google-maps';
 
 export default {
-  data() {
+  data(){
     return {
       KEY   : 'AIzaSyCyHWm6orZclDIdEbPHVroYgdTEMkKpzc4',
       zoom  : 15,
@@ -30,7 +18,7 @@ export default {
     };
   },
 
-  mounted() {
+  mounted(){
     GoogleMapsLoader.KEY = this.KEY;
 
     GoogleMapsLoader.load(() => {
@@ -53,3 +41,15 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.google-map {
+  width: 100%;
+  height: 200px;
+
+  @media (min-width: 40em) {
+    width: 100%;
+    height: 400px;
+  }
+}
+</style>
