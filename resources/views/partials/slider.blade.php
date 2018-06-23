@@ -1,1 +1,0 @@
-<slider-component></slider-component>
