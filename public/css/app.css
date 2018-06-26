@@ -235,19 +235,19 @@ form input[type="submit"][data-v-1fbba092]:hover {
 }
 .range[data-v-c59fea78] {
   display: block;
-  width: 400px;
+  width: 40%;
   height: 5px;
   margin: 2rem auto;
   -webkit-appearance: none;
   outline: 0;
-  background: gray;
+  background: #cccccc;
   cursor: pointer;
 }
 .range[data-v-c59fea78]::-webkit-slider-thumb {
     width: 10px;
     height: 15px;
     -webkit-appearance: none;
-    background: darkgray;
+    background: #aaaaaa;
     cursor: pointer;
 }
 .pagination[data-v-c59fea78] {
