@@ -1,0 +1,46 @@
+.b-links a {
+  display: block;
+  font-size: 0.9rem;
+  margin-top: 0.7rem;
+  color: #ccc;
+  &:hover{
+    color:$primary-color;
+  }
+}
+
+.b-icons .icon {
+  margin-top:1rem;
+  margin-right:1rem;
+  background: #ccc;
+  padding: 1.2rem;
+  border-radius:100%;
+  border:2px solid #ccc;
+  a{
+    color: #333;
+  }
+  &:hover {
+    border:2px solid $primary-color;
+    a{
+      color:$primary-color;
+    }
+
+  }
+}
+
+.b-stylish-footer {
+  height:60px;
+  background:linear-gradient(to right, #2a2a2a, #222);
+  overflow:hidden;
+  position:relative;
+
+  &::before {
+    content: '';
+    transform: skewY(330deg);
+    top: 0;
+    right:10%;
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    background: linear-gradient(to right,  #222, #2a2a2a);
+  }
+}
