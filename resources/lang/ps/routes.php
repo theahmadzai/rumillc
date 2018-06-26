@@ -6,6 +6,7 @@ return [
     'about' => 'زموږ په اړه',
     'gallery' => 'ګالری',
     'services' => 'خدمات',
+    'office' => 'دفتر',
     'dubai' => 'دوبۍ دفتر',
     'indonesia' => 'د اندونیزیا دفتر'
 ];
