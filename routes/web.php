@@ -59,5 +59,12 @@ Route::prefix('admin')->group(function () {
     Route::get('/testimonials', 'Admin\PageController@testimonials')->name('admin.testimonials');
 });
 
+Route::post('/lang', function(\Illuminate\Http\Request $request) {
+    App::setLocale($request->lang);
+    $url = last(explode('/',url()->previous()));
+    if($url == 'en' || $url == 'ps') $url = '/';
+    return redirect($request->lang.'/'.$url);
+});
+
 Route::resource('/api/images', 'ImageController');
 Route::resource('/api/testimonials', 'TestimonialController');
