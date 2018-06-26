@@ -7,5 +7,6 @@
     405 Error:
         {{ $exception->getMessage() }}
     </div>
-    @include('partials.testimonials')
+
+    <testimonials-component></testimonials-component>
 @endsection
