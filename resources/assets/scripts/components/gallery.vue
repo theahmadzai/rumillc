@@ -100,19 +100,19 @@ export default {
 
 .range {
   display: block;
-  width: 400px;
+  width: 40%;
   height: 5px;
   margin: 2rem auto;
   -webkit-appearance: none;
   outline: 0;
-  background: gray;
+  background: #cccccc;
   cursor: pointer;
 
   &::-webkit-slider-thumb {
     width: 10px;
     height: 15px;
     -webkit-appearance: none;
-    background: darkgray;
+    background: #aaaaaa;
     cursor: pointer;
   }
 }
