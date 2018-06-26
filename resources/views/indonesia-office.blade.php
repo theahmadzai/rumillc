@@ -6,5 +6,6 @@
     <div class="content">
         Indonesia Office
     </div>
-    @include('partials.testimonials')
+
+    <testimonials-component></testimonials-component>
 @endsection
