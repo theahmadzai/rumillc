@@ -5,34 +5,12 @@
         </li>
         <li class="menu__item">
             <a href="{{ URL::route('about') }}">@lang('routes.about')</a>
-            <ul class="submenu">
-                <li class="submenu__item">
-                    <a href="">Menu 1</a>
-                </li>
-                <li class="submenu__item">
-                    <a href="">Menu 2</a>
-                </li>
-                <li class="submenu__item">
-                    <a href="">Menu 3</a>
-                </li>
-            </ul>
         </li>
         <li class="menu__item">
             <a href="{{ URL::route('services') }}">@lang('routes.services')</a>
-            <ul class="submenu">
-                <li class="submenu__item">
-                    <a href="">Menu 1</a>
-                </li>
-                <li class="submenu__item">
-                    <a href="">Menu 2</a>
-                </li>
-                <li class="submenu__item">
-                    <a href="">Menu 3</a>
-                </li>
-            </ul>
         </li>
         <li class="menu__item">
-            <a href="{{ URL::route('dubai-office') }}">Office</a>
+            <a href="{{ URL::route('dubai-office') }}">@lang('routes.office')</a>
             <ul class="submenu">
                 <li class="submenu__item">
                     <a href="{{ URL::route('dubai-office') }}">@lang('routes.dubai')</a>
