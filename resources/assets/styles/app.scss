@@ -17,9 +17,10 @@
 @import 'global';
 @import 'layout';
 
+// Framework overwrites
+@import 'bulma';
+
 // Partials
 @import 'partials/header';
 @import 'partials/navbar';
-@import 'partials/footer';
-@import 'partials/group';
 @import 'partials/contact-form';
