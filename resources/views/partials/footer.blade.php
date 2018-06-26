@@ -1,39 +1,58 @@
-<footer class="footer">
+<footer class="footer has-background-dark has-text-light is-paddingless">
     <div class="container">
-        <div class="group">
-            <div class="group__item">
-                <h1>Contact</h1>
-                <p>Main office: Kolola Pushta road, Burj Barq Street, Kabul district 4- Afghanistan</p>
-                <p>Factory: Qalai Amir, Paghman district, Kabul-Afghanistan</p>
-                <p>Contact: +93 (0) 784516129</p>
-                <p>Email: info@rumillc.com</p>
-            </div>
-            <div class="group__item">
-                <h1>Working Time</h1>
-                <p>Monday To Friday (8AM 10PM) Monday To Friday (8AM 10PM)</p>
-            </div>
-            <div class="group__item">
-                <h1>Menu</h1>
-                <a href="{{ URL::route('home') }}">@lang('routes.home')</a>
-                <a href="{{ URL::route('about') }}">@lang('routes.about')</a>
-                <a href="{{ URL::route('services') }}">@lang('routes.services')</a>
-                <a href="{{ URL::route('dubai-office') }}">@lang('routes.dubai')</a>
-                <a href="{{ URL::route('indonesia-office') }}">@lang('routes.indonesia')</a>
-                <a href="{{ URL::route('gallery') }}">@lang('routes.gallery')</a>
-                <a href="{{ URL::route('contact') }}">@lang('routes.contact')</a>
-            </div>
-            <div class="group__item">
-                <h1>Follow Us</h1>
-                <p>Subscribe to our RSS feed or follow us on Facebook and Twitter for the latest content</p>
-                <div class="icons">
-                    <a href="https://www.facebook.com/rumillc/"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+        <div class="section">
+            <div class="columns">
+                <div class="column is-6">
+                    <div class="content is-small">
+                        <h3 class="title has-text-light is-4">Contact</h3>
+                        <p><strong class="has-text-light">Main office:</strong> Kolola Pushta road, Burj Barq Street, Kabul district 4- Afghanistan</p>
+                        <p><strong class="has-text-light">Factory:</strong> Qalai Amir, Paghman district, Kabul-Afghanistan</p>
+                        <p><strong class="has-text-light">Contact:</strong> +93 (0) 784516129</p>
+                        <p><strong class="has-text-light">Email:</strong> info@rumillc.com</p>
+                    </div>
+                </div>
+                <div class="column is-3">
+                    <div class="content b-links is-small">
+                        <h3 class="title has-text-light is-4">Links</h3>
+                        <a href="{{ URL::route('home') }}">@lang('routes.home')</a>
+                        <a href="{{ URL::route('about') }}">@lang('routes.about')</a>
+                        <a href="{{ URL::route('services') }}">@lang('routes.services')</a>
+                        <a href="{{ URL::route('dubai-office') }}">@lang('routes.dubai')</a>
+                        <a href="{{ URL::route('indonesia-office') }}">@lang('routes.indonesia')</a>
+                        <a href="{{ URL::route('gallery') }}">@lang('routes.gallery')</a>
+                        <a href="{{ URL::route('contact') }}">@lang('routes.contact')</a>
+                    </div>
+                </div>
+                <div class="column is-3">
+                    <div class="content is-small">
+                        <h3 class="title has-text-light is-4">Follow Us</h3>
+                        <p>Subscribe to our RSS feed or follow us on Facebook and Twitter for the latest content</p>
+                        <div class="b-icons">
+                            <span class="icon">
+                                <a href="https://www.facebook.com/rumillc/">
+                                    <i class="fa fa-facebook fa-2x"></i>
+                                </a>
+                            </span>
+                            <span class="icon">
+                                <a href="#">
+                                    <i class="fa fa-twitter fa-2x"></i>
+                                </a>
+                            </span>
+                            <span class="icon">
+                                <a href="#">
+                                    <i class="fa fa-linkedin fa-2x"></i>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="copyrights">
-        &copy; Copyright 2017-2018 - Rumi Trading LLC
+    <div class="b-stylish-footer"></div>
+    <div class="section">
+        <div class="content has-text-centered is-small">
+            <p>&copy; Copyright 2017-2018 - Rumi Trading LLC</p>
+        </div>
     </div>
 </footer>
