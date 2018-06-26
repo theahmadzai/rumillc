@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="container" style="width: 80%">
+    <div class="container">
         <gallery-component></gallery-component>
     </div>
 
