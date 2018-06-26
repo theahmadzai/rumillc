@@ -1,12 +1,22 @@
 <header class="header">
     <div class="container">
+
         <a href="/" class="logo">
             <img src="{{ asset('images/logo.png') }}" alt="Rumi Trading LLC Logo">
         </a>
+
         @include('partials.navbar')
-        <div style="background:#efefef; padding:1rem; border-radius:5px;">
-            <a href="/" style="text-decoration:none;color:black;">EN</a>/
-            <a href="/ps" style="text-decoration:none;color:black;">PS</a>
+
+        <div class="control has-icons-left">
+            <div class="select is-rounded">
+                <select name="lang" id="lang">
+                    <option value="">EN</option>
+                    <option value="">PS</option>
+                </select>
+            </div>
+            <div class="icon is-small is-left">
+                <i class="fa fa-globe"></i>
+            </div>
         </div>
     </div>
 </header>
