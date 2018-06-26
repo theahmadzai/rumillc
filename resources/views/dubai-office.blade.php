@@ -6,5 +6,5 @@
     <div class="content">
         Dubai Office
     </div>
-    @include('partials.testimonials')
+    <testimonials-component></testimonials-component>
 @endsection
