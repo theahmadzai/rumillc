@@ -32,10 +32,15 @@
             </ul>
         </li>
         <li class="menu__item">
-            <a href="{{ URL::route('dubai-office') }}">@lang('routes.dubai')</a>
-        </li>
-        <li class="menu__item">
-            <a href="{{ URL::route('indonesia-office') }}">@lang('routes.indonesia')</a>
+            <a href="{{ URL::route('dubai-office') }}">Office</a>
+            <ul class="submenu">
+                <li class="submenu__item">
+                    <a href="{{ URL::route('dubai-office') }}">@lang('routes.dubai')</a>
+                </li>
+                <li class="submenu__item">
+                    <a href="{{ URL::route('indonesia-office') }}">@lang('routes.indonesia')</a>
+                </li>
+            </ul>
         </li>
         <li class="menu__item">
             <a href="{{ URL::route('gallery') }}">@lang('routes.gallery')</a>
