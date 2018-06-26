@@ -5,10 +5,10 @@
                 <div class="column is-6">
                     <div class="content is-small">
                         <h3 class="title has-text-light is-4">Contact</h3>
-                        <p><strong class="has-text-light">Main office:</strong> Kolola Pushta road, Burj Barq Street, Kabul district 4- Afghanistan</p>
-                        <p><strong class="has-text-light">Factory:</strong> Qalai Amir, Paghman district, Kabul-Afghanistan</p>
-                        <p><strong class="has-text-light">Contact:</strong> +93 (0) 784516129</p>
-                        <p><strong class="has-text-light">Email:</strong> info@rumillc.com</p>
+                        <p><strong class="has-text-light">@lang('contact.address.h'):</strong> @lang('contact.address.m')</p>
+                        <p><strong class="has-text-light">@lang('contact.factory.h'):</strong> @lang('contact.factory.m')</p>
+                        <p><strong class="has-text-light">@lang('contact.phone.h'):</strong> @lang('contact.phone.m')</p>
+                        <p><strong class="has-text-light">@lang('contact.email.h'):</strong> @lang('contact.email.m')</p>
                     </div>
                 </div>
                 <div class="column is-3">
@@ -26,7 +26,7 @@
                 <div class="column is-3">
                     <div class="content is-small">
                         <h3 class="title has-text-light is-4">Follow Us</h3>
-                        <p>Subscribe to our RSS feed or follow us on Facebook and Twitter for the latest content</p>
+                        <p>@lang('misc.follow_us')</p>
                         <div class="b-icons">
                             <span class="icon">
                                 <a href="https://www.facebook.com/rumillc/">
@@ -52,7 +52,7 @@
     <div class="b-stylish-footer"></div>
     <div class="section">
         <div class="content has-text-centered is-small">
-            <p>&copy; Copyright 2017-2018 - Rumi Trading LLC</p>
+            <p>@lang('misc.copyrights')</p>
         </div>
     </div>
 </footer>
