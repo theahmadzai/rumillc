@@ -6,5 +6,6 @@
     <div class="content">
         Services
     </div>
-    @include('partials.testimonials')
+
+    <testimonials-component></testimonials-component>
 @endsection
