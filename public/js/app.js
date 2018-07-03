@@ -383,6 +383,9 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
 
 exports.default = {
   data: function data() {
@@ -409,6 +412,10 @@ exports.default = {
   },
 
   methods: {
+    change: function change(id) {
+      this.current = id;
+      this.loading = true;
+    },
     move: function move() {
       var pos = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
@@ -483,6 +490,22 @@ var render = function() {
             })
           ])
         ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "views" },
+        _vm._l(_vm.slides, function(slide, index) {
+          return _c("img", {
+            key: index,
+            attrs: { src: slide.url },
+            on: {
+              click: function($event) {
+                _vm.change(index)
+              }
+            }
+          })
+        })
       ),
       _vm._v(" "),
       _c("transition", { attrs: { name: "slide" } }, [
