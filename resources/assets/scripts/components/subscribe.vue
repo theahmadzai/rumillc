@@ -22,23 +22,27 @@ export default {
 @import '~@/_mixins.scss';
 
 .subscribe {
-  display: flex;
-  justify-content: space-around;
   position: relative;
+  display: none;
+  justify-content: space-around;
   padding: 6rem 0;
-  background: rgb(216,165,80);
-  overflow: hidden;
   transform-style: preserve-3d;
+  background: rgb(216, 165, 80);
+  overflow: hidden;
+
+  @media #{$medium} {
+    display: flex;
+  }
 
   &::before {
-    content: '';
-    transform: skewY(170deg);
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 200px;
-    position: absolute;
-    background: linear-gradient(-90deg,  rgb(216,165,80),#875400);
+    transform: skewY(170deg);
+    background: linear-gradient(-90deg, rgb(216, 165, 80), #875400);
+    content: '';
   }
 
   form {
@@ -52,27 +56,26 @@ export default {
     padding: 0.6rem;
     outline: none;
     border: none;
-    font-size: 1.3rem;
-    color: #333;
-    font-style: italic;
     border-right: none;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: #333333;
   }
 
   &__submit {
-    outline: none;
-    border: none;
     padding: 0.6rem 2rem;
-    color: #fff;;
-    background: rgb(122,87,27);
+    outline: none;
+    border: 2px solid rgb(122, 87, 27);
+    background: rgb(122, 87, 27);
     font-weight: 800;
+    color: #ffffff;
     text-transform: uppercase;
     cursor: pointer;
-    border: 2px solid rgb(122,87,27);
 
     &:hover {
-      border: 2px solid rgb(122,87,27);
-      background: #fff;
-      color: rgb(122,87,27);
+      border: 2px solid rgb(122, 87, 27);
+      background: #ffffff;
+      color: rgb(122, 87, 27);
 
       @include animate(pulse,200ms);
     }
