@@ -6,7 +6,8 @@ return [
     'about' => 'About Us',
     'gallery' => 'Photo Gallery',
     'services' => 'Products & Services',
-    'office' => 'Office',
-    'dubai' => 'Rumi Dubai Office',
-    'indonesia' => 'Rumi Indonesia Office'
+    'network' => 'Network',
+    'afghanistan' => 'Afghanistan',
+    'dubai' => 'Dubai',
+    'indonesia' => 'Indonesia'
 ];
