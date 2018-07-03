@@ -21,6 +21,8 @@ Route::prefix(Lang::setLocale())->group(function () {
 
     Route::get('/services', 'PageController@services')->name('services');
 
+    Route::get('/afghanistan-office', 'PageController@afghanistan')->name('afghanistan-office');
+
     Route::get('/dubai-office', 'PageController@dubai')->name('dubai-office');
 
     Route::get('/indonesia-office', 'PageController@indonesia')->name('indonesia-office');
