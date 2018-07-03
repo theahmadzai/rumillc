@@ -10,8 +10,11 @@
             <a href="{{ URL::route('services') }}">@lang('routes.services')</a>
         </li>
         <li class="menu__item">
-            <a href="{{ URL::route('dubai-office') }}">@lang('routes.office')</a>
+            <a href="{{ URL::route('afghanistan-office') }}">@lang('routes.network')</a>
             <ul class="submenu">
+                <li class="submenu__item">
+                    <a href="{{ URL::route('afghanistan-office') }}">@lang('routes.afghanistan')</a>
+                </li>
                 <li class="submenu__item">
                     <a href="{{ URL::route('dubai-office') }}">@lang('routes.dubai')</a>
                 </li>
