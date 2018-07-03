@@ -21,6 +21,11 @@ class PageController extends Controller
         return view('services');
     }
 
+    public function afghanistan()
+    {
+        return view('afghanistan-office');
+    }
+
     public function dubai()
     {
         return view('dubai-office');
