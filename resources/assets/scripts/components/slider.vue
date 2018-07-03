@@ -1,23 +1,26 @@
 <template>
     <div class="slider">
-        <div v-on:click="move(-1)" class="prev">
+        <div @click="move(-1)" class="prev">
             <svg class="arrow">
                 <path d="M 40 50 L 30 60 L 0 30 L 30 0 L 40 10 L 20 30 L 50 60"></path>
             </svg>
         </div>
-        <div v-on:click="move(1)" class="next">
+        <div @click="move(1)" class="next">
             <svg class="arrow">
                 <path d="M 0 10 L 10 0 L 40 30 L 10 60 L 0 50 L 20 30 L 0 10"></path>
             </svg>
         </div>
+        <div class="views">
+            <img v-for="(slide, index) in slides" :key="index" :src="slide.url" @click="change(index)"/>
+        </div>
         <transition name="slide">
             <img class="slide"
             v-if="loaded"
-            v-on:load="loading = !loading"
-            v-on:mouseover="stopRotation"
-            v-on:mouseout="startRotation"
-            v-bind:src="slides[current].url"
-            v-bind:alt="slides[current].title"/>
+            @load="loading = !loading"
+            @mouseover="stopRotation"
+            @mouseout="startRotation"
+            :src="slides[current].url"
+            :alt="slides[current].title"/>
         </transition>
         <div class="loading" v-show="loading"></div>
     </div>
@@ -49,6 +52,10 @@ export default {
       });
   },
   methods: {
+    change(id) {
+      this.current = id;
+      this.loading = true;
+    },
     move(pos = 1) {
       let current = this.current + pos;
       if (current < 0) {
@@ -75,52 +82,92 @@ export default {
 @import '~@/_mixins.scss';
 
 .slider {
-  width: 100%;
-  height: 600px;
-  overflow: hidden;
   position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+
+  @media #{$medium} {
+    height: 350px;
+  }
+
+  @media #{$large} {
+    height: 500px;
+  }
+
   .slide {
     width: 100%;
     height: 100%;
-    &-enter-active{
+
+    &-enter-active {
       @include animate(fade, 2s);
     }
-    &-leave-active{
+
+    &-leave-active {
       @include animate(pulse, 500ms reverse);
     }
   }
+
+  .views {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    display: none;
+    transform: translateX(-50%);
+
+    @media #{$medium} {
+      display: block;
+    }
+
+    img {
+      width: 70px;
+      height: 50px;
+      margin: 0 0.3rem;
+      transition: all 200ms ease;
+      cursor: pointer;
+
+      &:hover {
+        width: 80px;
+      }
+    }
+  }
+
   .prev,
   .next {
     position: absolute;
     top: 50%;
+    padding: 0.5rem 1rem;
+    opacity: 0.6;
     transform: translateY(-50px);
     outline: 0;
     border: 0;
-    opacity: 0.6;
-    padding:0.5rem 1rem;
-    background:#000;
+    background: #000000;
     cursor: pointer;
-    .arrow{
-      fill:#fff;
-      width:40px;
-      height:60px;
+
+    .arrow {
+      fill: #ffffff;
+      width: 40px;
+      height: 60px;
     }
   }
-  .prev{
-    left:1rem;
+
+  .prev {
+    left: 1rem;
   }
+
   .next {
     right: 1rem;
   }
+
   .loading {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform:translate(-50%,-50%);
-    padding:0.5rem;
+    padding: 0.5rem;
+    transform: translate(-50%, -50%);
     border: 6px solid #f3f3f3;
-    border-top: 6px solid #333;
-    border-right: 6px solid #333;
+    border-top: 6px solid #333333;
+    border-right: 6px solid #333333;
     border-radius: 50%;
     animation: spin 1s linear infinite;
   }
