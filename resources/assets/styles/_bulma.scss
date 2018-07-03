@@ -1,6 +1,6 @@
 .b-links a {
   display: block;
-  font-size: 0.9rem;
+  font-size:0.9rem;
   margin-top: 0.7rem;
   color: #ccc;
   &:hover{
@@ -27,6 +27,19 @@
   }
 }
 
+.footer .content {
+  font-size:0.9rem;
+  color:#ccc;
+  strong {
+    color:#eee;
+  }
+  h3{
+    border-bottom:2px dashed $primary-color;
+    line-height:3rem;
+    display:inline-block;
+  }
+}
+
 .b-stylish-footer {
   height:60px;
   background:linear-gradient(to right, #2a2a2a, #222);
@@ -43,4 +56,9 @@
     position: absolute;
     background: linear-gradient(to right,  #222, #2a2a2a);
   }
+}
+
+.footer .column {
+  margin-top:1.2rem;
+  margin-bottom:1.2rem;
 }
