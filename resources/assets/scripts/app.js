@@ -28,7 +28,6 @@ Vue.component('contact-component', Contact);
 Vue.component('gallery-component', Gallery);
 Vue.component('subscribe-component', Subscribe);
 
-
 import veeValidate from 'vee-validate';
 
 Vue.use(veeValidate);
@@ -36,4 +35,9 @@ Vue.use(veeValidate);
 new Vue({
   strict: true,
   el    : '#app'
+});
+
+document.getElementById('toggle').addEventListener('click', function() {
+  this.classList.toggle('toggle--change');
+  document.getElementById('navbar').classList.toggle('navbar--toggle');
 });
