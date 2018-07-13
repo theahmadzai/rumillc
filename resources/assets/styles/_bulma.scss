@@ -1,64 +1,69 @@
 .b-links a {
   display: block;
-  font-size:0.9rem;
   margin-top: 0.7rem;
-  color: #ccc;
-  &:hover{
-    color:$primary-color;
+  font-size: 0.9rem;
+  color: #cccccc;
+
+  &:hover {
+    color: $primary-color;
   }
 }
 
 .b-icons .icon {
-  margin-top:1rem;
-  margin-right:1rem;
-  background: #ccc;
+  margin-top: 1rem;
+  margin-right: 1rem;
   padding: 1.2rem;
-  border-radius:100%;
-  border:2px solid #ccc;
-  a{
-    color: #333;
-  }
-  &:hover {
-    border:2px solid $primary-color;
-    a{
-      color:$primary-color;
-    }
+  border: 2px solid #cccccc;
+  border-radius: 100%;
+  background: #cccccc;
 
+  a {
+    color: #333333;
+  }
+
+  &:hover {
+    border: 2px solid $primary-color;
+
+    a {
+      color: $primary-color;
+    }
   }
 }
 
 .footer .content {
-  font-size:0.9rem;
-  color:#ccc;
+  font-size: 0.9rem;
+  color: #cccccc;
+
   strong {
-    color:#eee;
+    color: #eeeeee;
   }
-  h3{
-    border-bottom:2px dashed $primary-color;
-    line-height:3rem;
-    display:inline-block;
+
+  h3 {
+    display: inline-block;
+    border-bottom: 2px dashed $primary-color;
+    line-height: 3rem;
   }
 }
 
 .b-stylish-footer {
-  height:60px;
-  background:linear-gradient(to right, #2a2a2a, #222);
-  overflow:hidden;
-  position:relative;
+  position: relative;
+  height: 60px;
+  background: linear-gradient(to right, #2a2a2a, #222222);
+  overflow: hidden;
 
   &::before {
-    content: '';
-    transform: skewY(330deg);
+    position: absolute;
     top: 0;
-    right:10%;
+    right: 10%;
     width: 100%;
     height: 300px;
-    position: absolute;
-    background: linear-gradient(to right,  #222, #2a2a2a);
+    transform: skewY(330deg);
+    background: linear-gradient(to right, #222222, #2a2a2a);
+    content: '';
   }
 }
 
 .footer .column {
-  margin-top:1.2rem;
-  margin-bottom:1.2rem;
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
 }
