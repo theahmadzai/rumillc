@@ -1,0 +1,38 @@
+.toggle {
+  order: 3;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  background: none;
+  cursor: pointer;
+
+  @media #{$large} {
+    display: none;
+  }
+
+  &__bar {
+    display: block;
+    width: 35px;
+    height: 5px;
+    margin: 6px 0;
+    background-color: $primary-color;
+    transition: 0.4s;
+  }
+
+  &--change {
+    .toggle__bar {
+      &:first-child {
+        transform: rotate(-45deg) translate(-8px, 8px);
+      }
+
+      &:nth-of-type(2) {
+        opacity: 0;
+      }
+
+      &:last-child {
+        transform: rotate(45deg) translate(-8px, -8px);
+      }
+    }
+  }
+}
