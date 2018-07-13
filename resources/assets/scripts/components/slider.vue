@@ -1,27 +1,23 @@
 <template>
     <div class="slider">
-        <div @click="move(-1)" class="prev">
+        <div class="prev" @click="move(-1)">
             <svg class="arrow">
                 <path d="M 40 50 L 30 60 L 0 30 L 30 0 L 40 10 L 20 30 L 50 60"></path>
             </svg>
         </div>
-        <div @click="move(1)" class="next">
+        <div class="next" @click="move(1)">
             <svg class="arrow">
                 <path d="M 0 10 L 10 0 L 40 30 L 10 60 L 0 50 L 20 30 L 0 10"></path>
             </svg>
         </div>
         <div class="views">
-            <img v-for="(slide, index) in slides" :key="index" :src="slide.url" @click="change(index)"/>
+            <img v-for="(slide, index) in slides" :key="index" :src="slide.url" :class="{active: index == current}" @click="change(index)"/>
         </div>
-        <transition name="slide">
-            <img class="slide"
-            v-if="loaded"
-            @load="loading = !loading"
-            @mouseover="stopRotation"
-            @mouseout="startRotation"
-            :src="slides[current].url"
-            :alt="slides[current].title"/>
-        </transition>
+        <div class="slide" @mouseover="stopRotation" @mouseout="startRotation">
+          <transition name="slide">
+              <img :src="slides[current].url" :alt="slides[current].title" v-if="loaded" @load="loading = !loading"/>
+          </transition>
+        </div>
         <div class="loading" v-show="loading"></div>
     </div>
 </template>
@@ -99,6 +95,17 @@ export default {
     width: 100%;
     height: 100%;
 
+    img {
+      width: 100%;
+      margin-top: -15%;
+      transition: all 2s ease;
+
+      &:hover {
+        z-index: -200;
+        transform: scale(1.1);
+      }
+    }
+
     &-enter-active {
       @include animate(fade, 2s);
     }
@@ -112,6 +119,7 @@ export default {
     position: absolute;
     bottom: 10px;
     left: 50%;
+    z-index: 12;
     display: none;
     transform: translateX(-50%);
 
@@ -123,8 +131,14 @@ export default {
       width: 70px;
       height: 50px;
       margin: 0 0.3rem;
+      opacity: 0.7;
       transition: all 200ms ease;
       cursor: pointer;
+
+      &.active {
+        opacity: 1;
+        border: 2px solid white;
+      }
 
       &:hover {
         width: 80px;
@@ -136,6 +150,7 @@ export default {
   .next {
     position: absolute;
     top: 50%;
+    z-index: 12;
     padding: 0.5rem 1rem;
     opacity: 0.6;
     transform: translateY(-50px);
