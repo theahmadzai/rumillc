@@ -1,4 +1,4 @@
-<nav class="navbar">
+<nav class="navbar" id="navbar">
     <ul class="menu">
         <li class="menu__item">
             <a href="{{ URL::route('home') }}">@lang('routes.home')</a>
