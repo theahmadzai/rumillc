@@ -101,7 +101,6 @@ export default {
       transition: all 2s ease;
 
       &:hover {
-        z-index: -200;
         transform: scale(1.1);
       }
     }
@@ -119,7 +118,7 @@ export default {
     position: absolute;
     bottom: 10px;
     left: 50%;
-    z-index: 12;
+    z-index: map-get($zindex, l2);
     display: none;
     transform: translateX(-50%);
 
@@ -150,7 +149,7 @@ export default {
   .next {
     position: absolute;
     top: 50%;
-    z-index: 12;
+    z-index: map-get($zindex, l2);
     padding: 0.5rem 1rem;
     opacity: 0.6;
     transform: translateY(-50px);
