@@ -8,4 +8,17 @@ $content-width-wide: 75rem;
 // Colors
 $primary-color: rgb(216, 165, 80);
 $secondary-color: rgb(135, 84, 0);
-$c1:rgb(122, 87, 27);
+$c1: rgb(122, 87, 27);
+
+// Z-index
+
+$zindex: (
+  modal: 9000,
+  overlay: 8000,
+  dropdown: 7000,
+  header: 6000,
+  footer: 5000,
+  l1: 1000,
+  l2: 2000,
+  l3: 3000
+);
