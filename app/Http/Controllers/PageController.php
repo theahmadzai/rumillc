@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Message;
 
 class PageController extends Controller
 {
@@ -16,9 +18,9 @@ class PageController extends Controller
         return view('about');
     }
 
-    public function services()
+    public function products()
     {
-        return view('services');
+        return view('products');
     }
 
     public function afghanistan()
@@ -44,5 +46,10 @@ class PageController extends Controller
     public function contact()
     {
         return view('contact');
+    }
+
+    public function mail(Request $request)
+    {
+        Mail::to('theahmadzai@hotmail.com')->send(new Message($request));
     }
 }
