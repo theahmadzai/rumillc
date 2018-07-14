@@ -58,6 +58,20 @@ export default {
         return;
       }
 
+      try {
+        const response = await axios.post('/contact', {
+          params: {
+            name   : this.name,
+            email  : this.email,
+            subject: this.subject,
+            message: this.message
+          }
+        });
+
+      } catch(error){
+        console.log(error);
+      }
+
       alert('Submitted');
     }
   }
@@ -67,57 +81,62 @@ export default {
 <style lang="scss" scoped>
 @import '~@/_settings.scss';
 
-form{
-  background:#f9f9f9;
-  padding:2rem;
-  width:500px;
-  display:flex;
-  flex-direction:column;
+form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  padding: 2rem;
+  background: #f9f9f9;
 
-  label{
-    margin-bottom:0.3rem;
-    color:#333;
+  label {
+    margin-bottom: 0.3rem;
+    color: #333333;
   }
 
   span {
-    margin-bottom:1rem;
-    font-size:0.8rem;
-    color:red;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    color: red;
   }
 
-  .error{
-    border:1px solid red !important;
+  .error {
+    border: 1px solid red !important;
   }
 
-  input:not([type="submit"]),textarea{
-    padding:0.25rem 1rem;
-    margin-bottom:0.3rem;
-    outline:0;
-    font-style:italic;
-    font-weight:300;
-    color:#666;
-    border:1px solid $secondary-color;
+  input {
+    height: 40px;
   }
-  input{
-    height:40px;
+
+  input:not([type='submit']),
+  textarea {
+    margin-bottom: 0.3rem;
+    padding: 0.25rem 1rem;
+    outline: 0;
+    border: 1px solid $secondary-color;
+    font-style: italic;
+    font-weight: 300;
+    color: #666666;
   }
-  textarea{
-    height:180px;
-    padding-top:0.5rem;
+
+  textarea {
+    height: 180px;
+    padding-top: 0.5rem;
   }
-  input[type="submit"]{
-    width:150px;
-    background:$secondary-color;
-    color:#fff;
-    border:0;
-    font-size:1.1rem;
-    font-weight:600;
+
+  input[type='submit'] {
+    width: 150px;
+    margin-top: 1rem;
+    outline: 0;
+    border: 0;
+    background: $secondary-color;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
     text-transform: uppercase;
-    margin-top:1rem;
-    cursor:pointer;
-    outline:0;
-    &:hover{
-      background:darken($primary-color,5%);
+    cursor: pointer;
+
+    &:hover {
+      background: darken($primary-color, 5%);
     }
   }
 }
