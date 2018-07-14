@@ -7,7 +7,7 @@
             <a href="{{ URL::route('about') }}">@lang('routes.about')</a>
         </li>
         <li class="menu__item">
-            <a href="{{ URL::route('services') }}">@lang('routes.services')</a>
+            <a href="{{ URL::route('products') }}">@lang('routes.products')</a>
         </li>
         <li class="menu__item">
             <a href="{{ URL::route('afghanistan-office') }}">@lang('routes.network')</a>
