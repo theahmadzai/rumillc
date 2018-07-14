@@ -4,8 +4,6 @@
 
 @section('content')
 
-    <gmap-component></gmap-component>
-
     <div class="contact">
         <div class="contact__info">
             <h1>Contact Info</h1>
@@ -18,8 +16,6 @@
         <contact-component></contact-component>
     </div>
 
-    <testimonials-component></testimonials-component>
-
-    <subscribe-component></subscribe-component>
+    <gmap-component></gmap-component>
 
 @endsection
