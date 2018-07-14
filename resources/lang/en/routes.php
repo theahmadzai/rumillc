@@ -5,7 +5,7 @@ return [
     'contact' => 'Contact Us',
     'about' => 'About Us',
     'gallery' => 'Photo Gallery',
-    'services' => 'Products & Services',
+    'products' => 'Products',
     'network' => 'Network',
     'afghanistan' => 'Afghanistan',
     'dubai' => 'Dubai',
