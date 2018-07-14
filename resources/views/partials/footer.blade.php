@@ -42,7 +42,7 @@
                         <h3 class="title has-text-light is-4">Sitemap</h3>
                         <a href="{{ URL::route('home') }}">@lang('routes.home')</a>
                         <a href="{{ URL::route('about') }}">@lang('routes.about')</a>
-                        <a href="{{ URL::route('services') }}">@lang('routes.services')</a>
+                        <a href="{{ URL::route('products') }}">@lang('routes.products')</a>
                         <a href="{{ URL::route('dubai-office') }}">@lang('routes.dubai')</a>
                         <a href="{{ URL::route('indonesia-office') }}">@lang('routes.indonesia')</a>
                         <a href="{{ URL::route('gallery') }}">@lang('routes.gallery')</a>
