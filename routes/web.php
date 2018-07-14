@@ -19,7 +19,7 @@ Route::prefix(Lang::setLocale())->group(function () {
 
     Route::get('/about', 'PageController@about')->name('about');
 
-    Route::get('/services', 'PageController@services')->name('services');
+    Route::get('/products', 'PageController@products')->name('products');
 
     Route::get('/afghanistan-office', 'PageController@afghanistan')->name('afghanistan-office');
 
@@ -30,6 +30,7 @@ Route::prefix(Lang::setLocale())->group(function () {
     Route::get('/gallery', 'PageController@gallery')->name('gallery');
 
     Route::get('/contact', 'PageController@contact')->name('contact');
+    Route::post('/contact', 'PageController@mail');
 
     // Auth
 
