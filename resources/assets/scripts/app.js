@@ -37,7 +37,42 @@ new Vue({
   el    : '#app'
 });
 
+// ============================================================================
+
 document.getElementById('toggle').addEventListener('click', function() {
   this.classList.toggle('toggle--change');
   document.getElementById('navbar').classList.toggle('navbar--toggle');
 });
+
+const accordion = document.getElementById('accordion');
+if(accordion){
+  accordion.addEventListener('click', function(e) {
+    let element = e.target;
+    if(element !== e.currentTarget && element.classList.contains('head')) {
+      element.classList.toggle('head--active');
+      element.nextElementSibling.classList.toggle('body--active');
+    }
+    e.stopPropagation();
+  }, false);
+}
+
+let swaper = document.getElementById('swaper');
+if(swaper) {
+  swaper = swaper.children;
+
+  setInterval(function() {
+    let src = null;
+    for(let i = 0; i<swaper.length; i++) {
+      if(src === null) {
+        src = swaper[i].firstChild.src;
+      }
+      if(i < swaper.length-1) {
+        swaper[i].firstChild.src = swaper[i+1].firstChild.src;
+      }
+      if(i == swaper.length-1) {
+        swaper[i].firstChild.src = src;
+      }
+    }
+    src = null;
+  }, 3000);
+}
