@@ -48,14 +48,14 @@ document.getElementById('toggle').addEventListener('click', function() {
 
 const accordion = document.getElementById('accordion');
 if(accordion){
-  accordion.addEventListener('click', function(e) {
-    let element = e.target;
-    if(element !== e.currentTarget && element.classList.contains('head')) {
-      element.classList.toggle('head--active');
-      element.nextElementSibling.classList.toggle('body--active');
-    }
-    e.stopPropagation();
-  }, false);
+  Array.from(accordion.children).forEach(element => {
+    element.firstElementChild.addEventListener('click', function(){
+      this.classList.toggle('head--active');
+      this.firstElementChild.classList.toggle('fa-caret-right');
+      this.firstElementChild.classList.toggle('fa-caret-down');
+      this.nextElementSibling.classList.toggle('body--active');
+    });
+  });
 }
 
 let swaper = document.getElementById('swaper');
