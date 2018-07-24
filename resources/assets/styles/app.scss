@@ -70,3 +70,39 @@
     }
   }
 }
+
+.leftmenu {
+  position: relative;
+  display: block;
+  width: 200px;
+  border: 1px solid #eeeeee;
+  background: #ffffff;
+
+  &__item {
+    padding: 0.2rem 1rem;
+    border-bottom: 1px solid #eeeeee;
+
+    .submenu {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      display: none;
+      width: 700px;
+      height: 338px;
+      padding: 1rem;
+      border: 1px solid #eeeeee;
+      background: #ffffff;
+      grid-template-columns: 25% 25% 25% 25%;
+
+      &__item {
+        display: flex;
+        flex-direction: column;
+        padding: 0.2rem 1rem;
+      }
+    }
+
+    &:hover .submenu {
+      display: grid;
+    }
+  }
+}
