@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Message;
+use App\Category;
+use App\Product;
 
 class PageController extends Controller
 {
@@ -20,7 +22,14 @@ class PageController extends Controller
 
     public function products()
     {
-        return view('products');
+        $query = Category::with('products:id,category_id,name,image,slug')->orderBy('id')->get(['id','name']);
+        return view('products', ['categories' => $query]);
+    }
+
+    public function showProduct($id, $slug)
+    {
+        $query = Product::with('category')->find($id);
+        return view('product', ['product' => $query]);
     }
 
     public function afghanistan()
