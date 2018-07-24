@@ -1,0 +1,57 @@
+.accordion {
+  margin: 2rem auto;
+
+  &_item {
+    .head {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      border: 1px solid #ffffff;
+      border-top: none;
+      border-radius: 5px;
+      background: lighten($primary-color, 25%);
+      transition: all 500ms ease;
+      color: $secondary-color;
+      cursor: pointer;
+
+      span {
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      i {
+        margin-right: 1rem;
+        font-size: 1.5rem;
+      }
+
+      &--active {
+        background: $primary-color;
+      }
+    }
+
+    &:last-child .body.body--active {
+      border-bottom: 1px solid #cccccc;
+    }
+
+    .body {
+      height: 100%;
+      max-height: 0;
+      border-top: none;
+      border-bottom: none;
+      border-radius: 5px;
+      background: #ffffff;
+      transition: max-height 500ms ease;
+      overflow: hidden;
+
+      .content {
+        padding: 1rem;
+        font-size: 0.9rem;
+      }
+
+      &--active {
+        max-height: 1000px;
+        box-shadow: 0 0 30px 3px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+}
