@@ -21,6 +21,8 @@
                         <li><a href="/admin" class="{{ request()->is('admin') ? 'is-active' : '' }}">Home</a></li>
                         <li><a href="/admin/images" class="{{ request()->is('admin/images') ? 'is-active' : '' }}">Images</a></li>
                         <li><a href="/admin/testimonials" class="{{ request()->is('admin/testimonials') ? 'is-active' : '' }}">Testimonials</a></li>
+                        <li><a href="/admin/categories" class="{{ request()->is('admin/categories') ? 'is-active' : '' }}">Categories</a></li>
+                        <li><a href="/admin/products" class="{{ request()->is('admin/products') ? 'is-active' : '' }}">Products</a></li>
                     </ul>
                     <p class="menu-label">Account</p>
                     <ul class="menu-list">
