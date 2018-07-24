@@ -72,10 +72,10 @@
         </div>
 
         <div class="columns is-multiline" id="swaper">
-            <div class="column is-6"><img src="{{ asset('storage/temp/images/1.jpeg') }}" alt="sample 1"></div>
-            <div class="column is-6"><img src="{{ asset('storage/temp/images/2.jpeg') }}" alt="sample 2 "></div>
-            <div class="column is-6"><img src="{{ asset('storage/temp/images/13.jpeg') }}" alt="sample 3"></div>
-            <div class="column is-6"><img src="{{ asset('storage/temp/images/9.jpeg') }}" alt="sample 4"></div>
+            <div class="column is-6"><img src="{{ asset('images/zafran.jpeg') }}" alt="product sample 1"></div>
+            <div class="column is-6"><img src="{{ asset('images/badam.jpeg') }}" alt="product sample 2 "></div>
+            <div class="column is-6"><img src="{{ asset('images/kishmish.jpeg') }}" alt="product sample 3"></div>
+            <div class="column is-6"><img src="{{ asset('images/pista.jpeg') }}" alt="product sample 4"></div>
         </div>
 
         <img src="{{ asset('images/sona.png') }}" alt="Sona Mahmody">
