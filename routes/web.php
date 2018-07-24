@@ -20,6 +20,7 @@ Route::prefix(Lang::setLocale())->group(function () {
     Route::get('/about', 'PageController@about')->name('about');
 
     Route::get('/products', 'PageController@products')->name('products');
+    Route::get('/product/{id}-{slug}', 'PageController@showProduct');
 
     Route::get('/afghanistan-office', 'PageController@afghanistan')->name('afghanistan-office');
 
@@ -60,6 +61,10 @@ Route::prefix('admin')->group(function () {
     Route::get('/images', 'Admin\PageController@images')->name('admin.images');
 
     Route::get('/testimonials', 'Admin\PageController@testimonials')->name('admin.testimonials');
+
+    Route::get('/categories', 'Admin\PageController@categories')->name('admin.categories');
+
+    Route::get('/products', 'Admin\PageController@products')->name('admin.products');
 });
 
 Route::post('/lang', function(\Illuminate\Http\Request $request) {
@@ -71,3 +76,5 @@ Route::post('/lang', function(\Illuminate\Http\Request $request) {
 
 Route::resource('/api/images', 'ImageController');
 Route::resource('/api/testimonials', 'TestimonialController');
+Route::resource('/api/categories', 'CategoryController');
+Route::resource('/api/products', 'ProductController');
