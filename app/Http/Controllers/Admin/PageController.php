@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Image;
 use App\Testimonial;
+use App\Category;
+use App\Product;
 use App\User;
 
 class PageController extends Controller
@@ -40,5 +42,15 @@ class PageController extends Controller
     public function testimonials()
     {
         return view('admin.testimonials', ['testimonials' => Testimonial::all()]);
+    }
+
+    public function categories()
+    {
+        return view('admin.categories', ['categories' => Category::all()]);
+    }
+
+    public function products()
+    {
+        return view('admin.products', ['categories' => Category::with('products')->get()]);
     }
 }
