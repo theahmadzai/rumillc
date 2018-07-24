@@ -11,14 +11,6 @@
         <p class="catname">{{product.category.name}}</p>
         <p class="pricetag">{{product.price}}</p>
       </li>
-      <li v-for="(product,key) in products" :key="key" v-show="loaded">
-        <figure class="framer">
-          <img :src="'storage/app/'+product.image"/>
-        </figure>
-        <p class="prodname">{{product.name}}</p>
-        <p class="catname">{{product.category.name}}</p>
-        <p class="pricetag">{{product.price}}</p>
-      </li>
     </ul>
   </div>
 </template>
