@@ -20,6 +20,7 @@ import GoogleMap from './components/gmap';
 import Contact from './components/contact';
 import Gallery from './components/gallery';
 import Subscribe from './components/subscribe';
+import Categories from './components/categories';
 
 Vue.component('slider-component', Slider);
 Vue.component('testimonials-component', Testimonials);
@@ -27,6 +28,7 @@ Vue.component('gmap-component', GoogleMap);
 Vue.component('contact-component', Contact);
 Vue.component('gallery-component', Gallery);
 Vue.component('subscribe-component', Subscribe);
+Vue.component('categories-component', Categories);
 
 import veeValidate from 'vee-validate';
 
