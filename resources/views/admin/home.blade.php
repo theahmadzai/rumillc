@@ -37,8 +37,14 @@
             </div>
             <div class="level-item has-text-centered">
                 <div>
-                <p class="heading">Admins</p>
-                <p class="title">{{$admins_count}}</p>
+                <p class="heading">Categories</p>
+                <p class="title">{{$categories_count}}</p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                <p class="heading">Products</p>
+                <p class="title">{{$products_count}}</p>
                 </div>
             </div>
         </nav>

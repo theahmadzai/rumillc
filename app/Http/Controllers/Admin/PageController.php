@@ -22,7 +22,8 @@ class PageController extends Controller
         return view('admin.home', [
             'images_count'=> Image::get()->count(),
             'testimonials_count' => Testimonial::get()->count(),
-            'admins_count' => User::get()->count()
+            'categories_count' => Category::get()->count(),
+            'products_count' => Product::get()->count()
         ]);
     }
 
