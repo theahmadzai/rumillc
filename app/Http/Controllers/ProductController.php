@@ -17,7 +17,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return ProductResource::collection(Product::all());
+        if(!\Request::has('category')) {
+            return ProductResource::collection(Product::all());
+        }
+
+        return Product::with('category')->where('category_id', \Request::query('category'))->get();
     }
 
     /**
