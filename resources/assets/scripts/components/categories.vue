@@ -16,12 +16,17 @@ export default {
       categories: {}
     };
   },
-  async mounted() {
-    try {
-      const response = await axios.get('/api/categories');
-      this.categories = response.data;
-    } catch (error) {
-      console.log(error);
+  mounted() {
+    this.getCategories();
+  },
+  methods: {
+    async getCategories() {
+      try {
+        const response = await axios.get('/api/categories');
+        this.categories = response.data;
+      } catch (error) {
+        console.log(error);
+      }
     }
   },
   components: {
