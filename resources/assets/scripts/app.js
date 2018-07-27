@@ -34,6 +34,9 @@ import veeValidate from 'vee-validate';
 
 Vue.use(veeValidate);
 
+Vue.config.devtools = true;
+Vue.config.performance = true;
+
 new Vue({
   strict: true,
   el    : '#app'
