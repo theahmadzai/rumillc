@@ -27,18 +27,19 @@ export default {
     };
   },
   mounted() {
-    axios
-      .get('/api/testimonials')
-      .then(response => {
+    this.getTestimonials();
+  },
+  methods: {
+    async getTestimonials() {
+      try {
+        const response = await axios.get('/api/testimonials');
         this.testimonials = response.data;
         this.size = this.testimonials.length - 1;
         this.loaded = true;
-      })
-      .catch(error => {
+      } catch (error) {
         console.log(error);
-      });
-  },
-  methods: {
+      }
+    },
     move(pos = 1) {
       this.prev = this.check(this.prev + pos);
       this.current = this.check(this.current + pos);
@@ -57,8 +58,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/_settings.scss';
-@import '~@/_mixins.scss';
+@import "~@/_settings.scss";
+@import "~@/_mixins.scss";
 
 .testimonials {
   display: flex;
@@ -136,7 +137,7 @@ export default {
       transform: prespective-3d;
       transform: 0;
       background: #f1f1f1;
-      content: '';
+      content: "";
 
       @media #{$medium} {
         height: 100px;
