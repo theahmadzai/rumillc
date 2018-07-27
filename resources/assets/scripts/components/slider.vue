@@ -35,19 +35,24 @@ export default {
     };
   },
   mounted() {
-    axios
-      .get('/api/images?type=s')
-      .then(response => {
-        this.slides = response.data;
-        this.size = this.slides.length - 1;
-        this.startRotation();
-        this.loaded = true;
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.getSlides();
   },
   methods: {
+    async getSlides() {
+      try {
+        const response = await axios.get('/api/images', {
+          params: {
+            type: 's'
+          }
+        });
+        this.slides = response.data;
+        this.size = this.slides.length - 1;
+        this.loaded = true;
+        this.startRotation();
+      } catch (error) {
+        console.log(error);
+      }
+    },
     change(id) {
       this.current = id;
       this.loading = true;
@@ -74,8 +79,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/_settings.scss';
-@import '~@/_mixins.scss';
+@import "~@/_settings.scss";
+@import "~@/_mixins.scss";
 
 .slider {
   position: relative;
