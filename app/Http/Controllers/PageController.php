@@ -28,8 +28,7 @@ class PageController extends Controller
 
     public function showProduct($id, $slug)
     {
-        $query = Product::with('category')->find($id);
-        return view('product', ['product' => $query]);
+        return view('product', ['id' => $id]);
     }
 
     public function afghanistan()
