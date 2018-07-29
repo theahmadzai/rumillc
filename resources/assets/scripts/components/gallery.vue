@@ -29,11 +29,11 @@ import Pagination from './pagination';
 import Popper from 'vue-popperjs';
 
 export default {
-  data(){
+  data() {
     return {
       index  : null,
       options: {
-        urlProperty: 'url',
+        urlProperty: 'url'
       },
       images    : [],
       pagination: {},
@@ -60,8 +60,7 @@ export default {
         this.images = response.data.data;
         this.pagination = response.data.meta;
         this.loading = false;
-
-      } catch(error){
+      } catch (error) {
         console.log(error);
       }
     },
@@ -71,9 +70,9 @@ export default {
     }
   },
   components: {
-    'gallery'   : VueGallery,
-    'pagination': Pagination,
-    'popper'    : Popper
+    gallery   : VueGallery,
+    pagination: Pagination,
+    popper    : Popper
   }
 };
 </script>
