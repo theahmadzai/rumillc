@@ -62,16 +62,18 @@ class ProductController extends Controller
         $category = $request->category;
         $content = $request->content;
 
-        $p = new Product;
-
-        $p->name = $name;
-        $p->slug = $slug;
-        $p->price = $price;
-        $p->image = $image;
-        $p->category_id = $category;
-        $p->content = $content;
-
-        $p->save();
+        try {
+            $product = new Product;
+            $product->name = $name;
+            $product->slug = $slug;
+            $product->price = $price;
+            $product->image = $image;
+            $product->category_id = $category;
+            $product->content = $content;
+            $product->save();
+        } catch(\Exception $e) {
+            return $e->getMessage();
+        }
 
         return back()->with('status', 'Product Added Successfully!');
     }
@@ -84,7 +86,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return Product::with('category')->find($product->id);
     }
 
     /**
