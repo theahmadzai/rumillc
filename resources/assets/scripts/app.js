@@ -21,6 +21,7 @@ import Contact from './components/contact';
 import Gallery from './components/gallery';
 import Subscribe from './components/subscribe';
 import Categories from './components/categories';
+import Product from './components/product';
 
 Vue.component('slider-component', Slider);
 Vue.component('testimonials-component', Testimonials);
@@ -29,10 +30,7 @@ Vue.component('contact-component', Contact);
 Vue.component('gallery-component', Gallery);
 Vue.component('subscribe-component', Subscribe);
 Vue.component('categories-component', Categories);
-
-import veeValidate from 'vee-validate';
-
-Vue.use(veeValidate);
+Vue.component('product-component', Product);
 
 Vue.config.devtools = true;
 Vue.config.performance = true;
