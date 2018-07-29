@@ -1,85 +1,66 @@
 <template>
-    <form @submit.prevent="submit" novalidate>
-        <label for="name">Your Name</label>
-        <input type="text" name="name" v-model="name" v-validate="nameRules" :class="{error: errors.has('name')}">
-        <span v-show="errors.has('name')">{{ errors.first('name') }}</span>
+  <div v-if="!loaded" class="loading rel"></div>
+  <form v-else @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)" novalidate>
+      <label for="name">Your Name</label>
+      <input type="text" name="name" v-model="form.name">
+      <span v-if="form.errors.has('name')" v-text="form.errors.get('name')"></span>
 
-        <label for="email">Your Email</label>
-        <input type="email" name="email" v-model="email" v-validate="emailRules" :class="{error: errors.has('email')}">
-        <span v-show="errors.has('email')">{{ errors.first('email') }}</span>
+      <label for="email">Your Email</label>
+      <input type="email" name="email" v-model="form.email">
+      <span v-if="form.errors.has('email')" v-text="form.errors.get('email')"></span>
 
-        <label for="subject">Subject</label>
-        <input type="text" name="subject" v-model="subject" v-validate="subjectRules" :class="{error: errors.has('subject')}">
-        <span v-show="errors.has('subject')">{{ errors.first('subject') }}</span>
+      <label for="subject">Subject</label>
+      <input type="text" name="subject" v-model="form.subject">
+      <span v-if="form.errors.has('subject')" v-text="form.errors.get('subject')"></span>
 
-        <label for="message">Your Message</label>
-        <textarea name="message" v-model="message" v-validate="messageRules" :class="{error: errors.has('message')}"></textarea>
-        <span v-show="errors.has('message')">{{ errors.first('message') }}</span>
+      <label for="message">Your Message</label>
+      <textarea name="message" v-model="form.message"></textarea>
+      <span v-if="form.errors.has('message')" v-text="form.errors.get('message')"></span>
 
-        <input type="submit" value="Send">
-    </form>
+      <div v-if="processing" class="process-button">
+        <div class="loading left"></div>
+      </div>
+      <input v-else type="submit" :disabled="form.errors.any()" value="Send">
+  </form>
 </template>
 
 <script>
+import Form from '../classes/form.js';
+
 export default {
   data() {
     return {
-      nameRules: {
-        required: true,
-        alpha   : true,
-        min     : 3,
-        max     : 30
-      },
-      emailRules: {
-        required: true,
-        email   : true
-      },
-      subjectRules: {
-        required: true,
-        min     : 5,
-        max     : 200
-      },
-      messageRules: {
-        required: true,
-        min     : 5,
-        max     : 2000
-      },
-      name   : null,
-      email  : null,
-      subject: null,
-      message: null
+      loaded    : false,
+      processing: false,
+      form      : new Form({
+        name   : null,
+        email  : null,
+        subject: null,
+        message: null
+      })
     };
   },
+  mounted() {
+    this.loaded = true;
+  },
   methods: {
-    async submit() {
-      let validate = await this.$validator.validateAll();
-
-      if (!validate) {
-        return;
-      }
-
+    async onSubmit() {
       try {
-        const response = await axios.post('/contact', {
-          params: {
-            name   : this.name,
-            email  : this.email,
-            subject: this.subject,
-            message: this.message
-          }
-        });
-
-      } catch(error){
+        this.processing = true;
+        const response = await this.form.submit('/contact');
+        this.processing = false;
+        console.log(response.status);
+      } catch (error) {
+        this.processing = false;
         console.log(error);
       }
-
-      alert('Submitted');
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@import '~@/_settings.scss';
+@import "~@/_settings.scss";
 
 form {
   display: flex;
@@ -107,15 +88,14 @@ form {
     height: 40px;
   }
 
-  input:not([type='submit']),
+  input:not([type="submit"]),
   textarea {
     margin-bottom: 0.3rem;
     padding: 0.25rem 1rem;
     outline: 0;
     border: 1px solid $secondary-color;
-    font-style: italic;
-    font-weight: 300;
-    color: #666666;
+    font-weight: 400;
+    color: #333333;
   }
 
   textarea {
@@ -123,7 +103,7 @@ form {
     padding-top: 0.5rem;
   }
 
-  input[type='submit'] {
+  input[type="submit"] {
     width: 150px;
     margin-top: 1rem;
     outline: 0;
@@ -136,6 +116,10 @@ form {
     cursor: pointer;
 
     &:hover {
+      background: darken($primary-color, 5%);
+    }
+
+    &.disabled {
       background: darken($primary-color, 5%);
     }
   }
