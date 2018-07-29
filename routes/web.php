@@ -78,3 +78,4 @@ Route::resource('/api/images', 'ImageController');
 Route::resource('/api/testimonials', 'TestimonialController');
 Route::resource('/api/categories', 'CategoryController');
 Route::resource('/api/products', 'ProductController');
+Route::resource('/api/feedbacks', 'FeedbackController');
