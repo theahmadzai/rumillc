@@ -58,6 +58,15 @@ class PageController extends Controller
 
     public function mail(Request $request)
     {
-        Mail::to('theahmadzai@hotmail.com')->send(new Message($request));
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'message' => 'required|min:100',
+        ]);
+
+        Mail::to('info@rumillc.com')->send(new Message($request->all()));
+
+        return ['status' => 'Thanks for contacting us.'];
     }
 }
