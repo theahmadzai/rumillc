@@ -17,7 +17,6 @@ mix.js('resources/assets/scripts/app.js', 'public/js')
     'axios',
     'google-maps',
     'vue',
-    'vee-validate',
     'vue-gallery',
     'vue-popperjs'
   ])
