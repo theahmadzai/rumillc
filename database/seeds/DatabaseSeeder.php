@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
             ImagesTableSeeder::class,
             TestimonialsTableSeeder::class,
             CategoriesTableSeeder::class,
-            ProductsTableSeeder::class
+            ProductsTableSeeder::class,
+            FeedbacksTableSeeder::class
         ]);
     }
 }
