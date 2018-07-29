@@ -3,13 +3,15 @@
     <button @click="refreshProducts()">reload</button>
     <ul>
       <div class="loading" v-if="loaded==false"></div>
-      <li v-for="(product,key) in products" :key="key" v-show="loaded">
-        <figure class="framer">
-          <img :src="'storage/app/'+product.image"/>
-        </figure>
-        <p class="prodname">{{product.name}}</p>
-        <p class="catname">{{product.category.name}}</p>
-        <p class="pricetag">{{product.price}}</p>
+      <li v-for="(product,key) in products" :key="key" v-else>
+        <a :href="`product/${product.id}-${product.slug}`">
+          <figure class="framer">
+            <img :src="'storage/app/'+product.image"/>
+          </figure>
+          <p class="prodname">{{product.name}}</p>
+          <p class="catname">{{product.category.name}}</p>
+          <p class="pricetag">{{product.price}}</p>
+        </a>
       </li>
     </ul>
   </div>
@@ -57,6 +59,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "~@/_settings.scss";
+
 .products {
   position: relative;
 }
