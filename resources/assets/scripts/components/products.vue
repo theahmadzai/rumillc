@@ -22,7 +22,13 @@ export default {
   props: {
     category: {
       type    : Number,
-      required: true
+      default : null,
+      required: false
+    },
+    limit: {
+      type    : Number,
+      default : 4,
+      required: false
     }
   },
   data() {
@@ -43,10 +49,10 @@ export default {
         this.loaded = false;
         const response = await axios.get('/api/products', {
           params: {
-            category: this.category
+            category: this.category,
+            limit   : this.limit
           }
         });
-
         this.products = response.data;
         this.loaded = true;
       } catch (error) {
