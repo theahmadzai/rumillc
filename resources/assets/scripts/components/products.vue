@@ -1,19 +1,18 @@
 <template>
-  <div class="products">
-    <button @click="refreshProducts()">reload</button>
-    <ul>
-      <div class="loading" v-if="loaded==false"></div>
-      <li v-for="(product,key) in products" :key="key" v-else>
-        <a :href="`product/${product.id}-${product.slug}`">
-          <figure class="framer">
-            <img :src="'storage/app/'+product.image"/>
-          </figure>
+  <div v-if="!loaded" class="loading rel"></div>
+  <div v-else class="columns is-multiline">
+    <div class="column is-one-third" v-for="(product,key) in products" :key="key">
+      <a :href="`product/${product.id}-${product.slug}`">
+        <figure class="image is-1by1">
+          <img class="zoomer" :src="'storage/app/'+product.image"/>
+        </figure>
+        <div class="has-background-white product-details">
           <p class="prodname">{{product.name}}</p>
           <p class="catname">{{product.category.name}}</p>
           <p class="pricetag">{{product.price}}</p>
-        </a>
-      </li>
-    </ul>
+        </div>
+      </a>
+    </div>
   </div>
 </template>
 
@@ -27,7 +26,7 @@ export default {
     },
     limit: {
       type    : Number,
-      default : 4,
+      default : null,
       required: false
     }
   },
@@ -53,11 +52,17 @@ export default {
             limit   : this.limit
           }
         });
+        console.log(response);
         this.products = response.data;
         this.loaded = true;
       } catch (error) {
         console.log(error);
       }
+    }
+  },
+  watch: {
+    category() {
+      this.refreshProducts();
     }
   }
 };
@@ -66,89 +71,46 @@ export default {
 <style lang="scss" scoped>
 @import "~@/_settings.scss";
 
-.products {
-  position: relative;
+.columns {
+  width: 95%;
+  margin: 0 auto;
 }
-.loading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  padding: 0.5rem;
-  transform: translate(-50%, -50%);
-  border: 6px solid #f3f3f3;
-  border-top: 6px solid #333333;
-  border-right: 6px solid #333333;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-button {
-  background: white;
-  border: 1px solid #eee;
-  padding: 0.2rem 0.4rem;
-  font-size: 0.7rem;
-  position: absolute;
-  bottom: 100%;
-  right: 0;
-  outline: none;
-  cursor: pointer;
-  &:hover {
-    background: #eee;
-    color: #444;
+
+.product-details {
+  padding: 1rem;
+
+  .prodname {
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 300;
+    font-size: 1.5rem;
+    color: #555;
   }
-}
-ul {
-  display: flex;
-  padding: 0.8rem;
-  background: $primary-color;
-  height: 370px;
 
-  li {
-    width: 24%;
-    height: 100%;
-    background: #fff;
-    margin-right: 1.3%;
-    display: block;
-    padding: 0.4rem;
-    overflow: hidden;
+  .catname {
+    color: #555;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 300;
+  }
 
-    &:last-child {
-      margin-right: 0;
-    }
-    .prodname {
-      text-align: center;
-      margin-top: 1rem;
-      font-weight: 300;
-      font-size: 1.5rem;
-      color: #555;
-    }
-    .catname {
-      color: #555;
-      text-align: center;
-      font-size: 0.9rem;
-      font-weight: 300;
-    }
-    .pricetag {
-      background: $secondary-color;
-      text-align: center;
-      color: white;
-      margin-top: 0.5rem;
-      padding: 0.2rem;
-      font-weight: 800;
-      border: 2px solid $secondary-color;
-    }
+  .pricetag {
+    background: $secondary-color;
+    text-align: center;
+    color: white;
+    margin-top: 0.5rem;
+    padding: 0.2rem;
+    font-weight: 800;
+    border: 2px solid $secondary-color;
   }
 }
 
-.framer {
-  width: 100%;
-  height: 220px;
+.image {
   overflow: hidden;
 }
 
-img {
-  width: 100%;
-  height: 100%;
-  transition: all 500ms ease;
+.zoomer {
+  transition: all 300ms ease;
 
   &:hover {
     transform: scale(1.2);
