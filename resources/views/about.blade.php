@@ -11,7 +11,7 @@
 
     <div class="section container">
 
-        <div class="content" style="text-align:justify;background:#fff;padding:1rem;font-size:0.9rem;">
+        <div class="content" data-aos="zoom-out-up" style="text-align:justify;background:#fff;padding:1rem;font-size:0.9rem;">
             <h2 style="background:#444;padding:1rem; color:#eee; font-size:1rem;">INTRODUCTION</h2>
             <p>You have the opportunity to gain a competitive advantage in one of the fastest growing agricultural markets in Central Asia.</p>
             <p>India, the United Arab Emirates, Europe, and North America are already tapping into Afghanistan’s lucrative agri-business opportunities, and other countries are just waking up to the vast potential of Afghanistan’s agricultural sector.</p>
@@ -22,7 +22,7 @@
             <p>With its commitment to private sector growth, its strategic location, and its abundant agricultural riches, Afghanistan is your silk road to business opportunities.</p>
         </div>
 
-        <div class="accordion" id="accordion">
+        <div class="accordion" id="accordion" data-aos="slide-down">
             <div class="accordion_item">
                 <div class="head"><i class="fa fa-caret-right"></i><span>About Rumi Trading LLC</span></div>
                 <div class="body">
@@ -72,17 +72,17 @@
         </div>
 
         <div class="columns is-multiline" id="swaper">
-            <div class="column is-6"><img src="{{ asset('images/zafran.jpeg') }}" alt="product sample 1"></div>
-            <div class="column is-6"><img src="{{ asset('images/badam.jpeg') }}" alt="product sample 2 "></div>
-            <div class="column is-6"><img src="{{ asset('images/kishmish.jpeg') }}" alt="product sample 3"></div>
-            <div class="column is-6"><img src="{{ asset('images/pista.jpeg') }}" alt="product sample 4"></div>
+            <div class="column is-6" data-aos="fade-up-left"><img src="{{ asset('images/zafran.jpeg') }}" alt="product sample 1"></div>
+            <div class="column is-6" data-aos="fade-up-right"><img src="{{ asset('images/badam.jpeg') }}" alt="product sample 2 "></div>
+            <div class="column is-6" data-aos="fade-down-left"><img src="{{ asset('images/kishmish.jpeg') }}" alt="product sample 3"></div>
+            <div class="column is-6" data-aos="fade-down-right"><img src="{{ asset('images/pista.jpeg') }}" alt="product sample 4"></div>
         </div>
 
-        <img src="{{ asset('images/sona.png') }}" alt="Sona Mahmody">
+        <img data-aos="fade" src="{{ asset('images/sona.png') }}" alt="Sona Mahmody">
         <div class="line"></div>
-        <img src="{{ asset('images/nisar.png') }}" alt="Nisar Ahmad">
+        <img data-aos="fade" src="{{ asset('images/nisar.png') }}" alt="Nisar Ahmad">
 
-        <gmap-component style="margin-top:2rem"></gmap-component>
+        <gmap-component data-aos="fade-down" style="margin-top:2rem"></gmap-component>
     </div>
 
     <testimonials-component></testimonials-component>
