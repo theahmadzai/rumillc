@@ -6,5 +6,4 @@
     <div class="content">
         Dubai Office
     </div>
-    <testimonials-component></testimonials-component>
 @endsection
