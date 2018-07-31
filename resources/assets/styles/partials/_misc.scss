@@ -92,3 +92,35 @@
     }
   }
 }
+
+.home-card {
+  position: relative;
+  padding: 2rem;
+  overflow: hidden;
+  font-size: 15px;
+  line-height: 2;
+  color: #000000;
+  text-align: justify;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background: $secondary-color;
+    box-shadow: -20px 0 200px 40px rgba(0, 0, 0, 0.1);
+    content: '';
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: $secondary-color;
+    box-shadow: 0 0 200px 40px rgba(0, 0, 0, 0.1);
+    content: '';
+  }
+}
