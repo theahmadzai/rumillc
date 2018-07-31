@@ -21,17 +21,17 @@
                         <div class="b-icons">
                             <span class="icon">
                                 <a href="https://www.facebook.com/rumillc/">
-                                    <i class="fa fa-facebook fa-2x"></i>
+                                    <i class="fab fa-facebook fa-2x"></i>
                                 </a>
                             </span>
                             <span class="icon">
                                 <a href="#">
-                                    <i class="fa fa-twitter fa-2x"></i>
+                                    <i class="fab fa-twitter fa-2x"></i>
                                 </a>
                             </span>
                             <span class="icon">
                                 <a href="#">
-                                    <i class="fa fa-linkedin fa-2x"></i>
+                                    <i class="fab fa-linkedin fa-2x"></i>
                                 </a>
                             </span>
                         </div>
