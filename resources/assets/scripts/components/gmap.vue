@@ -6,7 +6,7 @@
 import GoogleMapsLoader from 'google-maps';
 
 export default {
-  data(){
+  data() {
     return {
       KEY   : 'AIzaSyCyHWm6orZclDIdEbPHVroYgdTEMkKpzc4',
       zoom  : 15,
@@ -18,7 +18,7 @@ export default {
     };
   },
 
-  mounted(){
+  mounted() {
     GoogleMapsLoader.KEY = this.KEY;
 
     GoogleMapsLoader.load(() => {
