@@ -6,5 +6,4 @@
     <div class="content">
         Afghanistan Office
     </div>
-    <testimonials-component></testimonials-component>
 @endsection
