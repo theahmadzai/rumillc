@@ -65,9 +65,11 @@ export default {
 form {
   display: flex;
   flex-direction: column;
-  width: 500px;
-  padding: 2rem;
   background: #f9f9f9;
+
+  @media #{$medium} {
+    padding: 2rem;
+  }
 
   label {
     margin-bottom: 0.3rem;
