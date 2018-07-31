@@ -23,5 +23,4 @@
 
     <categories-component></categories-component>
 
-    <testimonials-component></testimonials-component>
 @endsection
