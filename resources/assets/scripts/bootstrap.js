@@ -1,5 +1,6 @@
 // window._ = require('lodash');
 window.Popper = require('popper.js').default;
+window.AOS = require('AOS').init();
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
