@@ -6,5 +6,6 @@
     "/js/vendor.js": "/js/vendor.js",
     "/js/vendor.js.map": "/js/vendor.js.map",
     "/js/manifest.js": "/js/manifest.js",
-    "/js/manifest.js.map": "/js/manifest.js.map"
+    "/js/manifest.js.map": "/js/manifest.js.map",
+    "/css/vendor.css": "/css/vendor.css"
 }
