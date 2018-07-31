@@ -18,7 +18,7 @@ class ProductController extends Controller
     public function index()
     {
         if(!\Request::has('category') && !\Request::has('limit')) {
-            return ProductResource::collection(Product::all());
+            return Product::with('category')->get();
         }
 
         if(!\Request::has('category') && \Request::has('limit')){
