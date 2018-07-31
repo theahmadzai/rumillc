@@ -6,6 +6,4 @@
     <div class="content">
         Indonesia Office
     </div>
-
-    <testimonials-component></testimonials-component>
 @endsection
