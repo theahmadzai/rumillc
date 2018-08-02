@@ -5,13 +5,13 @@
 @section('content')
 
     <div class="hframe">
-        <img src="{{ asset('images/about.jpg') }}" alt="About Rumi Ltd">
-        <h1>About Rumi Ltd</h1>
+        <img src="{{ asset('images/about.jpeg') }}" alt="About Rumi Ltd">
+        <h1>Rumi Trading LLC</h1>
     </div>
 
     <div class="section container">
         <div class="content" data-aos="zoom-out-up" style="text-align:justify;background:#fff;padding:1rem;font-size:1rem;line-height:2rem;">
-            <p>Rumi Trading LLC ®, Rumi Saffron ™ and Rumi Dry Fruits ™, Mawlana Saffron ™ is trading and exporting dried fruits (Raisins, Dried Apricot, Dried Figs), Nuts (Almonds, Walnut, Pistachio and Pine Nuts) and Saffron including investment in growing Saffron in more than 15 acres of land in Karokh district of Herat Province, the amount of land being cultivated is planned to grow 20 acres each other so by 2020 the total cultivated land is expected to be more than 50 acres. The Company is buying its dried fruits and Nuts directly from growers/farmers connected through Afghan ministry of agriculture. The Company is connected with farmers/land owners that are visited, verified and their fields are checked to ensure safety and quality of dried fruits purchased. Our main buyers are supermarkets and retailers in Kabul and importers from India, Dubai, Turkey and other potential destinations. We are currently distributing directly through supermarkets and retailers in Kabul and selling to importers in destination countries, which we meet in B2B events. Our advantage in Saffron is that we grow it ourselves, we sell it with a very competitive price, high and assured quality and improved packing, for dry fruits we are buying from farmers/growers making it cheaper for us and able to sell it with a cheaper price and improved quality.</p>
+            <p>Rumi Trading LLC ®, Rumi Saffron ™, Rumi Dry Fruits ™ and Mawlana Saffron ™ is trading and exporting dried fruits (Raisins, Dried Apricot, Dried Figs), Nuts (Almonds, Walnut, Pistachio and Pine Nuts) and Saffron including investment in growing Saffron in more than 15 acres of land in Karokh district of Herat Province, the amount of land being cultivated is planned to grow 20 acres each other so by 2020 the total cultivated land is expected to be more than 50 acres. The Company is buying its dried fruits and Nuts directly from growers/farmers connected through Afghan ministry of agriculture. The Company is connected with farmers/land owners that are visited, verified and their fields are checked to ensure safety and quality of dried fruits purchased. Our main buyers are supermarkets and retailers in Kabul and importers from India, Dubai, Turkey and other potential destinations. We are currently distributing directly through supermarkets and retailers in Kabul and selling to importers in destination countries, which we meet in B2B events. Our advantage in Saffron is that we grow it ourselves, we sell it with a very competitive price, high and assured quality and improved packing, for dry fruits we are buying from farmers/growers making it cheaper for us and able to sell it with a cheaper price and improved quality.</p>
         </div>
 
         {{-- <div class="accordion" id="accordion" data-aos="slide-down">
@@ -69,10 +69,6 @@
             <div class="column is-6" data-aos="fade-down-left"><img src="{{ asset('images/kishmish.jpeg') }}" alt="product sample 3"></div>
             <div class="column is-6" data-aos="fade-down-right"><img src="{{ asset('images/pista.jpeg') }}" alt="product sample 4"></div>
         </div>
-
-        <img data-aos="fade" src="{{ asset('images/sona.png') }}" alt="Sona Mahmody">
-        <div class="line"></div>
-        <img data-aos="fade" src="{{ asset('images/nisar.png') }}" alt="Nisar Ahmad">
 
         <gmap-component data-aos="fade-down" style="margin-top:2rem"></gmap-component>
     </div>
