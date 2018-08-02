@@ -3,11 +3,11 @@
 return [
     'address' => [
         'h' => 'Main office',
-        'm' => 'Kolola Pushta road, Burj Barq Street, Kabul district 4 - Afghanistan',
+        'm' => 'Nasajee Compound, Next to Juma Mohammadi Industrial Park, Karte Naw Road, Kabul-Afghanistan',
     ],
     'factory' => [
         'h' => 'Factory',
-        'm' => 'Qalai Amir, Paghman district, Kabul - Afghanistan'
+        'm' => 'Nasajee Compound, Next to Juma Mohammadi Industrial Park, Karte Naw Road, Kabul-Afghanistan'
     ],
     'phone' => [
         'h' => 'Contact',

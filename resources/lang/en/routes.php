@@ -9,5 +9,7 @@ return [
     'network' => 'Network',
     'afghanistan' => 'Afghanistan',
     'dubai' => 'Dubai',
-    'indonesia' => 'Indonesia'
+    'jakarta' => 'Jakarta',
+    'london' => 'London',
+    'toranto' => 'Toranto'
 ];
