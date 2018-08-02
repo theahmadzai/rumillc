@@ -10,19 +10,11 @@
     </div>
 
     <div class="section container">
-
-        <div class="content" data-aos="zoom-out-up" style="text-align:justify;background:#fff;padding:1rem;font-size:0.9rem;">
-            <h2 style="background:#444;padding:1rem; color:#eee; font-size:1rem;">INTRODUCTION</h2>
-            <p>You have the opportunity to gain a competitive advantage in one of the fastest growing agricultural markets in Central Asia.</p>
-            <p>India, the United Arab Emirates, Europe, and North America are already tapping into Afghanistan’s lucrative agri-business opportunities, and other countries are just waking up to the vast potential of Afghanistan’s agricultural sector.</p>
-            <p>Afghanistan’s economy has improved dramatically since 2001. Agriculture ranks as one of the strongest economic sectors, and there is a corresponding demand for investment in this area.</p>
-            <p>The government of Afghanistan and its partners are committed to facilitating private-sector growth and making sure that investments are well-protected. In fact, Afghanistan gained accession into the World Bank and is now working for its post accession strategy.</p>
-            <p>Afghanistan has a lot to offer to businesspeople in terms of new investment possibilities. Located at the crossroads of Asia, Afghanistan is positioned to benefit from the surging consumer markets of India and China and is primed to increase exports worldwide.</p>
-            <p>Afghanistan is home to unique and high quality saffron, dried fruit, fresh fruit, vegetables and nuts along other commodity such as handmade carpets.</p>
-            <p>With its commitment to private sector growth, its strategic location, and its abundant agricultural riches, Afghanistan is your silk road to business opportunities.</p>
+        <div class="content" data-aos="zoom-out-up" style="text-align:justify;background:#fff;padding:1rem;font-size:1rem;line-height:2rem;">
+            <p>Rumi Trading LLC ®, Rumi Saffron ™ and Rumi Dry Fruits ™, Mawlana Saffron ™ is trading and exporting dried fruits (Raisins, Dried Apricot, Dried Figs), Nuts (Almonds, Walnut, Pistachio and Pine Nuts) and Saffron including investment in growing Saffron in more than 15 acres of land in Karokh district of Herat Province, the amount of land being cultivated is planned to grow 20 acres each other so by 2020 the total cultivated land is expected to be more than 50 acres. The Company is buying its dried fruits and Nuts directly from growers/farmers connected through Afghan ministry of agriculture. The Company is connected with farmers/land owners that are visited, verified and their fields are checked to ensure safety and quality of dried fruits purchased. Our main buyers are supermarkets and retailers in Kabul and importers from India, Dubai, Turkey and other potential destinations. We are currently distributing directly through supermarkets and retailers in Kabul and selling to importers in destination countries, which we meet in B2B events. Our advantage in Saffron is that we grow it ourselves, we sell it with a very competitive price, high and assured quality and improved packing, for dry fruits we are buying from farmers/growers making it cheaper for us and able to sell it with a cheaper price and improved quality.</p>
         </div>
 
-        <div class="accordion" id="accordion" data-aos="slide-down">
+        {{-- <div class="accordion" id="accordion" data-aos="slide-down">
             <div class="accordion_item">
                 <div class="head"><i class="fa fa-caret-right"></i><span>About Rumi Trading LLC</span></div>
                 <div class="body">
@@ -69,7 +61,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="columns is-multiline" id="swaper">
             <div class="column is-6" data-aos="fade-up-left"><img src="{{ asset('images/zafran.jpeg') }}" alt="product sample 1"></div>
