@@ -43,8 +43,11 @@
                         <a href="{{ URL::route('home') }}">@lang('routes.home')</a>
                         <a href="{{ URL::route('about') }}">@lang('routes.about')</a>
                         <a href="{{ URL::route('products') }}">@lang('routes.products')</a>
-                        <a href="{{ URL::route('dubai-office') }}">@lang('routes.dubai')</a>
-                        <a href="{{ URL::route('indonesia-office') }}">@lang('routes.indonesia')</a>
+                        <a href="{{ URL::route('office','afghanistan') }}">@lang('routes.afghanistan')</a>
+                        <a href="{{ URL::route('office','dubai') }}">@lang('routes.dubai')</a>
+                        <a href="{{ URL::route('office','jakarta') }}">@lang('routes.jakarta')</a>
+                        <a href="{{ URL::route('office','london') }}">@lang('routes.london')</a>
+                        <a href="{{ URL::route('office','toranto') }}">@lang('routes.toranto')</a>
                         <a href="{{ URL::route('gallery') }}">@lang('routes.gallery')</a>
                         <a href="{{ URL::route('contact') }}">@lang('routes.contact')</a>
                     </div>

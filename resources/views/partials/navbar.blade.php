@@ -10,16 +10,22 @@
             <a href="{{ URL::route('products') }}">@lang('routes.products')</a>
         </li>
         <li class="menu__item">
-            <a href="{{ URL::route('afghanistan-office') }}">@lang('routes.network')</a>
+            <a href="{{ URL::route('office','afghanistan') }}">@lang('routes.network')</a>
             <ul class="submenu">
                 <li class="submenu__item">
-                    <a href="{{ URL::route('afghanistan-office') }}">@lang('routes.afghanistan')</a>
+                    <a href="{{ URL::route('office','afghanistan') }}">@lang('routes.afghanistan')</a>
                 </li>
                 <li class="submenu__item">
-                    <a href="{{ URL::route('dubai-office') }}">@lang('routes.dubai')</a>
+                    <a href="{{ URL::route('office','dubai') }}">@lang('routes.dubai')</a>
                 </li>
                 <li class="submenu__item">
-                    <a href="{{ URL::route('indonesia-office') }}">@lang('routes.indonesia')</a>
+                    <a href="{{ URL::route('office','jakarta') }}">@lang('routes.jakarta')</a>
+                </li>
+                <li class="submenu__item">
+                    <a href="{{ URL::route('office','london') }}">@lang('routes.london')</a>
+                </li>
+                <li class="submenu__item">
+                    <a href="{{ URL::route('office','toranto') }}">@lang('routes.toranto')</a>
                 </li>
             </ul>
         </li>
