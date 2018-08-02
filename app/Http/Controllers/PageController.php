@@ -31,19 +31,15 @@ class PageController extends Controller
         return view('product', ['id' => $id]);
     }
 
-    public function afghanistan()
+    public function office($place)
     {
-        return view('afghanistan-office');
-    }
+        $offices = ['london','afghanistan','jakarta','dubai','toranto'];
 
-    public function dubai()
-    {
-        return view('dubai-office');
-    }
+        if(!in_array($place,$offices)){
+            abort(404);
+        }
 
-    public function indonesia()
-    {
-        return view('indonesia-office');
+        return view("office/{$place}");
     }
 
     public function gallery()
