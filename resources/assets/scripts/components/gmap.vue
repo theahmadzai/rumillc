@@ -11,8 +11,8 @@ export default {
       KEY   : 'AIzaSyCyHWm6orZclDIdEbPHVroYgdTEMkKpzc4',
       zoom  : 15,
       coords: {
-        lat: 34.544838,
-        lng: 69.152089
+        lat: 34.504050,
+        lng: 69.246456
       },
       content: 'Rumi Trading LLC'
     };
