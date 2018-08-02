@@ -126,7 +126,9 @@ class ProductController extends Controller
     {
         Storage::delete($product->image);
 
-        Product::destroy($product->id);
+        $product = Product::find($product->id);
+        $product->feedbacks()->delete();
+        $product->delete();
 
         return back()->with('status', 'Product Deleted Successfully!');
     }
