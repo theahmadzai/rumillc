@@ -15,11 +15,11 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        if(!\Request::has('product')) {
-            return FeedbackResource::collection(Feedback::all());
+        if (\Request::has('product')) {
+            $product_id = \Request::query('product');
+            return FeedbackResource::collection(Feedback::where('product_id', $product_id)->latest()->get());
         }
-
-        return FeedbackResource::collection(Feedback::where('product_id', \Request::query('product'))->orderBy('id','desc')->get());
+        return FeedbackResource::collection(Feedback::all());
     }
 
     /**
@@ -56,7 +56,7 @@ class FeedbackController extends Controller
             $feedback->message = $request->message;
             $feedback->product_id = $request->product;
             $feedback->save();
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return $e->getMessage();
         }
 
@@ -71,7 +71,7 @@ class FeedbackController extends Controller
      */
     public function show(Feedback $feedback)
     {
-        //
+        return new FeedbackResource($feedback);
     }
 
     /**
@@ -105,6 +105,6 @@ class FeedbackController extends Controller
      */
     public function destroy(Feedback $feedback)
     {
-        //
+        Feedback::destroy($feedback->id);
     }
 }
