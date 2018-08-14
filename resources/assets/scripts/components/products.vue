@@ -9,7 +9,7 @@
         <div class="has-background-white product-details">
           <p class="prodname">{{product.name}}</p>
           <p class="catname">{{product.category.name}}</p>
-          <p class="pricetag">{{product.price}}</p>
+          <p class="viewmore">View More</p>
         </div>
       </a>
     </div>
@@ -94,13 +94,14 @@ export default {
     font-weight: 300;
   }
 
-  .pricetag {
+  .viewmore {
     background: $secondary-color;
     text-align: center;
     color: white;
     margin-top: 0.5rem;
     padding: 0.2rem;
-    font-weight: 800;
+    font-size: 0.8rem;
+    font-weight: 400;
     border: 2px solid $secondary-color;
   }
 }

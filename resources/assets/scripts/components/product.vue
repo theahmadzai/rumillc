@@ -9,9 +9,8 @@
           </figure>
           <div class="details">
             <h2 class="name">{{ product.name }}</h2>
-            <p class="price">{{ product.price }} AFN</p>
             <p class="contents">{{ product.content }}</p>
-            <button class="more">More</button>
+            <button class="more">Contact for price</button>
           </div>
       </div>
 
@@ -108,10 +107,6 @@ export default {
       .name {
         font-size: 2rem;
         font-weight: 600;
-      }
-
-      .price {
-        font-size: 0.9rem;
       }
 
       .contents {
