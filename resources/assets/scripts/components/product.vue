@@ -5,7 +5,7 @@
       <h1 class="category">{{ product.category.name }}</h1>
       <div class="product">
           <figure class="image-frame">
-            <img :src="`/storage/app/${product.image}`" :alt="product.name">
+            <img :src="product.image" :alt="product.name">
           </figure>
           <div class="details">
             <h2 class="name">{{ product.name }}</h2>
@@ -46,7 +46,7 @@ export default {
   methods: {
     async getProduct() {
       try {
-        const response = await axios.get('/api/products/' + parseInt(this.id));
+        const response = await axios.get(`/api/products/${ parseInt(this.id) }`);
         this.product = response.data;
         this.loaded = true;
       } catch (error) {
