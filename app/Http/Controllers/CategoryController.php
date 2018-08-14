@@ -42,19 +42,18 @@ class CategoryController extends Controller
             'slug' => 'required'
         ]);
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return back()->withInput()->withErrors($validator);
         }
 
-        $name = $request->name;
-        $slug = $request->slug;
-
-        $c = new Category;
-
-        $c->name = $name;
-        $c->slug = $slug;
-
-        $c->save();
+        try {
+            $category = new Category;
+            $category->name = $request->name;
+            $category->slug = $request->slug;
+            $category->save();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
 
         return back()->with('status', 'Category Added Successfully!');
     }
@@ -67,7 +66,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return Product::find($category->id);
     }
 
     /**
@@ -78,7 +77,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.categories-edit', ['category' => $category]);
     }
 
     /**
@@ -90,7 +89,24 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'slug' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withInput()->withErrors($validator);
+        }
+        try {
+            $category = Category::find($category->id);
+            $category->name = $request->name;
+            $category->slug = $request->slug;
+            $category->save();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return redirect('admin/categories')->with('status', 'Category Updated Successfully!');
     }
 
     /**
