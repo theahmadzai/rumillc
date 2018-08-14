@@ -17,7 +17,7 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-         return TestimonialResource::collection(Testimonial::all());
+        return TestimonialResource::collection(Testimonial::all());
     }
 
     /**
@@ -40,25 +40,25 @@ class TestimonialController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'image' => 'required|file|image',
+            'image' => 'file|image',
             'message' => 'required|min:25|max:300'
         ]);
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return back()->withInput()->withErrors($validator);
         }
 
-        $name = $request->name;
-        $image = $request->image->store('testimonials');
-        $message = $request->message;
-
-        $t = new Testimonial;
-
-        $t->name = $name;
-        $t->image = $image;
-        $t->message = $message;
-
-        $t->save();
+        try {
+            $testimonial = new Testimonial;
+            $testimonial->name = $request->name;
+            $testimonial->message = $request->message;
+            if ($request->hasFile('image')) {
+                $testimonial->image = $request->image->store('testimonials');
+            }
+            $testimonial->save();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
 
         return back()->with('status', 'Testimonial Added Successfully!');
     }
@@ -71,7 +71,7 @@ class TestimonialController extends Controller
      */
     public function show(Testimonial $testimonial)
     {
-        //
+        return new TestimonialResource($testimonial);
     }
 
     /**
@@ -82,7 +82,7 @@ class TestimonialController extends Controller
      */
     public function edit(Testimonial $testimonial)
     {
-        //
+        return view('admin.testimonials-edit', ['testimonial' => $testimonial]);
     }
 
     /**
@@ -94,7 +94,29 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, Testimonial $testimonial)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'image' => 'file|image',
+            'message' => 'required|min:25|max:300'
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withInput()->withErrors($validator);
+        }
+
+        try {
+            $testimonial = Testimonial::find($testimonial->id);
+            $testimonial->name = $request->name;
+            $testimonial->message = $request->message;
+            if ($request->hasFile('image')) {
+                $testimonial->image = $request->image->store('testimonials');
+            }
+            $testimonial->save();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return redirect('admin/testimonials')->with('status', 'Testimonial Updated Successfully!');
     }
 
     /**
@@ -105,7 +127,9 @@ class TestimonialController extends Controller
      */
     public function destroy(Testimonial $testimonial)
     {
-        Storage::delete($testimonial->image);
+        if (Storage::exists($testimonial->getOriginal('image'))) {
+            Storage::move($testimonial->image, 'deleted/testimonials/' . basename($testimonial->image));
+        }
 
         Testimonial::destroy($testimonial->id);
 
