@@ -17,7 +17,7 @@ class TestimonialResource extends JsonResource
     {
         return [
             'name' => $this->name,
-            'image' => Storage::url('app/'.$this->image),
+            'image' => $this->image,
             'message' => $this->message
         ];
     }
