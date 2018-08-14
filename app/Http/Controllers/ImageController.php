@@ -17,23 +17,15 @@ class ImageController extends Controller
      */
     public function index()
     {
-        if(!\Request::has('type')) {
-
-            return ImageResource::collection(Image::all());
-        }
-
         $type = \Request::query('type');
-        $offset = \Request::query('offset');
-
-        if(!\Request::has('offset')){
-            if(in_array($type, ['o','s','g'])){
-                return ImageResource::collection(Image::where('type', $type)->get());
+        if (\Request::has('type') && in_array($type, ['o', 's', 'g'])) {
+            if (\Request::has('offset')) {
+                $offset = \Request::query('offset');
+                return ImageResource::collection(Image::where('type', $type)->Paginate($offset));
             }
+            return ImageResource::collection(Image::where('type', $type)->get());
         }
-
-        if(in_array($type, ['o','s','g'])){
-            return ImageResource::collection(Image::where('type', $type)->Paginate($offset));
-        }
+        return ImageResource::collection(Image::all());
     }
 
     /**
@@ -60,30 +52,21 @@ class ImageController extends Controller
             'image' => 'required|file|image'
         ]);
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return back()->withInput()->withErrors($validator);
         }
 
-        $dirs = [
-            's' => 'slider',
-            'g' => 'gallery',
-            'o' => 'others'
-        ];
-
-        $title = $request->title;
-        $type = $request->type;
-        $image = $request->image;
-        $path = $image->store($dirs[$type]);
-
-        $i = new Image;
-
-        $i->title = $title;
-        $i->format = $image->extension();
-        $i->size = $image->getSize();
-        $i->url = $path;
-        $i->type = $type;
-
-        $i->save();
+        try {
+            $image = new Image;
+            $image->title = $request->title;
+            $image->format = $request->image->extension();
+            $image->size = $request->image->getSize();
+            $image->url = $request->image->store($request->type);
+            $image->type = $request->type;
+            $image->save();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
 
         return back()->with('status', 'Image Added Successfully!');
     }
@@ -130,7 +113,10 @@ class ImageController extends Controller
      */
     public function destroy(Image $image)
     {
-        Storage::delete($image->url);
+        return var_dump(Storage::exists($image->url));
+        if (Storage::exists($image->url)) {
+            Storage::move($image->url, 'deleted/images/' . $image->type . '/' . basename($image->url));
+        }
 
         Image::destroy($image->id);
 
