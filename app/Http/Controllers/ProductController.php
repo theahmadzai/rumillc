@@ -18,15 +18,22 @@ class ProductController extends Controller
      */
     public function index()
     {
-        if (!\Request::has('category') && !\Request::has('limit')) {
-            return Product::with('category')->get();
+        $limit = \Request::query('limit');
+        $category = \Request::query('category');
+
+        if (\Request::has('category') && \Request::has('limit')) {
+            return ProductResource::collection(Product::where('category_id', $category)->limit($limit)->get());
         }
 
-        if (!\Request::has('category') && \Request::has('limit')) {
-            return Product::with('category')->latest()->limit(\Request::query('limit'))->get();
+        if (\Request::has('category')) {
+            return ProductResource::collection(Product::where('category_id', $category)->get());
         }
 
-        return Product::with('category')->where('category_id', \Request::query('category'))->get();
+        if (\Request::has('limit')) {
+            return ProductResource::collection(Product::limit($limit)->latest()->get());
+        }
+
+        return ProductResource::collection(Product::all());
     }
 
     /**
@@ -88,7 +95,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return Product::with('category')->find($product->id);
+        return new ProductResource($product);
     }
 
     /**
@@ -152,7 +159,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        Storage::delete($product->image);
+        if (Storage::exists($product->getOriginal('image'))) {
+            Storage::move($product->image, 'deleted/products/' . basename($product->image));
+        }
 
         $product = Product::find($product->id);
         $product->feedbacks()->delete();
