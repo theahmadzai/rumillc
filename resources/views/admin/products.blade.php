@@ -63,6 +63,22 @@
 
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
+                    <label for="price" class="label">Tags</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <input type="text" name="tags" id="tags" value="{{ old('tags') }}" class="input">
+                        </div>
+                        @if ($errors->has('tags'))
+                            <p class="help is-danger">{{ $errors->first('tags') }}</p>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
                     <label for="image" class="label">Image</label>
                 </div>
                 <div class="field-body">
@@ -96,6 +112,7 @@
                         <div class="control">
                             <div class="select">
                                 <select name="category" id="category">
+                                    <option selected disabled>Select category</option>
                                     @foreach ($categories as $category)
                                         <option value="{{$category->id}}">{{$category->name}}</option>
                                     @endforeach
@@ -167,10 +184,15 @@
                         <td>{{$product->price}}</td>
                         <td>{{$product->created_at->diffForHumans()}}</td>
                         <td>
-                            <form method="POST" action="/api/products/{{ $product->id }}">
+                            <form method="POST" action="/api/products/{{ $product->id }}/edit" style="display:inline-block;">
+                                @csrf
+                                @method('get')
+                                <a href="#" class="icon" onclick="this.parentElement.submit();"><i class="far fa-edit"></i></a>
+                            </form>
+                            <form method="POST" action="/api/products/{{ $product->id }}" style="display:inline-block;">
                                 @csrf
                                 @method('delete')
-                                <a href="#" class="icon delete" onclick="this.parentElement.submit();">Delete</a>
+                                <a href="#" class="icon" onclick="this.parentElement.submit();"><i class="far fa-trash-alt"></i></a>
                             </form>
                         </td>
                     </tr>
