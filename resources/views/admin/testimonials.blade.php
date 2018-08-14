@@ -93,10 +93,15 @@
                             <p class="card-header-title">
                                 {{$testimonial->name}}
                             </p>
-                            <form method="POST" action="/api/testimonials/{{ $testimonial->id }}" class="card-header-icon">
+                            <form method="POST" action="/api/testimonials/{{$testimonial->id}}/edit" class="card-header-icon">
+                                @csrf
+                                @method('get')
+                                <a href="#" class="icon " onclick="this.parentElement.submit();"><i class="far fa-edit"></i></a>
+                            </form>
+                            <form method="POST" action="/api/testimonials/{{$testimonial->id}}" class="card-header-icon">
                                 @csrf
                                 @method('delete')
-                                <a href="#" class="icon delete" onclick="this.parentElement.submit();">Delete</a>
+                                <a href="#" class="icon" onclick="this.parentElement.submit();"><i class="far fa-trash-alt"></i></a>
                             </form>
                         </div>
                         <div class="card-content">
@@ -104,7 +109,7 @@
                                 <div class="columns">
                                     <div class="column is-one-quarter">
                                         <figure class="image">
-                                            <img src="/storage/app/{{$testimonial->image}}" alt="{{$testimonial->name}}">
+                                            <img src="{{$testimonial->image}}" alt="{{$testimonial->name}}">
                                         </figure>
                                     </div>
                                     <div class="column">
