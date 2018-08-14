@@ -177,7 +177,7 @@
                         <td>{{$pindex+1}}</td>
                         <td>
                             <figure class="image is-4by3">
-                                <img src="/storage/app/{{$product->image}}">
+                                <img src="{{$product->image}}">
                             </figure>
                         </td>
                         <td>{{$product->name}}</td>
