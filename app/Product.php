@@ -12,7 +12,7 @@ class Product extends Model
 
     public function getImageAttribute($value)
     {
-        return $value ?? 'default.png';
+        return $value ?? 'public/default.png';
     }
 
     public function category()
