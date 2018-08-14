@@ -117,7 +117,7 @@
                             </div>
                             <div class="card-image">
                                 <figure class="image">
-                                    <img src="/storage/app/{{ $image->url }}" alt="{{ $image->title }}">
+                                    <img src="{{ $image->url }}" alt="{{ $image->title }}">
                                 </figure>
                             </div>
                         </div>
