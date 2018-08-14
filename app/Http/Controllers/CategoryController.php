@@ -66,7 +66,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return Product::find($category->id);
+        return new CategoryResource($category);
     }
 
     /**
@@ -97,6 +97,7 @@ class CategoryController extends Controller
         if ($validator->fails()) {
             return back()->withInput()->withErrors($validator);
         }
+
         try {
             $category = Category::find($category->id);
             $category->name = $request->name;
