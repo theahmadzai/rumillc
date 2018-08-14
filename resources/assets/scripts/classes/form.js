@@ -5,15 +5,15 @@ class Form {
     this.errors = new Error();
     this.fields = fields;
 
-    for (let field in fields) {
+    for (const field in fields) {
       this[field] = fields[field];
     }
   }
 
   data() {
-    let fields = {};
+    const fields = {};
 
-    for (let field in this.fields) {
+    for (const field in this.fields) {
       fields[field] = this[field];
     }
 
@@ -21,7 +21,7 @@ class Form {
   }
 
   reset() {
-    for (let field in this.fields) {
+    for (const field in this.fields) {
       this[field] = this.fields[field];
     }
 
@@ -29,7 +29,7 @@ class Form {
   }
 
   submit(url) {
-    return new Promise(async (resolve, reject) => {
+    return new Promise( async (resolve, reject) => {
       try {
         const response = await axios.post(url, this.data());
         this.reset();

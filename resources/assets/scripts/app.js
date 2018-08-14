@@ -51,9 +51,9 @@ document.getElementById('toggle').addEventListener('click', function() {
 });
 
 const accordion = document.getElementById('accordion');
-if(accordion){
+if (accordion) {
   Array.from(accordion.children).forEach(element => {
-    element.firstElementChild.addEventListener('click', function(){
+    element.firstElementChild.addEventListener('click', function() {
       this.classList.toggle('head--active');
       this.firstElementChild.classList.toggle('fa-caret-right');
       this.firstElementChild.classList.toggle('fa-caret-down');
@@ -63,19 +63,19 @@ if(accordion){
 }
 
 let swaper = document.getElementById('swaper');
-if(swaper) {
+if (swaper) {
   swaper = swaper.children;
 
-  setInterval(function() {
+  setInterval(() => {
     let src = null;
-    for(let i = 0; i<swaper.length; i++) {
-      if(src === null) {
+    for (let i = 0; i < swaper.length; i++) {
+      if (src === null) {
         src = swaper[i].firstChild.src;
       }
-      if(i < swaper.length-1) {
-        swaper[i].firstChild.src = swaper[i+1].firstChild.src;
+      if (i < swaper.length - 1) {
+        swaper[i].firstChild.src = swaper[i + 1].firstChild.src;
       }
-      if(i == swaper.length-1) {
+      if (i == swaper.length - 1) {
         swaper[i].firstChild.src = src;
       }
     }

@@ -1,5 +1,5 @@
 module.exports = {
-  extends: 'stylelint-config-standard',
+  extends: [ 'stylelint-config-standard' ],
   plugins: [ 'stylelint-order' ],
   rules  : {
     indentation                           : 2,
