@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Resources\ImageResource;
 use App\Image;
 use App\Testimonial;
 use App\Category;
@@ -20,21 +21,18 @@ class PageController extends Controller
     public function home()
     {
         return view('admin.home', [
-            'images_count'=> Image::get()->count(),
+            'images_count' => Image::get()->count(),
             'testimonials_count' => Testimonial::get()->count(),
             'categories_count' => Category::get()->count(),
             'products_count' => Product::get()->count()
         ]);
     }
 
-    public function images(string $type = null)
+    public function images()
     {
-        if(\Request::has('type')) {
-            $type = \Request::query('type');
-
-            if(in_array($type, ['o','s','g'])){
-                return view('admin.images', ['images' => Image::where('type', $type)->get()]);
-            }
+        $type = \Request::query('type');
+        if (\Request::has('type') && in_array($type, ['o', 's', 'g'])) {
+            return view('admin.images', ['images' => Image::where('type', $type)->get()]);
         }
 
         return view('admin.images', ['images' => Image::all()]);
