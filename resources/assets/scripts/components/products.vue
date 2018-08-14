@@ -4,7 +4,7 @@
     <div class="column is-one-third" v-for="(product,key) in products" :key="key">
       <a :href="`product/${product.id}-${product.slug}`">
         <figure class="image is-1by1">
-          <img class="zoomer" :src="'storage/app/'+product.image"/>
+          <img class="zoomer" :src="product.image"/>
         </figure>
         <div class="has-background-white product-details">
           <p class="prodname">{{product.name}}</p>
@@ -52,7 +52,6 @@ export default {
             limit   : this.limit
           }
         });
-        console.log(response);
         this.products = response.data;
         this.loaded = true;
       } catch (error) {
