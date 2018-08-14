@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Category;
 use App\Http\Resources\ProductResource;
 use Validator;
 use Storage;
@@ -17,11 +18,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        if(!\Request::has('category') && !\Request::has('limit')) {
+        if (!\Request::has('category') && !\Request::has('limit')) {
             return Product::with('category')->get();
         }
 
-        if(!\Request::has('category') && \Request::has('limit')){
+        if (!\Request::has('category') && \Request::has('limit')) {
             return Product::with('category')->latest()->limit(\Request::query('limit'))->get();
         }
 
@@ -49,33 +50,30 @@ class ProductController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'slug' => 'required',
-            'price' => 'required|numeric',
-            'image' => 'required|file|image',
+            'price' => 'nullable|numeric',
+            'tags' => 'nullable|string',
+            'image' => 'file|image',
             'category' => 'required|exists:categories,id',
-            'content' => 'required|min:200'
+            'content' => 'nullable'
         ]);
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return back()->withInput()->withErrors($validator);
         }
 
-        $name = $request->name;
-        $slug = $request->slug;
-        $price = $request->price;
-        $image = $request->image->store('products');
-        $category = $request->category;
-        $content = $request->content;
-
         try {
             $product = new Product;
-            $product->name = $name;
-            $product->slug = $slug;
-            $product->price = $price;
-            $product->image = $image;
-            $product->category_id = $category;
-            $product->content = $content;
+            $product->name = $request->name;
+            $product->slug = $request->slug;
+            $product->price = $request->price;
+            $product->tags = $request->tags;
+            $product->content = $request->content;
+            $product->category_id = $request->category;
+            if ($request->hasFile('image')) {
+                $product->image = $request->image->store('products');
+            }
             $product->save();
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return $e->getMessage();
         }
 
@@ -101,7 +99,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.products-edit', ['categories' => Category::all(), 'product' => $product]);
     }
 
     /**
@@ -113,7 +111,37 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'slug' => 'required',
+            'price' => 'nullable|numeric',
+            'tags' => 'nullable|string',
+            'image' => 'file|image',
+            'category' => 'required|exists:categories,id',
+            'content' => 'nullable'
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withInput()->withErrors($validator);
+        }
+
+        try {
+            $product = Product::find($product->id);
+            $product->name = $request->name;
+            $product->slug = $request->slug;
+            $product->price = $request->price;
+            $product->tags = $request->tags;
+            $product->content = $request->content;
+            $product->category_id = $request->category;
+            if ($request->hasFile('image')) {
+                $product->image = $request->image->store('products');
+            }
+            $product->save();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return redirect('admin/products')->with('status', 'Product Updated Successfully!');
     }
 
     /**
