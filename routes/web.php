@@ -63,11 +63,11 @@ Route::prefix('admin')->group(function () {
     Route::get('/products', 'Admin\PageController@products')->name('admin.products');
 });
 
-Route::post('/lang', function(\Illuminate\Http\Request $request) {
+Route::post('/lang', function (\Illuminate\Http\Request $request) {
     App::setLocale($request->lang);
-    $url = last(explode('/',url()->previous()));
-    if($url == 'en' || $url == 'ps') $url = '/';
-    return redirect($request->lang.'/'.$url);
+    $url = last(explode('/', url()->previous()));
+    if ($url == 'en' || $url == 'ps') $url = '/';
+    return redirect($request->lang . '/' . $url);
 });
 
 Route::resource('/api/images', 'ImageController');
