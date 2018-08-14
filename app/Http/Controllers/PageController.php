@@ -22,7 +22,7 @@ class PageController extends Controller
 
     public function products()
     {
-        $query = Category::with('products:id,category_id,name,image,slug')->orderBy('id')->get(['id','name']);
+        $query = Category::with('products:id,category_id,name,image,slug')->orderBy('id')->get(['id', 'name']);
         return view('products', ['categories' => $query]);
     }
 
@@ -33,9 +33,9 @@ class PageController extends Controller
 
     public function office($place)
     {
-        $offices = ['london','afghanistan','jakarta','dubai','toranto'];
+        $offices = ['london', 'afghanistan', 'jakarta', 'dubai', 'toranto'];
 
-        if(!in_array($place,$offices)){
+        if (!in_array($place, $offices)) {
             abort(404);
         }
 
