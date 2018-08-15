@@ -61,7 +61,7 @@ class ImageController extends Controller
             $image->title = $request->title;
             $image->format = $request->image->extension();
             $image->size = $request->image->getSize();
-            $image->url = $request->image->store($request->type);
+            $image->url = $request->image->store('public');
             $image->type = $request->type;
             $image->save();
         } catch (\Exception $e) {
@@ -113,9 +113,8 @@ class ImageController extends Controller
      */
     public function destroy(Image $image)
     {
-        return var_dump(Storage::exists($image->url));
-        if (Storage::exists($image->url)) {
-            Storage::move($image->url, 'deleted/images/' . $image->type . '/' . basename($image->url));
+        if (Storage::exists($image->getOriginal('url'))) {
+            Storage::move($image->getOriginal('url'), 'deleted/images/' . $image->type . '/' . basename($image->url));
         }
 
         Image::destroy($image->id);
