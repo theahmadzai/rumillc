@@ -107,7 +107,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <p class="card-header-title">
-                                    {{ str_limit($image->title, 15, "...") }}
+                                    {{ str_limit($image->title, 10, "...") }}
                                 </p>
                                 <a href="images/{{$image->id}}/edit" class="card-header-icon"><i class="icon far fa-edit"></i></a>
                                 <form method="POST" action="/api/images/{{ $image->id }}" class="card-header-icon">

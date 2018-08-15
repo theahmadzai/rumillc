@@ -1,6 +1,6 @@
 <template>
   <div v-if="!loaded" class="loading rel"></div>
-  <div v-else class="container section columns">
+  <div v-else class="container section columns has-background-white" style="margin:2rem auto;">
     <nav class="panel column is-one-fifth">
       <p class="panel-heading">Categories</p>
       <a class="panel-block" v-for="(category,key) in categories" :key="key" @click="select(key)" :class="{'is-active': selected == category.id}">
@@ -59,20 +59,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.category {
-  background: white;
-  padding: 2rem;
-
-  h2 {
-    color: #555;
-    font-size: 1.5rem;
-    font-weight: 600;
-    font-family: "Roboto";
-    background: #f9f9f9;
-    padding: 1rem;
-    text-transform: uppercase;
-  }
-}
-</style>

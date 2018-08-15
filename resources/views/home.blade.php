@@ -29,7 +29,7 @@
             <p>With its commitment to private sector growth, its strategic location, and its abundant agricultural riches, Afghanistan is your silk road to business opportunities.</p>
         </div>
 
-        <section class="hero" style="background:#d8a550" data-aos="fade">
+        <section class="hero" style="background:linear-gradient(to top, #bc9b40,#f9d97f);" data-aos="fade">
             <div class="hero-body">
                 <div class="section has-text-centered">
                     <h1 class="title has-text-white">
@@ -49,6 +49,6 @@
 
     <testimonials-component data-aos="flip-down"></testimonials-component>
 
-    <subscribe-component data-aos="flip-up"></subscribe-component>
+    <subscribe-component></subscribe-component>
 
 @endsection
