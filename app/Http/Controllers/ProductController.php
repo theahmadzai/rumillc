@@ -77,7 +77,7 @@ class ProductController extends Controller
             $product->content = $request->content;
             $product->category_id = $request->category;
             if ($request->hasFile('image')) {
-                $product->image = $request->image->store('products');
+                $product->image = $request->image->store('public');
             }
             $product->save();
         } catch (\Exception $e) {
@@ -141,7 +141,10 @@ class ProductController extends Controller
             $product->content = $request->content;
             $product->category_id = $request->category;
             if ($request->hasFile('image')) {
-                $product->image = $request->image->store('products');
+                if (Storage::exists($product->getOriginal('image'))) {
+                    Storage::move($product->getOriginal('image'), 'updated/products/' . basename($product->image));
+                }
+                $product->image = $request->image->store('public');
             }
             $product->save();
         } catch (\Exception $e) {
@@ -160,7 +163,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         if (Storage::exists($product->getOriginal('image'))) {
-            Storage::move($product->image, 'deleted/products/' . basename($product->image));
+            Storage::move($product->getOriginal('image'), 'deleted/products/' . basename($product->image));
         }
 
         $product = Product::find($product->id);
