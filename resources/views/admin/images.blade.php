@@ -107,12 +107,13 @@
                         <div class="card">
                             <div class="card-header">
                                 <p class="card-header-title">
-                                    {{ str_limit($image->title, 20, "...") }}
+                                    {{ str_limit($image->title, 15, "...") }}
                                 </p>
+                                <a href="images/{{$image->id}}/edit" class="card-header-icon"><i class="icon far fa-edit"></i></a>
                                 <form method="POST" action="/api/images/{{ $image->id }}" class="card-header-icon">
                                     @csrf
                                     @method('delete')
-                                    <a href="#" class="icon delete" onclick="this.parentElement.submit();">Delete</a>
+                                    <a href="#" onclick="this.parentElement.submit();"><i class="icon far fa-trash-alt"></i></a>
                                 </form>
                             </div>
                             <div class="card-image">

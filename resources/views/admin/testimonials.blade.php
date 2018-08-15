@@ -93,15 +93,11 @@
                             <p class="card-header-title">
                                 {{$testimonial->name}}
                             </p>
-                            <form method="POST" action="/api/testimonials/{{$testimonial->id}}/edit" class="card-header-icon">
-                                @csrf
-                                @method('get')
-                                <a href="#" class="icon " onclick="this.parentElement.submit();"><i class="far fa-edit"></i></a>
-                            </form>
-                            <form method="POST" action="/api/testimonials/{{$testimonial->id}}" class="card-header-icon">
+                            <a href="testimonials/{{$testimonial->id}}/edit" class="card-header-icon"><i class="icon far fa-edit"></i></a>
+                            <form method="POST" action="/api/testimonials/{{$testimonial->id}}">
                                 @csrf
                                 @method('delete')
-                                <a href="#" class="icon" onclick="this.parentElement.submit();"><i class="far fa-trash-alt"></i></a>
+                                <a href="#" class="card-header-icon" onclick="this.parentElement.submit();"><i class="icon far fa-trash-alt"></i></a>
                             </form>
                         </div>
                         <div class="card-content">

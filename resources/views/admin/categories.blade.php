@@ -75,15 +75,11 @@
                     <td>{{$category->name}}</td>
                     <td>{{$category->created_at->diffForHumans()}}</td>
                     <td>
-                        <form method="POST" action="/api/categories/{{ $category->id }}/edit" style="display:inline-block;">
-                            @csrf
-                            @method('get')
-                            <a href="#" class="icon" onclick="this.parentElement.submit();"><i class="far fa-edit"></i></a>
-                        </form>
+                        <a href="categories/{{$category->id}}/edit"><i class="icon far fa-edit"></i></a>
                         <form method="POST" action="/api/categories/{{ $category->id }}" style="display:inline-block;">
                             @csrf
                             @method('delete')
-                            <a href="#" class="icon" onclick="this.parentElement.submit();"><i class="far fa-trash-alt"></i></a>
+                            <a href="#" onclick="this.parentElement.submit();"><i class="icon far fa-trash-alt"></i></a>
                         </form>
                     </td>
                 </tr>

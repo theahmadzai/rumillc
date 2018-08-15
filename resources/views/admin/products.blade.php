@@ -184,15 +184,11 @@
                         <td>{{$product->price}}</td>
                         <td>{{$product->created_at->diffForHumans()}}</td>
                         <td>
-                            <form method="POST" action="/api/products/{{ $product->id }}/edit" style="display:inline-block;">
-                                @csrf
-                                @method('get')
-                                <a href="#" class="icon" onclick="this.parentElement.submit();"><i class="far fa-edit"></i></a>
-                            </form>
+                            <a href="products/{{$product->id}}/edit"><i class="icon far fa-edit"></i></a>
                             <form method="POST" action="/api/products/{{ $product->id }}" style="display:inline-block;">
                                 @csrf
                                 @method('delete')
-                                <a href="#" class="icon" onclick="this.parentElement.submit();"><i class="far fa-trash-alt"></i></a>
+                                <a href="#" onclick="this.parentElement.submit();"><i class="icon far fa-trash-alt"></i></a>
                             </form>
                         </td>
                     </tr>
