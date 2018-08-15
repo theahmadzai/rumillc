@@ -16,10 +16,10 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('url');
+            $table->string('url')->nullable();
             $table->string('format');
             $table->integer('size');
-            $table->enum('type', ['s','g','o'])->default('o');
+            $table->enum('type', ['s', 'g', 'o'])->default('o');
             $table->timestamps();
         });
     }
