@@ -55,12 +55,16 @@ Route::prefix('admin')->group(function () {
     Route::get('/', 'Admin\PageController@home')->name('admin.home');
 
     Route::get('/images', 'Admin\PageController@images')->name('admin.images');
+    Route::get('/images/{id}/edit', 'Admin\PageController@imageEdit');
 
     Route::get('/testimonials', 'Admin\PageController@testimonials')->name('admin.testimonials');
+    Route::get('/testimonials/{id}/edit', 'Admin\PageController@testimonialEdit');
 
     Route::get('/categories', 'Admin\PageController@categories')->name('admin.categories');
+    Route::get('/categories/{id}/edit', 'Admin\PageController@categoryEdit');
 
     Route::get('/products', 'Admin\PageController@products')->name('admin.products');
+    Route::get('/products/{id}/edit', 'Admin\PageController@productEdit');
 });
 
 Route::post('/lang', function (\Illuminate\Http\Request $request) {
@@ -70,8 +74,8 @@ Route::post('/lang', function (\Illuminate\Http\Request $request) {
     return redirect($request->lang . '/' . $url);
 });
 
-Route::resource('/api/images', 'ImageController');
-Route::resource('/api/testimonials', 'TestimonialController');
-Route::resource('/api/categories', 'CategoryController');
-Route::resource('/api/products', 'ProductController');
-Route::resource('/api/feedbacks', 'FeedbackController');
+Route::apiResource('/api/images', 'ImageController');
+Route::apiResource('/api/testimonials', 'TestimonialController');
+Route::apiResource('/api/categories', 'CategoryController');
+Route::apiResource('/api/products', 'ProductController');
+Route::apiResource('/api/feedbacks', 'FeedbackController');
