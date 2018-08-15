@@ -11,6 +11,6 @@ class FeedbacksTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Feedback::class, 3)->create();
+        factory(App\Feedback::class, 10)->create();
     }
 }
