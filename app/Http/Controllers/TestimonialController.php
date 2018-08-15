@@ -53,7 +53,7 @@ class TestimonialController extends Controller
             $testimonial->name = $request->name;
             $testimonial->message = $request->message;
             if ($request->hasFile('image')) {
-                $testimonial->image = $request->image->store('testimonials');
+                $testimonial->image = $request->image->store('public');
             }
             $testimonial->save();
         } catch (\Exception $e) {
@@ -109,7 +109,10 @@ class TestimonialController extends Controller
             $testimonial->name = $request->name;
             $testimonial->message = $request->message;
             if ($request->hasFile('image')) {
-                $testimonial->image = $request->image->store('testimonials');
+                if (Storage::exists($testimonial->getOriginal('image'))) {
+                    Storage::move($testimonial->getOriginal('image'), 'updated/testimonials/' . basename($testimonial->image));
+                }
+                $testimonial->image = $request->image->store('public');
             }
             $testimonial->save();
         } catch (\Exception $e) {
@@ -128,7 +131,7 @@ class TestimonialController extends Controller
     public function destroy(Testimonial $testimonial)
     {
         if (Storage::exists($testimonial->getOriginal('image'))) {
-            Storage::move($testimonial->image, 'deleted/testimonials/' . basename($testimonial->image));
+            Storage::move($testimonial->getOriginal('image'), 'deleted/testimonials/' . basename($testimonial->image));
         }
 
         Testimonial::destroy($testimonial->id);
