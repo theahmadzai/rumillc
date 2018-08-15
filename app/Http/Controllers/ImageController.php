@@ -29,16 +29,6 @@ class ImageController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -83,17 +73,6 @@ class ImageController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Image  $image
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Image $image)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -102,7 +81,34 @@ class ImageController extends Controller
      */
     public function update(Request $request, Image $image)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|min:5|max:50',
+            'type' => 'required',
+            'image' => 'file|image'
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withInput()->withErrors($validator);
+        }
+
+        try {
+            $image = Image::find($image->id);
+            $image->title = $request->title;
+            if ($request->hasFile('image')) {
+                if (Storage::exists($image->getOriginal('url'))) {
+                    Storage::move($image->getOriginal('url'), 'updated/images/' . $image->type . '/' . basename($image->url));
+                }
+                $image->format = $request->image->extension();
+                $image->size = $request->image->getSize();
+                $image->url = $request->image->store('public');
+            }
+            $image->type = $request->type;
+            $image->save();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return redirect('admin/images')->with('status', 'Image Added Successfully!');
     }
 
     /**
