@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Validator;
-use Storage;
+use App\Http\Resources\TestimonialResource;
 use App\Testimonial;
 use Illuminate\Http\Request;
-use App\Http\Resources\TestimonialResource;
+use Storage;
+use Validator;
 
 class TestimonialController extends Controller
 {
@@ -29,9 +29,9 @@ class TestimonialController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'image' => 'file|image',
-            'message' => 'required|min:25|max:300'
+            'name'    => 'required',
+            'image'   => 'file|image',
+            'message' => 'required|min:25|max:300',
         ]);
 
         if ($validator->fails()) {
@@ -39,8 +39,8 @@ class TestimonialController extends Controller
         }
 
         try {
-            $testimonial = new Testimonial;
-            $testimonial->name = $request->name;
+            $testimonial          = new Testimonial;
+            $testimonial->name    = $request->name;
             $testimonial->message = $request->message;
             if ($request->hasFile('image')) {
                 $testimonial->image = $request->image->store('public');
@@ -74,9 +74,9 @@ class TestimonialController extends Controller
     public function update(Request $request, Testimonial $testimonial)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'image' => 'file|image',
-            'message' => 'required|min:25|max:300'
+            'name'    => 'required',
+            'image'   => 'file|image',
+            'message' => 'required|min:25|max:300',
         ]);
 
         if ($validator->fails()) {
@@ -84,8 +84,8 @@ class TestimonialController extends Controller
         }
 
         try {
-            $testimonial = Testimonial::find($testimonial->id);
-            $testimonial->name = $request->name;
+            $testimonial          = Testimonial::find($testimonial->id);
+            $testimonial->name    = $request->name;
             $testimonial->message = $request->message;
             if ($request->hasFile('image')) {
                 if (Storage::exists($testimonial->getOriginal('image'))) {

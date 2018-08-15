@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Http\Resources\ImageResource;
-use App\Image;
-use App\Testimonial;
 use App\Category;
+use App\Http\Controllers\Controller;
+use App\Image;
 use App\Product;
-use App\User;
+use App\Testimonial;
+use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
@@ -21,10 +19,10 @@ class PageController extends Controller
     public function home()
     {
         return view('admin.home', [
-            'images_count' => Image::get()->count(),
+            'images_count'       => Image::get()->count(),
             'testimonials_count' => Testimonial::get()->count(),
-            'categories_count' => Category::get()->count(),
-            'products_count' => Product::get()->count()
+            'categories_count'   => Category::get()->count(),
+            'products_count'     => Product::get()->count(),
         ]);
     }
 

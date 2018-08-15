@@ -5,16 +5,15 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class Message extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $email = null;
-    public $name = null;
+    public $email   = null;
+    public $name    = null;
     public $subject = null;
-    public $text = null;
+    public $text    = null;
 
     /**
      * Create a new message instance.
@@ -23,10 +22,10 @@ class Message extends Mailable
      */
     public function __construct($request)
     {
-        $this->email = $request['email'];
-        $this->name = $request['name'];
+        $this->email   = $request['email'];
+        $this->name    = $request['name'];
         $this->subject = $request['subject'];
-        $this->text = $request['message'];
+        $this->text    = $request['message'];
     }
 
     /**

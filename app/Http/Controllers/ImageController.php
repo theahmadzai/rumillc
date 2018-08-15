@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ImageResource;
 use App\Image;
+use Illuminate\Http\Request;
 use Storage;
 use Validator;
-use App\Http\Resources\ImageResource;
-use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
@@ -38,8 +38,8 @@ class ImageController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|min:5|max:50',
-            'type' => 'required',
-            'image' => 'required|file|image'
+            'type'  => 'required',
+            'image' => 'required|file|image',
         ]);
 
         if ($validator->fails()) {
@@ -47,12 +47,12 @@ class ImageController extends Controller
         }
 
         try {
-            $image = new Image;
-            $image->title = $request->title;
+            $image         = new Image;
+            $image->title  = $request->title;
             $image->format = $request->image->extension();
-            $image->size = $request->image->getSize();
-            $image->url = $request->image->store('public');
-            $image->type = $request->type;
+            $image->size   = $request->image->getSize();
+            $image->url    = $request->image->store('public');
+            $image->type   = $request->type;
             $image->save();
         } catch (\Exception $e) {
             return $e->getMessage();
@@ -83,8 +83,8 @@ class ImageController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|min:5|max:50',
-            'type' => 'required',
-            'image' => 'file|image'
+            'type'  => 'required',
+            'image' => 'file|image',
         ]);
 
         if ($validator->fails()) {
@@ -92,15 +92,15 @@ class ImageController extends Controller
         }
 
         try {
-            $image = Image::find($image->id);
+            $image        = Image::find($image->id);
             $image->title = $request->title;
             if ($request->hasFile('image')) {
                 if (Storage::exists($image->getOriginal('url'))) {
                     Storage::move($image->getOriginal('url'), 'updated/images/' . $image->type . '/' . basename($image->url));
                 }
                 $image->format = $request->image->extension();
-                $image->size = $request->image->getSize();
-                $image->url = $request->image->store('public');
+                $image->size   = $request->image->getSize();
+                $image->url    = $request->image->store('public');
             }
             $image->type = $request->type;
             $image->save();

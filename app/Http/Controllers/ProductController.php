@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
 use App\Category;
 use App\Http\Resources\ProductResource;
-use Validator;
-use Storage;
+use App\Product;
 use Illuminate\Http\Request;
+use Storage;
+use Validator;
 
 class ProductController extends Controller
 {
@@ -18,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $limit = \Request::query('limit');
+        $limit    = \Request::query('limit');
         $category = \Request::query('category');
 
         if (\Request::has('category') && \Request::has('limit')) {
@@ -45,13 +45,13 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'slug' => 'required',
-            'price' => 'nullable|numeric',
-            'tags' => 'nullable|string',
-            'image' => 'file|image',
+            'name'     => 'required',
+            'slug'     => 'required',
+            'price'    => 'nullable|numeric',
+            'tags'     => 'nullable|string',
+            'image'    => 'file|image',
             'category' => 'required|exists:categories,id',
-            'content' => 'nullable'
+            'content'  => 'nullable',
         ]);
 
         if ($validator->fails()) {
@@ -59,12 +59,12 @@ class ProductController extends Controller
         }
 
         try {
-            $product = new Product;
-            $product->name = $request->name;
-            $product->slug = $request->slug;
-            $product->price = $request->price;
-            $product->tags = $request->tags;
-            $product->content = $request->content;
+            $product              = new Product;
+            $product->name        = $request->name;
+            $product->slug        = $request->slug;
+            $product->price       = $request->price;
+            $product->tags        = $request->tags;
+            $product->content     = $request->content;
             $product->category_id = $request->category;
             if ($request->hasFile('image')) {
                 $product->image = $request->image->store('public');
@@ -98,13 +98,13 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'slug' => 'required',
-            'price' => 'nullable|numeric',
-            'tags' => 'nullable|string',
-            'image' => 'file|image',
+            'name'     => 'required',
+            'slug'     => 'required',
+            'price'    => 'nullable|numeric',
+            'tags'     => 'nullable|string',
+            'image'    => 'file|image',
             'category' => 'required|exists:categories,id',
-            'content' => 'nullable'
+            'content'  => 'nullable',
         ]);
 
         if ($validator->fails()) {
@@ -112,12 +112,12 @@ class ProductController extends Controller
         }
 
         try {
-            $product = Product::find($product->id);
-            $product->name = $request->name;
-            $product->slug = $request->slug;
-            $product->price = $request->price;
-            $product->tags = $request->tags;
-            $product->content = $request->content;
+            $product              = Product::find($product->id);
+            $product->name        = $request->name;
+            $product->slug        = $request->slug;
+            $product->price       = $request->price;
+            $product->tags        = $request->tags;
+            $product->content     = $request->content;
             $product->category_id = $request->category;
             if ($request->hasFile('image')) {
                 if (Storage::exists($product->getOriginal('image'))) {

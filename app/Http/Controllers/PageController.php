@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Mail\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\Message;
-use App\Category;
-use App\Product;
 
 class PageController extends Controller
 {
@@ -55,8 +54,8 @@ class PageController extends Controller
     public function mail(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email',
+            'name'    => 'required',
+            'email'   => 'required|email',
             'subject' => 'required',
             'message' => 'required|min:100',
         ]);

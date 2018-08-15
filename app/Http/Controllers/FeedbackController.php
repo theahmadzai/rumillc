@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Feedback;
-use Illuminate\Http\Request;
 use App\Http\Resources\FeedbackResource;
+use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
 {
@@ -41,19 +41,19 @@ class FeedbackController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'rating' => 'required|numeric|between:1,5',
-            'name' => 'required',
-            'title' => 'required',
+            'rating'  => 'required|numeric|between:1,5',
+            'name'    => 'required',
+            'title'   => 'required',
             'message' => 'required|min:50',
-            'product' => 'required|exists:products,id'
+            'product' => 'required|exists:products,id',
         ]);
 
         try {
-            $feedback = new Feedback;
-            $feedback->rating = $request->rating;
-            $feedback->name = $request->name;
-            $feedback->title = $request->title;
-            $feedback->message = $request->message;
+            $feedback             = new Feedback;
+            $feedback->rating     = $request->rating;
+            $feedback->name       = $request->name;
+            $feedback->title      = $request->title;
+            $feedback->message    = $request->message;
             $feedback->product_id = $request->product;
             $feedback->save();
         } catch (\Exception $e) {

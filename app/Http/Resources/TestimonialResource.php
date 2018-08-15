@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources;
 
-use Storage;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class TestimonialResource extends JsonResource
@@ -16,9 +15,9 @@ class TestimonialResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'name' => $this->name,
-            'image' => $this->image,
-            'message' => $this->message
+            'name'    => $this->name,
+            'image'   => $this->image,
+            'message' => $this->message,
         ];
     }
 }

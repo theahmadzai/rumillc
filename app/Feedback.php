@@ -9,7 +9,7 @@ class Feedback extends Model
     protected $table = 'feedbacks';
 
     protected $hidden = [
-        'product_id'
+        'product_id',
     ];
 
     public function product()

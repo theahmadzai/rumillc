@@ -29,7 +29,7 @@ class CategoryController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'slug' => 'required'
+            'slug' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -37,7 +37,7 @@ class CategoryController extends Controller
         }
 
         try {
-            $category = new Category;
+            $category       = new Category;
             $category->name = $request->name;
             $category->slug = $request->slug;
             $category->save();
@@ -70,7 +70,7 @@ class CategoryController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'slug' => 'required'
+            'slug' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -78,7 +78,7 @@ class CategoryController extends Controller
         }
 
         try {
-            $category = Category::find($category->id);
+            $category       = Category::find($category->id);
             $category->name = $request->name;
             $category->slug = $request->slug;
             $category->save();

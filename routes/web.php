@@ -70,7 +70,10 @@ Route::prefix('admin')->group(function () {
 Route::post('/lang', function (\Illuminate\Http\Request $request) {
     App::setLocale($request->lang);
     $url = last(explode('/', url()->previous()));
-    if ($url == 'en' || $url == 'ps') $url = '/';
+    if ($url == 'en' || $url == 'ps') {
+        $url = '/';
+    }
+
     return redirect($request->lang . '/' . $url);
 });
 

@@ -15,11 +15,11 @@ class FeedbackResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'rating' => $this->rating,
-            'name' => $this->name,
-            'title' => $this->title,
+            'rating'  => $this->rating,
+            'name'    => $this->name,
+            'title'   => $this->title,
             'message' => $this->message,
-            'date' => $this->created_at->format('F d, Y')
+            'date'    => $this->created_at->format('F d, Y'),
         ];
     }
 }

@@ -8,7 +8,7 @@ use Storage;
 class Product extends Model
 {
     protected $hidden = [
-        'category_id'
+        'category_id',
     ];
 
     public function getImageAttribute($image)
