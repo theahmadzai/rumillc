@@ -38,9 +38,19 @@ class PageController extends Controller
         return view('admin.images', ['images' => Image::all()]);
     }
 
+    public function imageEdit(int $id)
+    {
+        return view('admin.edit.image', ['image' => Image::find($id)]);
+    }
+
     public function testimonials()
     {
         return view('admin.testimonials', ['testimonials' => Testimonial::all()]);
+    }
+
+    public function testimonialEdit(int $id)
+    {
+        return view('admin.edit.testimonial', ['testimonial' => Testimonial::find($id)]);
     }
 
     public function categories()
@@ -48,8 +58,18 @@ class PageController extends Controller
         return view('admin.categories', ['categories' => Category::all()]);
     }
 
+    public function categoryEdit(int $id)
+    {
+        return view('admin.edit.category', ['category' => Category::find($id)]);
+    }
+
     public function products()
     {
         return view('admin.products', ['categories' => Category::with('products')->get()]);
+    }
+
+    public function productEdit(int $id)
+    {
+        return view('admin.edit.product', ['categories' => Category::all(), 'product' => Product::find($id)]);
     }
 }
