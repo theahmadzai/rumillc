@@ -25,7 +25,7 @@
                     <a href="{{ URL::route('office','london') }}">@lang('routes.london')</a>
                 </li>
                 <li class="submenu__item">
-                    <a href="{{ URL::route('office','toranto') }}">@lang('routes.toranto')</a>
+                    <a href="{{ URL::route('office','toronto') }}">@lang('routes.toronto')</a>
                 </li>
             </ul>
         </li>

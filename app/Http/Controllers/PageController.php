@@ -33,7 +33,7 @@ class PageController extends Controller
 
     public function office($place)
     {
-        $offices = ['london', 'afghanistan', 'jakarta', 'dubai', 'toranto'];
+        $offices = ['london', 'afghanistan', 'jakarta', 'dubai', 'toronto'];
 
         if (!in_array($place, $offices)) {
             abort(404);

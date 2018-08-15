@@ -11,5 +11,5 @@ return [
     'dubai' => 'Dubai',
     'jakarta' => 'Jakarta',
     'london' => 'London',
-    'toranto' => 'Toranto'
+    'toronto' => 'Toronto'
 ];

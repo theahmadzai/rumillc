@@ -47,7 +47,7 @@
                         <a href="{{ URL::route('office','dubai') }}">@lang('routes.dubai')</a>
                         <a href="{{ URL::route('office','jakarta') }}">@lang('routes.jakarta')</a>
                         <a href="{{ URL::route('office','london') }}">@lang('routes.london')</a>
-                        <a href="{{ URL::route('office','toranto') }}">@lang('routes.toranto')</a>
+                        <a href="{{ URL::route('office','toronto') }}">@lang('routes.toronto')</a>
                         <a href="{{ URL::route('gallery') }}">@lang('routes.gallery')</a>
                         <a href="{{ URL::route('contact') }}">@lang('routes.contact')</a>
                     </div>
