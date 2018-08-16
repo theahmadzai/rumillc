@@ -4,6 +4,6 @@
 
 @section('content')
 
-    <product-component :id="{{$id}}"></product-component>
+    <productpage-component :id="{{$id}}"></productpage-component>
 
 @endsection
