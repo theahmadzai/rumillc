@@ -1,24 +1,25 @@
 <template>
-  <div class="column is-one-third">
-    <div v-if=loading class="loading center"></div>
-    <figure class="image image-frame">
-      <img v-show="loading==false" :src=image.url :alt=image.alt @load="loading=false">
-    </figure>
-  </div>
+  <figure class="image">
+    <div v-if=loading class="loading rel center"></div>
+    <img v-show=!loading :src=src :alt=alt @load="loading=false">
+  </figure>
 </template>
 
 <script>
 export default {
+  props: {
+    src: {
+      type    : String,
+      required: true
+    },
+    alt: {
+      type: String
+    }
+  },
   data() {
     return {
       loading: true
     };
-  },
-  props: {
-    image: {
-      type    : Object,
-      required: true
-    }
   }
 };
 </script>
