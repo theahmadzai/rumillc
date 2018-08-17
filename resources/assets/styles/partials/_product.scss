@@ -1,0 +1,39 @@
+.product {
+  margin-bottom: 2rem;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  .product-rating {
+    padding: 1rem;
+    background: #f9f9f9;
+    text-align: center;
+  }
+
+  .product-name {
+    padding: 0.5rem 0;
+    font-size: 1.2rem;
+    color: #555555;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .product-category {
+    padding: 0.5rem 0;
+    background: rgba(0, 0, 0, 0.03);
+    font-size: 0.9rem;
+    color: #333333;
+    text-align: center;
+  }
+
+  .product-more {
+    padding: 0.2rem;
+    border: 2px solid $secondary-color;
+    background: $secondary-color;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: white;
+    text-align: center;
+  }
+}
