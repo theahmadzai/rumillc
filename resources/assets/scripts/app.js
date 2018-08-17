@@ -22,7 +22,7 @@ import Gallery from './components/gallery';
 import Subscribe from './components/subscribe';
 import Categories from './components/categories';
 import Products from './components/products';
-import Product from './components/product';
+import ProductPage from './components/product-page';
 
 Vue.component('slider-component', Slider);
 Vue.component('testimonials-component', Testimonials);
@@ -32,7 +32,7 @@ Vue.component('gallery-component', Gallery);
 Vue.component('subscribe-component', Subscribe);
 Vue.component('categories-component', Categories);
 Vue.component('products-component', Products);
-Vue.component('product-component', Product);
+Vue.component('productpage-component', ProductPage);
 
 Vue.config.productionTip = false;
 Vue.config.devtools = true;
