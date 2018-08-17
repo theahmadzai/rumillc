@@ -32,8 +32,7 @@ mix.js('resources/assets/scripts/app.js', 'public/js')
       alias: {
         '@': path.resolve('resources/assets/styles')
       }
-    },
-    devtool: 'source-map'
+    }
   })
   .browserSync({
     proxy : 'http://localhost:8000',
