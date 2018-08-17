@@ -37,7 +37,7 @@
                     </h1>
                 </div>
             </div>
-            <products-component :limit="3" data-aos="zoom-in-up"></products-component>
+            <products-component :limit="3" data-aos="zoom-in-up" class="section"></products-component>
             <div class="class-hero-foot">
                 <div class="section has-text-centered">
                     <a data-aos="fade-out" href="/products" class="button is-medium is-white is-rounded" style="color:rgb(135, 84, 0);border:2px solid #fff; box-shadow:0 2px 15px 20px rgba(135, 84, 0,0.1);">More Products</a>
