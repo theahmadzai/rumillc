@@ -1,12 +1,13 @@
 <template>
-    <nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
+    <nav class="section pagination is-centered is-rounded" role="navigation" aria-label="pagination">
       <a class="pagination-previous" @click.prevent="changePage(pagination.current_page - 1)">Previous</a>
       <a class="pagination-next" @click.prevent="changePage(pagination.current_page + 1)">Next page</a>
       <ul class="pagination-list">
-        <li v-for="page in pages" :key="page">
-          <a class="pagination-link" @click.prevent="changePage(page)" :class="{'is-current': page == pagination.current_page}">
-              {{page}}
-            </a>
+        <li v-for="page in pages" :key=page>
+          <a class="pagination-link"
+          @click.prevent=changePage(page)
+          :class="{'is-current': page == pagination.current_page}"
+          v-text=page></a>
         </li>
       </ul>
     </nav>
@@ -41,7 +42,7 @@ export default {
         to = this.pagination.last_page;
       }
 
-      let pages = [];
+      const pages = [];
 
       while(from <= to) {
         pages.push(from++);
