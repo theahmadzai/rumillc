@@ -14,19 +14,15 @@ const mix = require('laravel-mix');
 mix.js('resources/assets/scripts/app.js', 'public/js')
   .sass('resources/assets/styles/app.scss', 'public/css')
   .styles([
-    'node_modules/@fortawesome/fontawesome-free/css/all.min.css',
     'node_modules/bulma/css/bulma.min.css',
     'node_modules/aos/dist/aos.css'
   ], 'public/css/vendor.css')
-  .copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts')
   .extract([
     'axios',
     'google-maps',
     'AOS',
-    'popper.js',
     'vue',
-    'vue-gallery',
-    'vue-popperjs'
+    'vue-gallery'
   ])
   .options({
     extractVueStyles: true
