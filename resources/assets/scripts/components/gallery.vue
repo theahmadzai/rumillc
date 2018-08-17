@@ -4,13 +4,21 @@
 
     <div v-if=loading class="loading rel"></div>
     <div v-else>
+
       <pagination :pagination=pagination :offset=offset @paginate=loadImages></pagination>
+
+      <div class="columns is-multiline is-8">
+          <image-component class="column is-one-third image-frame"
+            v-for="(image, key) in images"
+            :key=key
+            :src=image.url
+            :alt=image.title
+            @click.native="index = key">
+          </image-component>
+      </div>
 
       <gallery :images=images :options=options :index=index @close="index = null"></gallery>
 
-      <div class="columns is-multiline is-8">
-        <image-component v-for="(image, key) in images" :key=key :image=image @click.native="index = key"></image-component>
-      </div>
     </div>
   </div>
 </template>
