@@ -51,6 +51,9 @@ export default {
       }
     },
     calculateRating(feedbacks) {
+      if(feedbacks.length === 0){
+        return 5;
+      }
       return Math.floor(
         feedbacks.reduce((total, { rating }) => {
           return total + rating;
