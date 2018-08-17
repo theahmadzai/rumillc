@@ -63,7 +63,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/_settings.scss';
+@import "~@/_settings.scss";
 
 .main-wrapper {
   position: relative;
