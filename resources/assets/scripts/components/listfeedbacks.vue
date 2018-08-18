@@ -1,9 +1,8 @@
 <template>
-  <div v-if="!loaded" class="loading rel"></div>
+  <div v-if=loading class="loading rel"></div>
   <div v-else class="review-block">
     <p class="review-heading">Reviews ({{feedbacks.length}})</p>
-
-    <div class="review" v-for="(feedback, key) in feedbacks" :key="key">
+    <div class="review" v-for="(feedback, key) in feedbacks" :key=key>
       <p class="review-title">{{ feedback.title }}<span> - {{ feedback.date }}</span></p>
       <div class="rating">
         <span class="fa fa-star" :class="{checked: feedback.rating > 0}"></span>
@@ -12,9 +11,7 @@
         <span class="fa fa-star" :class="{checked: feedback.rating > 3}"></span>
         <span class="fa fa-star" :class="{checked: feedback.rating > 4}"></span>
       </div>
-      <p class="review-message">
-        {{ feedback.message }}
-      </p>
+      <p class="review-message" v-text=feedback.message></p>
     </div>
   </div>
 </template>
@@ -28,7 +25,7 @@ export default {
   },
   data() {
     return {
-      loaded   : false,
+      loading  : true,
       feedbacks: {}
     };
   },
@@ -38,18 +35,18 @@ export default {
   },
   methods: {
     updateFeedbacks() {
-      this.loaded = false;
       this.getFeedbacks();
     },
     async getFeedbacks() {
       try {
+        this.loading = true;
         const response = await axios.get('/api/feedbacks', {
           params: {
             product: parseInt(this.id)
           }
         });
         this.feedbacks = response.data;
-        this.loaded = true;
+        this.loading = false;
         this.$parent.$emit(
           'updateRating',
           this.feedbacks.map(feedback => feedback.rating)
