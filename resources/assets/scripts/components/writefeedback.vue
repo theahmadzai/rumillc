@@ -1,12 +1,12 @@
 <template>
-  <div v-if="!loaded" class="loading rel"></div>
+  <div v-if=loading class="loading rel"></div>
   <div v-else class="review-block">
     <p class="review-heading">Write a public review</p>
-    <div v-if="sentFeedback" class="notification">
+    <div v-if=sentFeedback class="notification">
       <button class="delete" @click="sentFeedback = false"></button>Thanks for your feedback.
     </div>
-    <form class="review-write" method="POST" action="/api/feedbacks" @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)">
-      <div class="rating" @click="changeRating">
+    <form class="review-write" @submit.prevent=onSubmit @keydown="form.errors.clear($event.target.name)">
+      <div class="rating" @click=changeRating>
         <span class="fa fa-star"></span>
         <span class="fa fa-star"></span>
         <span class="fa fa-star"></span>
@@ -14,13 +14,13 @@
         <span class="fa fa-star"></span>
       </div>
       <span class="help is-danger" v-if="form.errors.has('rating')" v-text="form.errors.get('rating')"></span>
-      <input type="text" name="name" placeholder="Full Name" v-model="form.name">
+      <input type="text" name="name" placeholder="Full Name" v-model=form.name>
       <span class="help is-danger" v-if="form.errors.has('name')" v-text="form.errors.get('name')"></span>
-      <input type="text" name="title" placeholder="Title" v-model="form.title">
+      <input type="text" name="title" placeholder="Title" v-model=form.title>
       <span class="help is-danger" v-if="form.errors.has('title')" v-text="form.errors.get('title')"></span>
-      <textarea placeholder="Message" name="message" v-model="form.message"></textarea>
+      <textarea placeholder="Message" name="message" v-model=form.message></textarea>
       <span class="help is-danger" v-if="form.errors.has('message')" v-text="form.errors.get('message')"></span>
-      <div v-if="processing" class="process-button">
+      <div v-if=processing class="process-button">
         <div class="loading left"></div>
       </div>
       <button v-else type="submit" :disabled="form.errors.any()" :class="{disabled:form.errors.any()}">Send Feedback</button>
@@ -39,7 +39,7 @@ export default {
   },
   data() {
     return {
-      loaded      : false,
+      loading     : true,
       processing  : false,
       sentFeedback: false,
       form        : new Form({
@@ -52,7 +52,7 @@ export default {
     };
   },
   mounted() {
-    this.loaded = true;
+    this.loading = false;
   },
   methods: {
     changeRating(event) {
@@ -66,7 +66,7 @@ export default {
 
       let rating = 0;
 
-      for (let star of stars) {
+      for (const star of stars) {
         star.classList.add('checked');
         rating++;
         if (star === event.target) {
