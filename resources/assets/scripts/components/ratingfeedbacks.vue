@@ -1,8 +1,9 @@
 <template>
-  <div v-if="!loaded" class="loading rel"></div>
+  <div v-if=!loaded class="loading rel"></div>
   <div v-else class="review-block">
     <p class="review-heading">Public reviews</p>
     <div class="blocks">
+
       <div class="block">
         <div class="rating">
           <p class="avg">Average Rating</p>
@@ -14,9 +15,10 @@
           <span class="total">{{total}} reviews</span>
         </div>
       </div>
+
       <div class="block">
-        <div class="rating" v-for="(rating, key) in ratings" :key="key">
-          <span class="count" v-text="rating"></span>
+        <div class="rating" v-for="(rating, key) in ratings" :key=key>
+          <span class="count" v-text=rating></span>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star" :class="{checked: key>0}"></span>
           <span class="fa fa-star" :class="{checked: key>1}"></span>
@@ -24,6 +26,7 @@
           <span class="fa fa-star" :class="{checked: key>3}"></span>
         </div>
       </div>
+
     </div>
   </div>
 </template>
