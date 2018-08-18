@@ -1,22 +1,20 @@
 <template>
-  <div v-if="!loaded" class="loading rel"></div>
+  <div v-if=loading class="loading rel"></div>
   <div v-else class="container section columns has-background-white" style="margin:2rem auto;">
     <nav class="panel column is-one-fifth">
       <p class="panel-heading">Categories</p>
-      <a class="panel-block" v-for="(category,key) in categories" :key="key" @click="select(key)" :class="{'is-active': selected == category.id}">
+      <a class="panel-block" v-for="(category,key) in categories" :key=key @click="select(key)" :class="{'is-active': selected == category.id}">
           <span class="panel-icon">
             <i class="fas fa-shopping-basket"></i>
           </span>
           {{category.name}}
       </a>
       <div class="panel-block">
-          <button class="button is-link is-outlined is-fullwidth" @click="reload">
-            Refresh
-          </button>
+          <button class="button is-link is-outlined is-fullwidth" @click=reload>Refresh</button>
       </div>
     </nav>
     <div class="column">
-      <products :category="selected" v-model="selected"></products>
+      <ProductsComponent :category=selected v-model=selected></ProductsComponent>
     </div>
   </div>
 </template>
@@ -27,7 +25,7 @@ import Products from './products';
 export default {
   data() {
     return {
-      loaded    : false,
+      loading   : true,
       categories: {},
       selected  : null
     };
@@ -45,17 +43,17 @@ export default {
     },
     async getCategories() {
       try {
-        this.loaded = false;
+        this.loading = true;
         const response = await axios.get('/api/categories');
         this.categories = response.data;
-        this.loaded = true;
+        this.loading = false;
       } catch (error) {
         console.log(error);
       }
     }
   },
   components: {
-    products: Products
+    ProductsComponent: Products
   }
 };
 </script>
