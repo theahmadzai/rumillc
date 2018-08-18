@@ -1,14 +1,22 @@
 .blocks {
   display: flex;
+  flex-direction: column;
   align-items: stretch;
+
+  @media #{$large} {
+    flex-direction: row;
+  }
 
   .block {
     margin-right: 2rem;
     padding-right: 2rem;
-    border-right: 1px solid #eeeeee;
 
-    &:last-child {
-      border-right: none;
+    @media #{$large} {
+      border-right: 1px solid #eeeeee;
+
+      &:last-child {
+        border-right: none;
+      }
     }
   }
 }
@@ -83,12 +91,19 @@
   flex-direction: column;
 
   input {
-    width: 30%;
     margin-top: 0.5rem;
     padding: 0.4rem 0.9rem;
     outline: none;
     border: 1px solid #dddddd;
     font-size: 1rem;
+
+    @media #{$medium} {
+      width: 50%;
+    }
+
+    @media #{$large} {
+      width: 30%;
+    }
   }
 
   textarea {
