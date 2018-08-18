@@ -22,17 +22,17 @@ export default {
     GoogleMapsLoader.KEY = this.KEY;
 
     GoogleMapsLoader.load(() => {
-      let map = new google.maps.Map(document.getElementById('google-map'), {
+      const map = new google.maps.Map(document.getElementById('google-map'), {
         zoom  : this.zoom,
         center: this.coords
       });
 
-      let marker = new google.maps.Marker({
+      const marker = new google.maps.Marker({
         position: this.coords,
-        map     : map
+        map
       });
 
-      let infoWindow = new google.maps.InfoWindow({
+      const infoWindow = new google.maps.InfoWindow({
         content: this.content
       });
 
@@ -41,15 +41,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.google-map {
-  width: 100%;
-  height: 200px;
-
-  @media (min-width: 40em) {
-    width: 100%;
-    height: 400px;
-  }
-}
-</style>
