@@ -3,7 +3,7 @@
   <div v-else class="columns is-multiline">
       <product-component class="column is-one-third"
         v-for="(product,key) in products"
-        :key="key"
+        :key=key
         :product=product
       ></product-component>
   </div>
