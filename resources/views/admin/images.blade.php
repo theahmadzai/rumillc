@@ -78,6 +78,22 @@
             </div>
 
             <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label for="description" class="label">Description</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <textarea name="description" id="description" class="textarea">{{ old('description') }}</textarea>
+                        </div>
+                        @if ($errors->has('description'))
+                            <p class="help is-danger">{{ $errors->first('description') }}</p>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
                 <div class="field-label"></div>
                 <div class="field-body">
                     <div class="field">
