@@ -40,6 +40,7 @@ class ImageController extends Controller
             'title' => 'required|min:5|max:50',
             'type'  => 'required',
             'image' => 'required|file|image',
+            'description' => 'nullable'
         ]);
 
         if ($validator->fails()) {
@@ -53,6 +54,7 @@ class ImageController extends Controller
             $image->size   = $request->image->getSize();
             $image->url    = $request->image->store('public');
             $image->type   = $request->type;
+            $image->description = $request->description;
             $image->save();
         } catch (\Exception $e) {
             return $e->getMessage();
@@ -85,6 +87,7 @@ class ImageController extends Controller
             'title' => 'required|min:5|max:50',
             'type'  => 'required',
             'image' => 'file|image',
+            'description' => 'nullable'
         ]);
 
         if ($validator->fails()) {
@@ -103,6 +106,7 @@ class ImageController extends Controller
                 $image->url    = $request->image->store('public');
             }
             $image->type = $request->type;
+            $image->description = $request->description;
             $image->save();
         } catch (\Exception $e) {
             return $e->getMessage();
