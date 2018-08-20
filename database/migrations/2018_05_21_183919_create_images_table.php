@@ -20,6 +20,7 @@ class CreateImagesTable extends Migration
             $table->string('format');
             $table->integer('size');
             $table->enum('type', ['s', 'g', 'o'])->default('o');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }
