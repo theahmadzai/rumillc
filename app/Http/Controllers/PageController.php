@@ -34,6 +34,10 @@ class PageController extends Controller
     {
         $offices = ['london', 'afghanistan', 'jakarta', 'dubai', 'toronto'];
 
+        if($place === 'afghanistan') {
+            return redirect('contact');
+        }
+
         if (!in_array($place, $offices)) {
             abort(404);
         }
