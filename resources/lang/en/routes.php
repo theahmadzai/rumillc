@@ -10,6 +10,7 @@ return [
     'afghanistan' => 'Afghanistan',
     'dubai' => 'Dubai',
     'jakarta' => 'Jakarta',
+    'bandung' => 'Bandung',
     'london' => 'London',
     'toronto' => 'Toronto'
 ];
