@@ -12,7 +12,6 @@
     "axios": "^0.18",
     "bulma": "^0.7.1",
     "google-maps": "^3.3.0",
-    "lodash": "^4.17.4",
     "vue": "^2.5.7",
     "vue-gallery": "^1.4.0"
   },
@@ -26,7 +25,6 @@
     "eslint-plugin-vue": "^4.5.0",
     "laravel-mix": "^2.1",
     "stylelint": "^9.3.0",
-    "stylelint-config-standard": "^18.2.0",
-    "stylelint-order": "^1.0.0"
+    "stylelint-config-immortal": "^2.0.0"
   }
 }
