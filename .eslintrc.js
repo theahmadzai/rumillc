@@ -1,19 +1,17 @@
 module.exports = {
-  root: true,
-  env : {
-    browser: true,
-    es6    : true
-  },
-  plugins      : [ 'vue', 'html' ],
   extends      : [ 'eslint:recommended', 'immortal' ],
+  plugins      : [ 'vue', 'html' ],
   parserOptions: {
     ecmaVersion                : 2018,
-    parser                     : 'babel-eslint',
     sourceType                 : 'module',
     allowImportExportEverywhere: true,
     ecmaFeatures               : {
-      jsx: true
+      jsx: false
     }
+  },
+  env: {
+    browser: true,
+    es6    : true
   },
   rules: {
     'key-spacing': [
