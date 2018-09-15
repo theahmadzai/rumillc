@@ -7,9 +7,12 @@
           <h1 class="details__name" v-text=product.name></h1>
           <p class="details__category" v-text=product.category.name></p>
           <p class="details__info" v-text=product.content></p>
-          <a class="details__more">Contact for price</a>
+          <button class="details__more" @click="showForm = true">Contact for price</button>
         </div>
     </main>
+    <ContactProductComponent v-show=showForm :product_id=product.id :product_name=product.name>
+      <button class="right-close delete" @click="showForm = false"></button>
+    </ContactProductComponent>
     <WriteFeedbackComponent :id=id></WriteFeedbackComponent>
     <RatingFeedbacksComponent :id=id></RatingFeedbacksComponent>
     <ListFeedbacksComponent :id=id></ListFeedbacksComponent>
@@ -20,6 +23,7 @@
 import WriteFeedback from './writefeedback';
 import ListFeedbacks from './listfeedbacks';
 import RatingFeedbacks from './ratingfeedbacks';
+import ContactProduct from './contactproduct';
 import Image from './image';
 
 export default {
@@ -30,8 +34,9 @@ export default {
   },
   data() {
     return {
-      loaded : false,
-      product: {}
+      loaded  : false,
+      showForm: false,
+      product : {},
     };
   },
   mounted() {
@@ -52,6 +57,7 @@ export default {
     WriteFeedbackComponent  : WriteFeedback,
     ListFeedbacksComponent  : ListFeedbacks,
     RatingFeedbacksComponent: RatingFeedbacks,
+    ContactProductComponent : ContactProduct,
     ImageComponent          : Image
   }
 };
