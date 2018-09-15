@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Mail\Message;
+use App\Mail\ContactPrice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -65,6 +66,21 @@ class PageController extends Controller
         ]);
 
         Mail::to('info@rumillc.com')->send(new Message($request->all()));
+
+        return ['status' => 'Thanks for contacting us.'];
+    }
+
+    public function contactPrice(Request $request)
+    {
+        $this->validate($request, [
+            'name'       => 'required',
+            'email'      => 'required|email',
+            'subject'    => 'required',
+            'message'    => 'required',
+            'product_id' => 'required|exists:products,id'
+        ]);
+
+        Mail::to('info@rumillc.com')->send(new ContactPrice($request->all()));
 
         return ['status' => 'Thanks for contacting us.'];
     }
