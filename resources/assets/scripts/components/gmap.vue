@@ -8,7 +8,7 @@ import GoogleMapsLoader from 'google-maps';
 export default {
   data() {
     return {
-      KEY   : 'AIzaSyCyHWm6orZclDIdEbPHVroYgdTEMkKpzc4',
+      KEY   : 'AIzaSyDx3yYcoopvhjhEuo4Oxi687cAs6_NYPZI',
       zoom  : 15,
       coords: {
         lat: 34.504050,
