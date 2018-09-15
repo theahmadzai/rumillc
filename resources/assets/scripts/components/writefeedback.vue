@@ -84,7 +84,6 @@ export default {
         this.processing = false;
         this.sentFeedback = true;
         this.$parent.$emit('newFeedback');
-        console.log(response.status);
       } catch (error) {
         this.processing = false;
         console.log(error);
