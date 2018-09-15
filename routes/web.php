@@ -22,8 +22,7 @@ Route::prefix(Lang::setLocale())->group(function () {
     Route::get('/products', 'PageController@products')->name('products');
     Route::get('/product/{id}-{slug}', 'PageController@showProduct');
 
-    Route::get('/network', 'PageController@network')->name('network');
-    Route::get('/office/{place}', 'PageController@office')->name('office');
+    Route::get('/network/{location?}', 'PageController@network')->name('network');
 
     Route::get('/gallery', 'PageController@gallery')->name('gallery');
 

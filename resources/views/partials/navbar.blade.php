@@ -13,22 +13,22 @@
             <a href="{{ URL::route('network') }}">@lang('routes.network')</a>
             <ul class="submenu">
                 <li class="submenu__item">
-                    <a href="{{ URL::route('office','afghanistan') }}">@lang('routes.afghanistan')</a>
+                    <a href="{{ URL::route('network','afghanistan') }}">@lang('routes.afghanistan')</a>
                 </li>
                 <li class="submenu__item">
-                    <a href="{{ URL::route('office','dubai') }}">@lang('routes.dubai')</a>
+                    <a href="{{ URL::route('network','dubai') }}">@lang('routes.dubai')</a>
                 </li>
                 <li class="submenu__item">
-                    <a href="{{ URL::route('office','jakarta') }}">@lang('routes.jakarta')</a>
+                    <a href="{{ URL::route('network','jakarta') }}">@lang('routes.jakarta')</a>
                 </li>
                 <li class="submenu__item">
-                    <a href="{{ URL::route('office','bandung') }}">@lang('routes.bandung')</a>
+                    <a href="{{ URL::route('network','bandung') }}">@lang('routes.bandung')</a>
                 </li>
                 <li class="submenu__item">
-                    <a href="{{ URL::route('office','london') }}">@lang('routes.london')</a>
+                    <a href="{{ URL::route('network','london') }}">@lang('routes.london')</a>
                 </li>
                 <li class="submenu__item">
-                    <a href="{{ URL::route('office','toronto') }}">@lang('routes.toronto')</a>
+                    <a href="{{ URL::route('network','toronto') }}">@lang('routes.toronto')</a>
                 </li>
             </ul>
         </li>

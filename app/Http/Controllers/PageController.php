@@ -30,20 +30,19 @@ class PageController extends Controller
         return view('product', ['id' => $id]);
     }
 
-    public function network()
-    {
-        return redirect('contact');
-    }
-
-    public function office($place)
+    public function network($location = null)
     {
         $offices = ['london', 'afghanistan', 'jakarta', 'dubai', 'toronto', 'bandung'];
 
-        if (!in_array($place, $offices)) {
+        if($location == null) {
+            return redirect('contact');
+        }
+
+        if (!in_array($location, $offices)) {
             abort(404);
         }
 
-        return view("office/{$place}");
+        return view("office/{$location}");
     }
 
     public function gallery()
