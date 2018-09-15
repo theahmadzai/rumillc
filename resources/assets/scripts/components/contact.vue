@@ -1,6 +1,6 @@
 <template>
   <div v-if="!loaded" class="loading rel"></div>
-  <form v-else @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)" novalidate>
+  <form v-else class="contact-form" @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)" novalidate>
       <label for="name">Your Name</label>
       <input type="text" name="name" v-model="form.name">
       <span v-if="form.errors.has('name')" v-text="form.errors.get('name')"></span>
@@ -48,82 +48,12 @@ export default {
       try {
         this.processing = true;
         const response = await this.form.submit('/contact');
-        this.processing = false;
-        console.log(response.status);
       } catch (error) {
-        this.processing = false;
         console.log(error);
+      } finally {
+        this.processing = false;
       }
     }
   }
 };
 </script>
-
-<style lang="scss" scoped>
-@import "~@/_settings.scss";
-
-form {
-  display: flex;
-  flex-direction: column;
-  background: #f9f9f9;
-
-  @media #{$medium} {
-    padding: 2rem;
-  }
-
-  label {
-    margin-bottom: 0.3rem;
-    color: #333333;
-  }
-
-  span {
-    margin-bottom: 1rem;
-    font-size: 0.8rem;
-    color: red;
-  }
-
-  .error {
-    border: 1px solid red !important;
-  }
-
-  input {
-    height: 40px;
-  }
-
-  input:not([type="submit"]),
-  textarea {
-    margin-bottom: 0.3rem;
-    padding: 0.25rem 1rem;
-    outline: 0;
-    border: 1px solid $secondary-color;
-    font-weight: 400;
-    color: #333333;
-  }
-
-  textarea {
-    height: 180px;
-    padding-top: 0.5rem;
-  }
-
-  input[type="submit"] {
-    width: 150px;
-    margin-top: 1rem;
-    outline: 0;
-    border: 0;
-    background: $secondary-color;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #ffffff;
-    text-transform: uppercase;
-    cursor: pointer;
-
-    &:hover {
-      background: darken($primary-color, 5%);
-    }
-
-    &.disabled {
-      background: darken($primary-color, 5%);
-    }
-  }
-}
-</style>
