@@ -55,23 +55,23 @@
 }
 
 .line::before {
+  content: '';
   position: absolute;
   top: 0;
   width: 100%;
   height: 50px;
   transform: skew(0deg, 40deg);
   background: #ffffff;
-  content: '';
 }
 
 .line::after {
+  content: '';
   position: absolute;
   top: 0;
   width: 100%;
   height: 50px;
   transform: skew(0deg, -40deg);
   background: #ffffff;
-  content: '';
 }
 
 .hframe {
@@ -110,6 +110,7 @@
     }
 
     &::after {
+      content: '';
       position: absolute;
       bottom: 10px;
       left: 50%;
@@ -117,7 +118,6 @@
       height: 4px;
       transform: translate(-50%, -50%);
       background: #ffffff;
-      content: '';
     }
   }
 }
@@ -132,6 +132,7 @@
   text-align: justify;
 
   &::before {
+    content: '';
     position: absolute;
     top: 0;
     right: 0;
@@ -139,10 +140,10 @@
     height: 100%;
     background: $secondary-color;
     box-shadow: -20px 0 200px 40px rgba(0, 0, 0, 0.1);
-    content: '';
   }
 
   &::after {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -150,7 +151,6 @@
     height: 100%;
     background: $secondary-color;
     box-shadow: 0 0 200px 40px rgba(0, 0, 0, 0.1);
-    content: '';
   }
 }
 
@@ -199,4 +199,10 @@
     background: #aaaaaa;
     cursor: pointer;
   }
+}
+
+.right-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
