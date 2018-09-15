@@ -20,7 +20,9 @@ Route::prefix(Lang::setLocale())->group(function () {
     Route::get('/about', 'PageController@about')->name('about');
 
     Route::get('/products', 'PageController@products')->name('products');
+
     Route::get('/product/{id}-{slug}', 'PageController@showProduct');
+    Route::post('/product', 'PageController@contactPrice');
 
     Route::get('/network/{location?}', 'PageController@network')->name('network');
 
