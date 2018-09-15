@@ -6,7 +6,7 @@
 
 import './bootstrap';
 
-import Vue from 'vue';
+window.Vue = require('vue');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -21,26 +21,25 @@ import Contact from './components/contact';
 import Gallery from './components/gallery';
 import Subscribe from './components/subscribe';
 import Categories from './components/categories';
-import Products from './components/products';
 import ProductPage from './components/product-page';
-
-Vue.component('slider-component', Slider);
-Vue.component('testimonials-component', Testimonials);
-Vue.component('gmap-component', GoogleMap);
-Vue.component('contact-component', Contact);
-Vue.component('gallery-component', Gallery);
-Vue.component('subscribe-component', Subscribe);
-Vue.component('categories-component', Categories);
-Vue.component('products-component', Products);
-Vue.component('productpage-component', ProductPage);
 
 Vue.config.productionTip = false;
 Vue.config.devtools = true;
 Vue.config.performance = true;
 
 new Vue({
-  strict: true,
-  el    : '#app'
+  strict    : true,
+  el        : '#app',
+  components: {
+    'slider-component'      : Slider,
+    'testimonials-component': Testimonials,
+    'gmap-component'        : GoogleMap,
+    'contact-component'     : Contact,
+    'gallery-component'     : Gallery,
+    'subscribe-component'   : Subscribe,
+    'categories-component'  : Categories,
+    'productpage-component' : ProductPage
+  }
 });
 
 // ============================================================================
