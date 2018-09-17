@@ -1,8 +1,8 @@
 module.exports = {
-  extends      : [ 'eslint:recommended', 'immortal' ],
-  plugins      : [ 'vue', 'html' ],
+  extends      : [ 'eslint:recommended', 'immortal', 'plugin:vue/recommended' ],
+  plugins      : [ 'vue' ],
   parserOptions: {
-    ecmaVersion                : 2018,
+    ecmaVersion                : 9,
     sourceType                 : 'module',
     allowImportExportEverywhere: true,
     ecmaFeatures               : {
