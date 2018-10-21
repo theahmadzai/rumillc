@@ -19,7 +19,7 @@
                 <div class="field">
                     <label for="email" class="label">Email</label>
                     <div class="control">
-                        <input id="email" type="email" name="email" value="{{ $email ?? old('email') }}" class="input" required autofocus>
+                        <input id="email" type="email" name="email" value="{{ old('email') }}" class="input" required autofocus>
                     </div>
                     @if ($errors->has('email'))
                         <p class="help is-danger">{{ $errors->first('email') }}</p>
