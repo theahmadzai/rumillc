@@ -30,8 +30,8 @@
                                 </a>
                             </span>
                             <span class="icon">
-                                <a href="#">
-                                    <i class="fab fa-linkedin fa-2x"></i>
+                                <a href="https://www.instagram.com/rumisaffronindonesia/">
+                                    <i class="fab fa-instagram fa-2x"></i>
                                 </a>
                             </span>
                         </div>
