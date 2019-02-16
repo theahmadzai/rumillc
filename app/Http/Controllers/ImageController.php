@@ -112,7 +112,7 @@ class ImageController extends Controller
             return $e->getMessage();
         }
 
-        return redirect('admin/images')->with('status', 'Image Added Successfully!');
+        return redirect('admin/images')->with('status', 'Image Updated Successfully!');
     }
 
     /**
