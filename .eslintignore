@@ -1,4 +1,0 @@
-vendor/*
-public/*
-!.eslintrc.js
-!.stylelintrc.js
