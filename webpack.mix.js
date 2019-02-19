@@ -25,7 +25,8 @@ mix.js('resources/assets/scripts/app.js', 'public/js')
     'vue-gallery'
   ])
   .options({
-    extractVueStyles: true
+    extractVueStyles: true,
+    globalVueStyles: 'resources/assets/styles/app.scss'
   })
   .webpackConfig({
     resolve: {
@@ -35,6 +36,6 @@ mix.js('resources/assets/scripts/app.js', 'public/js')
     }
   })
   .browserSync({
-    proxy : 'http://localhost:8000',
+    proxy: 'http://localhost:8000',
     notify: false
   });
