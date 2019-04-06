@@ -22,23 +22,25 @@ import Gallery from './components/gallery';
 import Subscribe from './components/subscribe';
 import Categories from './components/categories';
 import ProductPage from './components/product-page';
+import Products from './components/products';
 
 Vue.config.productionTip = false;
 Vue.config.devtools = true;
 Vue.config.performance = true;
 
 new Vue({
-  strict    : true,
-  el        : '#app',
+  strict: true,
+  el: '#app',
   components: {
-    'slider-component'      : Slider,
+    'slider-component': Slider,
     'testimonials-component': Testimonials,
-    'gmap-component'        : GoogleMap,
-    'contact-component'     : Contact,
-    'gallery-component'     : Gallery,
-    'subscribe-component'   : Subscribe,
-    'categories-component'  : Categories,
-    'productpage-component' : ProductPage
+    'gmap-component': GoogleMap,
+    'contact-component': Contact,
+    'gallery-component': Gallery,
+    'subscribe-component': Subscribe,
+    'categories-component': Categories,
+    'productpage-component': ProductPage,
+    'products-component': Products
   }
 });
 

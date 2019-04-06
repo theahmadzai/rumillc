@@ -25,7 +25,7 @@ mix.js('resources/assets/scripts/app.js', 'public/js')
     'vue-gallery'
   ])
   .options({
-    extractVueStyles: true,
+    extractVueStyles: false,
     globalVueStyles: 'resources/assets/styles/app.scss'
   })
   .webpackConfig({
