@@ -2,7 +2,7 @@
     <div class="container">
 
         <a href="/" class="logo">
-            <img src="{{ asset('images/logo.png') }}" alt="Rumi Trading LLC Logo">
+            <img src="{{ asset('images/logo.png') }}" alt="Rumi Saffron, Dried Fruits & Nuts Company Logo">
         </a>
 
         @include('partials.navbar')

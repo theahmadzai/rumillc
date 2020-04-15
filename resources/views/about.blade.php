@@ -6,20 +6,20 @@
 
     <div class="hframe">
         <img src="{{ asset('images/about.jpeg') }}" alt="About Rumi Ltd">
-        <h1>Rumi Trading LLC</h1>
+        <h1>Rumi Saffron, Dried Fruits & Nuts Company</h1>
     </div>
 
     <div class="section container">
         <div class="content" data-aos="zoom-out-up" style="text-align:justify;background:#fff;padding:1rem;font-size:1rem;line-height:2rem;">
-            <p>Rumi Trading LLC ®, Rumi Saffron ™, Rumi Dry Fruits ™ and Mawlana Saffron ™ is trading and exporting dried fruits (Raisins, Dried Apricot, Dried Figs), Nuts (Almonds, Walnut, Pistachio and Pine Nuts) and Saffron including investment in growing Saffron in more than 15 acres of land in Karokh district of Herat Province, the amount of land being cultivated is planned to grow 20 acres each other so by 2020 the total cultivated land is expected to be more than 50 acres. The Company is buying its dried fruits and Nuts directly from growers/farmers connected through Afghan ministry of agriculture. The Company is connected with farmers/land owners that are visited, verified and their fields are checked to ensure safety and quality of dried fruits purchased. Our main buyers are supermarkets and retailers in Kabul and importers from India, Dubai, Turkey and other potential destinations. We are currently distributing directly through supermarkets and retailers in Kabul and selling to importers in destination countries, which we meet in B2B events. Our advantage in Saffron is that we grow it ourselves, we sell it with a very competitive price, high and assured quality and improved packing, for dry fruits we are buying from farmers/growers making it cheaper for us and able to sell it with a cheaper price and improved quality.</p>
+            <p>Rumi Saffron, Dried Fruits & Nuts Company ®, Rumi Saffron ™, Rumi Dry Fruits ™ and Mawlana Saffron ™ is trading and exporting dried fruits (Raisins, Dried Apricot, Dried Figs), Nuts (Almonds, Walnut, Pistachio and Pine Nuts) and Saffron including investment in growing Saffron in more than 15 acres of land in Karokh district of Herat Province, the amount of land being cultivated is planned to grow 20 acres each other so by 2020 the total cultivated land is expected to be more than 50 acres. The Company is buying its dried fruits and Nuts directly from growers/farmers connected through Afghan ministry of agriculture. The Company is connected with farmers/land owners that are visited, verified and their fields are checked to ensure safety and quality of dried fruits purchased. Our main buyers are supermarkets and retailers in Kabul and importers from India, Dubai, Turkey and other potential destinations. We are currently distributing directly through supermarkets and retailers in Kabul and selling to importers in destination countries, which we meet in B2B events. Our advantage in Saffron is that we grow it ourselves, we sell it with a very competitive price, high and assured quality and improved packing, for dry fruits we are buying from farmers/growers making it cheaper for us and able to sell it with a cheaper price and improved quality.</p>
         </div>
 
         {{-- <div class="accordion" id="accordion" data-aos="slide-down">
             <div class="accordion_item">
-                <div class="head"><i class="fa fa-caret-right"></i><span>About Rumi Trading LLC</span></div>
+                <div class="head"><i class="fa fa-caret-right"></i><span>About Rumi Saffron, Dried Fruits & Nuts Company</span></div>
                 <div class="body">
                     <div class="content">
-                        <p>Rumi Trading LLC (Limited Liability Company) is registered with ACBR (Afghanistan Central Business Registry) of the ministry of commerce & industries of Afghanistan operate as Afghanistan’s leading export management company (EMC) since 2017.</p>
+                        <p>Rumi Saffron, Dried Fruits & Nuts Company (Limited Liability Company) is registered with ACBR (Afghanistan Central Business Registry) of the ministry of commerce & industries of Afghanistan operate as Afghanistan’s leading export management company (EMC) since 2017.</p>
                     </div>
                 </div>
             </div>

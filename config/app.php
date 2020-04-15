@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Rumi Trading LLC'),
+    'name' => env('APP_NAME', 'Rumi Saffron, Dried Fruits & Nuts Company'),
 
     /*
     |--------------------------------------------------------------------------
