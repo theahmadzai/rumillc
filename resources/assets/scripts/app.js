@@ -16,7 +16,6 @@ window.Vue = require('vue');
 
 import Slider from './components/slider';
 import Testimonials from './components/testimonials';
-import GoogleMap from './components/gmap';
 import Contact from './components/contact';
 import Gallery from './components/gallery';
 import Subscribe from './components/subscribe';
@@ -34,7 +33,6 @@ new Vue({
   components: {
     'slider-component': Slider,
     'testimonials-component': Testimonials,
-    'gmap-component': GoogleMap,
     'contact-component': Contact,
     'gallery-component': Gallery,
     'subscribe-component': Subscribe,
@@ -46,7 +44,7 @@ new Vue({
 
 // ============================================================================
 
-document.getElementById('toggle').addEventListener('click', function() {
+document.getElementById('toggle').addEventListener('click', function () {
   this.classList.toggle('toggle--change');
   document.getElementById('navbar').classList.toggle('navbar--toggle');
 });
@@ -54,7 +52,7 @@ document.getElementById('toggle').addEventListener('click', function() {
 const accordion = document.getElementById('accordion');
 if (accordion) {
   Array.from(accordion.children).forEach(element => {
-    element.firstElementChild.addEventListener('click', function() {
+    element.firstElementChild.addEventListener('click', function () {
       this.classList.toggle('head--active');
       this.firstElementChild.classList.toggle('fa-caret-right');
       this.firstElementChild.classList.toggle('fa-caret-down');
