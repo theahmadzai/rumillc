@@ -3,11 +3,15 @@
 return [
     'address' => [
         'h' => 'Main office',
-        'm' => 'Nasajee Compound, Next to Juma Mohammadi Industrial Park, Karte Naw Road, Kabul-Afghanistan',
+        'm' => 'Qalai Amir, Qargha Lake Area, Kabul.',
     ],
     'phone' => [
         'h' => 'Contact',
         'm' =>  '+93 (0) 784516129'
+    ],
+    'whatsapp' => [
+        'h' => 'Whatsapp/Telegram',
+        'm' => '+93 (0) 784516129'
     ],
     'email' => [
         'h' => 'Email',

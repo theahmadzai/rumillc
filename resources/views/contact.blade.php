@@ -9,6 +9,7 @@
             <h1>Contact Info</h1>
             <p><strong>@lang('contact.address.h'):</strong> @lang('contact.address.m')</p>
             <p><strong>@lang('contact.phone.h'):</strong> @lang('contact.phone.m')</p>
+            <p><strong>@lang('contact.whatsapp.h'):</strong> @lang('contact.whatsapp.m')</p>
             <p><strong>@lang('contact.email.h'):</strong> @lang('contact.email.m')</p>
         </div>
 
