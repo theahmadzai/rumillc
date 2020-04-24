@@ -14,13 +14,13 @@ class CreateFeedbacksTable extends Migration
     public function up()
     {
         Schema::create('feedbacks', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->integer('rating');
             $table->string('name');
             $table->string('title');
             $table->text('message');
-            $table->integer('product_id')->unsigned();
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products');
             $table->timestamps();
         });
     }
