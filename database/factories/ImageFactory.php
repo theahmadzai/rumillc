@@ -4,9 +4,8 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Image::class, function (Faker $faker) {
     return [
-        'title'  => $faker->sentence(6),
-        'format' => $faker->fileExtension(),
-        'type'   => $faker->randomElement(['s', 'g', 'o']),
-        'size'   => $faker->numberBetween(1000, 8000),
+        'title'         => $faker->sentence(4),
+        'type'          => $faker->randomElement(['slider', 'gallery', 'other']),
+        'description'   => $faker->sentence(10),
     ];
 });

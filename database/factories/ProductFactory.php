@@ -9,6 +9,6 @@ $factory->define(App\Product::class, function (Faker $faker) use ($factory) {
         'price'       => $faker->numberBetween(1000, 20000),
         'tags'        => $faker->word,
         'content'     => $faker->text(500),
-        'category_id' => $factory->create(App\Category::class)->id,
+        'category_id' => App\Category::all()->random(),
     ];
 });
