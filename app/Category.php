@@ -8,6 +8,11 @@ class Category extends Model
 {
     protected $table = 'categories';
 
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class);
+    }
+
     public function products()
     {
         return $this->hasMany(Product::class);

@@ -7,8 +7,10 @@ use Storage;
 
 class Testimonial extends Model
 {
+    protected $table = 'testimonials';
+
     public function getImageAttribute($image)
     {
-        return Storage::url($image ?? 'default_images/testimonial.png');
+        return $image ?? '../default/testimonial.png';
     }
 }

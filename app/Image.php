@@ -11,6 +11,6 @@ class Image extends Model
 
     public function getUrlAttribute($url)
     {
-        return Storage::url($url ?? 'default_images/image.png');
+        return $url ?? '../default/image.png';
     }
 }

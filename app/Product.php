@@ -7,18 +7,16 @@ use Storage;
 
 class Product extends Model
 {
-    protected $hidden = [
-        'category_id',
-    ];
+    protected $table = 'products';
 
     public function getImageAttribute($image)
     {
-        return Storage::url($image ?? 'default_images/product.png');
+        return $image ?? '../default/product.png';
     }
 
     public function category()
     {
-        return $this->belongsTo(Category::class, 'category_id', 'id');
+        return $this->belongsTo(Category::class);
     }
 
     public function feedbacks()
