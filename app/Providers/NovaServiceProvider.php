@@ -43,13 +43,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         Gate::define('viewNova', function ($user) {
             return in_array($user->email, [
-                'tester@test.com'
+                'admin@rumillc.com'
             ]);
         });
     }
 
     /**
-     * Get the cards that should be displayed on the Nova dashboard.
+     * Get the cards that should be displayed on the default Nova dashboard.
      *
      * @return array
      */
@@ -58,6 +58,16 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         return [
             new Help,
         ];
+    }
+
+    /**
+     * Get the extra dashboards that should be displayed on the Nova dashboard.
+     *
+     * @return array
+     */
+    protected function dashboards()
+    {
+        return [];
     }
 
     /**

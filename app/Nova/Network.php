@@ -4,9 +4,12 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID as IDField;
 use Laravel\Nova\Fields\Text as TextField;
+use Laravel\Nova\Fields\Image as ImageField;
 use Laravel\Nova\Fields\Code as CodeField;
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Intervention\Image\ImageManagerStatic;
+use Storage;
 
 class Network extends Resource
 {
@@ -44,9 +47,27 @@ class Network extends Resource
         return [
             IDField::make()->sortable(),
 
-            TextField::make('Name'),
+            ImageField::make('Image')->store(function(Request $request, $model) {
 
-            TextField::make('Slug'),
+                $url = basename(Storage::disk('public')->putFile('images', $request->file('image')));
+
+                $thumbnail = ImageManagerStatic::make($request->file('image'))->fit(200, 200, function ($constraint) {
+                    $constraint->upsize();
+                    $constraint->aspectRatio();
+                })->encode();
+
+                Storage::disk('public')->put('thumbnails/' . $url, $thumbnail);
+
+                return [
+                    'image' => $url,
+                ];
+            })->preview(function($url) {
+                return Storage::disk('public')->url('images/' . $url);
+            })->thumbnail(function($url) {
+                return Storage::disk('public')->url('thumbnails/' . $url);
+            }),
+
+            TextField::make('Name'),
 
             CodeField::make('info')->language('javascript'),
         ];

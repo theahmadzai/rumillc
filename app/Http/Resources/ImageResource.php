@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Storage;
 
 class ImageResource extends JsonResource
 {
@@ -15,10 +16,13 @@ class ImageResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'    => $this->id,
+            'id' => $this->id,
             'title' => $this->title,
-            'url'   => $this->url,
-            'description' => $this->description
+            'type' => $this->type,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'image' => asset(Storage::url('images/' . $this->image)),
+            'thumbnail' => asset(Storage::url('thumbnails/' . $this->image))
         ];
     }
 }

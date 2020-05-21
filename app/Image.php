@@ -3,14 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Storage;
 
 class Image extends Model
 {
-    protected $table = 'images';
-
-    public function getUrlAttribute($url)
+    public function getImageAttribute($image)
     {
-        return $url ?? '../default/image.png';
+        return $image ?? '../default/image.png';
     }
 }

@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Http\Resources\ProductResource;
 use App\Product;
+use App\Http\Resources\ProductResource;
 use Illuminate\Http\Request;
-use Storage;
-use Validator;
 
 class ProductController extends Controller
 {
@@ -16,24 +13,25 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $limit    = \Request::query('limit');
-        $category = \Request::query('category');
-
-        if (\Request::has('category') && \Request::has('limit')) {
-            return ProductResource::collection(Product::where('category_id', $category)->limit($limit)->get());
+        if($request->has('category')) {
+            return ProductResource::collection(
+                Product::where('category_id', $request->query('category'))->latest()->paginate($request->query('offset'))
+            );
         }
 
-        if (\Request::has('category')) {
-            return ProductResource::collection(Product::where('category_id', $category)->get());
-        }
+        return ProductResource::collection(Product::latest()->paginate($request->query('offset')));
+    }
 
-        if (\Request::has('limit')) {
-            return ProductResource::collection(Product::limit($limit)->latest()->get());
-        }
-
-        return ProductResource::collection(Product::all());
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -44,37 +42,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name'     => 'required',
-            'slug'     => 'required',
-            'price'    => 'nullable|numeric',
-            'tags'     => 'nullable|string',
-            'image'    => 'file|image',
-            'category' => 'required|exists:categories,id',
-            'content'  => 'nullable',
-        ]);
-
-        if ($validator->fails()) {
-            return back()->withInput()->withErrors($validator);
-        }
-
-        try {
-            $product              = new Product;
-            $product->name        = $request->name;
-            $product->slug        = $request->slug;
-            $product->price       = $request->price;
-            $product->tags        = $request->tags;
-            $product->content     = $request->content;
-            $product->category_id = $request->category;
-            if ($request->hasFile('image')) {
-                $product->image = $request->image->store('public');
-            }
-            $product->save();
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
-
-        return back()->with('status', 'Product Added Successfully!');
+        //
     }
 
     /**
@@ -89,6 +57,17 @@ class ProductController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Product $product)
+    {
+        //
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -97,40 +76,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $validator = Validator::make($request->all(), [
-            'name'     => 'required',
-            'slug'     => 'required',
-            'price'    => 'nullable|numeric',
-            'tags'     => 'nullable|string',
-            'image'    => 'file|image',
-            'category' => 'required|exists:categories,id',
-            'content'  => 'nullable',
-        ]);
-
-        if ($validator->fails()) {
-            return back()->withInput()->withErrors($validator);
-        }
-
-        try {
-            $product              = Product::find($product->id);
-            $product->name        = $request->name;
-            $product->slug        = $request->slug;
-            $product->price       = $request->price;
-            $product->tags        = $request->tags;
-            $product->content     = $request->content;
-            $product->category_id = $request->category;
-            if ($request->hasFile('image')) {
-                if (Storage::exists($product->getOriginal('image'))) {
-                    Storage::move($product->getOriginal('image'), 'updated/products/' . basename($product->image));
-                }
-                $product->image = $request->image->store('public');
-            }
-            $product->save();
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
-
-        return redirect('admin/products')->with('status', 'Product Updated Successfully!');
+        //
     }
 
     /**
@@ -141,14 +87,6 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        if (Storage::exists($product->getOriginal('image'))) {
-            Storage::move($product->getOriginal('image'), 'deleted/products/' . basename($product->image));
-        }
-
-        $product = Product::find($product->id);
-        $product->feedbacks()->delete();
-        $product->delete();
-
-        return back()->with('status', 'Product Deleted Successfully!');
+        //
     }
 }

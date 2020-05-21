@@ -1,13 +1,12 @@
 <?php
 
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+
+use App\Network;
 use Faker\Generator as Faker;
-use Illuminate\Support\Str;
 
-$factory->define(App\Network::class, function (Faker $faker) {
-    $networkName = $faker->city;
-
+$factory->define(Network::class, function (Faker $faker) {
     return [
-        'name' => $networkName,
-        'slug' => Str::slug($networkName),
+        'name' => $faker->city,
     ];
 });

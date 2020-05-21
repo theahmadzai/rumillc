@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require('laravel-mix')
 
 /*
  |--------------------------------------------------------------------------
@@ -11,31 +11,12 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/scripts/app.js', 'public/js')
-  .sass('resources/assets/styles/app.scss', 'public/css')
-  .styles([
-    'node_modules/bulma/css/bulma.min.css',
-    'node_modules/aos/dist/aos.css'
-  ], 'public/css/vendor.css')
-  .extract([
-    'axios',
-    'google-maps',
-    'AOS',
-    'vue',
-    'vue-gallery'
-  ])
-  .options({
-    extractVueStyles: false,
-    globalVueStyles: 'resources/assets/styles/app.scss'
-  })
+mix.react('resources/js/index.js', 'public/js')
+  .sass('resources/sass/index.scss', 'public/css')
   .webpackConfig({
-    resolve: {
-      alias: {
-        '@': path.resolve('resources/assets/styles')
+    devServer: {
+      proxy: {
+        '*': 'http://localhost:8000'
       }
     }
   })
-  .browserSync({
-    proxy: 'http://localhost:8000',
-    notify: false
-  });

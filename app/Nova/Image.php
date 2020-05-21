@@ -47,24 +47,24 @@ class Image extends Resource
         return [
             IDField::make()->sortable(),
 
-            ImageField::make('Image', 'url')->store(function(Request $request, $model) {
+            ImageField::make('Image')->store(function(Request $request, $model) {
 
-                $url = basename(Storage::disk('public')->putFile('images', $request->file('url')));
+                $imageName = basename(Storage::disk('public')->putFile('images', $request->file('image')));
 
-                $thumbnail = ImageManagerStatic::make($request->file('url'))->fit(200, 200, function ($constraint) {
+                $thumbnail = ImageManagerStatic::make($request->file('image'))->fit(200, 200, function ($constraint) {
                     $constraint->upsize();
                     $constraint->aspectRatio();
                 })->encode();
 
-                Storage::disk('public')->put('thumbnails/' . $url, $thumbnail);
+                Storage::disk('public')->put('thumbnails/' . $imageName, $thumbnail);
 
                 return [
-                    'url' => $url,
+                    'image' => $imageName,
                 ];
-            })->preview(function($url) {
-                return Storage::disk('public')->url('images/' . $url);
-            })->thumbnail(function($url) {
-                return Storage::disk('public')->url('thumbnails/' . $url);
+            })->preview(function($image) {
+                return Storage::disk('public')->url('images/' . $image);
+            })->thumbnail(function($image) {
+                return Storage::disk('public')->url('thumbnails/' . $image);
             }),
 
             TextField::make('Title'),
@@ -74,7 +74,6 @@ class Image extends Resource
                 'gallery' => 'Gallery',
                 'other' => 'Other',
             ])->sortable()->displayUsingLabels(),
-            TextField::make('Description')->hideFromIndex(),
         ];
     }
 

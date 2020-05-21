@@ -13,12 +13,14 @@ class FeedbackController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        if (\Request::has('product')) {
-            $product_id = \Request::query('product');
-            return FeedbackResource::collection(Feedback::where('product_id', $product_id)->latest()->get());
+        if($request->has('product')) {
+            return FeedbackResource::collection(
+                Feedback::where('product_id', $request->query('product'))->latest()->get()
+            );
         }
+
         return FeedbackResource::collection(Feedback::all());
     }
 
@@ -40,27 +42,7 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'rating'  => 'required|numeric|between:1,5',
-            'name'    => 'required',
-            'title'   => 'required',
-            'message' => 'required|min:50',
-            'product' => 'required|exists:products,id',
-        ]);
-
-        try {
-            $feedback             = new Feedback;
-            $feedback->rating     = $request->rating;
-            $feedback->name       = $request->name;
-            $feedback->title      = $request->title;
-            $feedback->message    = $request->message;
-            $feedback->product_id = $request->product;
-            $feedback->save();
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
-
-        return ['status' => 'Thanks for your feedback.'];
+        //
     }
 
     /**
@@ -105,6 +87,6 @@ class FeedbackController extends Controller
      */
     public function destroy(Feedback $feedback)
     {
-        Feedback::destroy($feedback->id);
+        //
     }
 }

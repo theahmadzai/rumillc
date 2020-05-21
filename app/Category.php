@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $table = 'categories';
-
     public function branch()
     {
         return $this->belongsTo(Branch::class);

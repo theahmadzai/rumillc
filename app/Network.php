@@ -6,10 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Network extends Model
 {
-    protected $table = 'networks';
-
-    public function getRouteKeyName()
+    public function getImageAttribute($image)
     {
-        return 'slug';
+        return $image ?? '../default/image.png';
     }
 }

@@ -14,13 +14,6 @@ class FeedbackResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'id'      => $this->id,
-            'rating'  => $this->rating,
-            'name'    => $this->name,
-            'title'   => $this->title,
-            'message' => $this->message,
-            'date'    => $this->created_at->format('F d, Y'),
-        ];
+        return parent::toArray($request);
     }
 }

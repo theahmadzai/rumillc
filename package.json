@@ -1,53 +1,36 @@
 {
-  "private": true,
-  "scripts": {
-    "dev": "npm run development",
-    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "npm run development -- --watch",
-    "watch-poll": "npm run watch -- --watch-poll",
-    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "prod": "npm run production",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
-  },
-  "dependencies": {
-    "aos": "^2.3.3",
-    "axios": "^0.18.0",
-    "bulma": "^0.7.1",
-    "vue": "^2.6.6",
-    "vue-gallery": "^2.0.0"
-  },
-  "devDependencies": {
-    "browser-sync": "^2.24.6",
-    "browser-sync-webpack-plugin": "2.2.2",
-    "cross-env": "^5.2.0",
-    "eslint": "^5.14.1",
-    "eslint-config-immortal": "^1.0.1",
-    "eslint-plugin-vue": "^5.0.0-beta.3",
-    "laravel-mix": "^4.0.7",
-    "resolve-url-loader": "^3.0.1",
-    "sass": "^1.17.0",
-    "sass-loader": "^7.1.0",
-    "sass-resources-loader": "^2.0.0",
-    "stylelint": "^9.10.1",
-    "stylelint-config-immortal": "^2.0.0",
-    "vue-loader": "^15.6.3",
-    "vue-template-compiler": "^2.6.6"
-  },
-  "eslintIgnore": [
-    "!.*.js",
-    "vendor",
-    "public"
-  ],
-  "stylelintIgnore": [
-    "vendor",
-    "public"
-  ],
-  "browserslist": {
-    "development": [
-      "last 2 versions"
-    ],
-    "production": [
-      "last 4 versions"
-    ]
-  }
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "npm run development -- --watch",
+        "watch-poll": "npm run watch -- --watch-poll",
+        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "prod": "npm run production",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "format": "eslint \"resources/js/**/*.{js,jsx}\" --fix",
+        "lint": "eslint \"resources/js/**/*.{js,jsx}\" --quiet"
+    },
+    "devDependencies": {
+        "@babel/preset-react": "^7.9.4",
+        "antd": "^4.2.0",
+        "axios": "^0.19",
+        "cross-env": "^7.0",
+        "eslint": "^7.0.0",
+        "eslint-config-standard": "^14.1.1",
+        "eslint-plugin-import": "^2.20.2",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-react": "^7.20.0",
+        "eslint-plugin-react-hooks": "^4.0.0",
+        "eslint-plugin-standard": "^4.0.1",
+        "laravel-mix": "^5.0.1",
+        "react": "^16.2.0",
+        "react-dom": "^16.2.0",
+        "react-image-gallery": "^1.0.7",
+        "react-router-dom": "^5.1.2",
+        "resolve-url-loader": "^3.1.0",
+        "sass": "^1.15.2",
+        "sass-loader": "^8.0.0"
+    }
 }

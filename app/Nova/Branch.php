@@ -46,8 +46,6 @@ class Branch extends Resource
 
             TextField::make('Name'),
 
-            TextField::make('Slug')->hideFromIndex(),
-
             HasManyField::make('Categories'),
         ];
     }
