@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+import { Router } from '@reach/router'
 import { Layout, BackTop } from 'antd'
 import Header from './Header'
 import Footer from './Footer'
@@ -15,21 +15,17 @@ const App = () => {
   return (
     <div>
       <Layout>
-        <BrowserRouter>
-          <Header />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/products" component={ProductsPage} />
-            <Route path="/network" component={Network} />
-            <Route path="/gallery" component={Gallery} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/404" component={NotFound} />
-            <Redirect from="*" to="/404" />
-          </Switch>
-          <Footer />
-        </BrowserRouter>
-
+        <Header />
+        <Router>
+          <Home path="/" />
+          <About path="/about" />
+          <ProductsPage path="/products" />
+          <Network path="/network" />
+          <Gallery path="/gallery" />
+          <Contact path="/contact" />
+          <NotFound default />
+        </Router>
+        <Footer />
         <BackTop />
       </Layout>
     </div>
