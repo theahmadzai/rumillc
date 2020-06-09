@@ -8,7 +8,7 @@ export const isLocalhost = Boolean(
   )
 )
 
-export const SITE_URL = isLocalhost ? 'http://127.0.0.1:8000' : 'http://api.rumillc.com'
+export const SITE_URL = isLocalhost ? 'http://127.0.0.1:8000' : 'http://rumillc.com'
 
 export const requestStatus = Object.freeze({
   LOADING: 0,
