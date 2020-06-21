@@ -468,3 +468,10 @@ body {
 .app-contact-form input[type="submit"].disabled {
     background: #d39a3b;
 }
+
+.ant-spin.ant-spin-spinning {
+    min-height:300px;
+    width:100%;
+    line-height:300px;
+    text-align:center;
+}
