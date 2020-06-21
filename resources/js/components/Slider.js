@@ -4,7 +4,6 @@ import axios from 'axios'
 import { SITE_URL, requestStatus } from '../global'
 
 const initialSlider = {
-  status: requestStatus.LOADING,
   loading: true,
   slides: [],
   error: null
@@ -13,13 +12,13 @@ const initialSlider = {
 const sliderReducer = (state, action) => {
   switch (action.status) {
     case requestStatus.LOADING:
-      return { loading: true }
+      return { ...state, loading: true }
 
     case requestStatus.SUCCESS:
-      return { loading: false, slides: action.payload }
+      return { ...state, loading: false, slides: action.payload }
 
     case requestStatus.ERROR:
-      return { error: action.error }
+      return { ...state, error: action.error }
 
     default:
       return state

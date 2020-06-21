@@ -5,7 +5,6 @@ import ImageGallery from 'react-image-gallery'
 import { SITE_URL, requestStatus } from '../global'
 
 const initialGallery = {
-  status: requestStatus.LOADING,
   loading: true,
   images: [],
   error: null
@@ -14,13 +13,13 @@ const initialGallery = {
 const galleryReducer = (state, action) => {
   switch (action.status) {
     case requestStatus.LOADING:
-      return { loading: true }
+      return { ...state, loading: true }
 
     case requestStatus.SUCCESS:
-      return { loading: false, images: action.payload }
+      return { ...state, loading: false, images: action.payload }
 
     case requestStatus.ERROR:
-      return { error: action.error }
+      return { ...state, error: action.error }
 
     default:
       return state

@@ -7,7 +7,6 @@ import {
 import { SITE_URL, requestStatus } from '../global'
 
 const initialCategories = {
-  status: requestStatus.LOADING,
   loading: true,
   branches: [],
   error: null
@@ -16,13 +15,13 @@ const initialCategories = {
 const categoriesReducer = (state, action) => {
   switch (action.status) {
     case requestStatus.LOADING:
-      return { loading: true }
+      return { ...state, loading: true }
 
     case requestStatus.SUCCESS:
-      return { loading: false, branches: action.payload }
+      return { ...state, loading: false, branches: action.payload }
 
     case requestStatus.ERROR:
-      return { error: action.error }
+      return { ...state, error: action.error }
 
     default:
       return state

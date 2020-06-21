@@ -5,7 +5,6 @@ import Product from './Product'
 import { SITE_URL, requestStatus } from '../global'
 
 const initialProducts = {
-  status: requestStatus.LOADING,
   loading: true,
   productsList: [],
   error: null
@@ -14,13 +13,13 @@ const initialProducts = {
 const productsReducer = (state, action) => {
   switch (action.status) {
     case requestStatus.LOADING:
-      return { loading: true }
+      return { ...state, loading: true }
 
     case requestStatus.SUCCESS:
-      return { loading: false, productsList: action.payload }
+      return { ...state, loading: false, productsList: action.payload }
 
     case requestStatus.ERROR:
-      return { error: action.error }
+      return { ...state, error: action.error }
 
     default:
       return state

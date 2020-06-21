@@ -18,24 +18,16 @@ const testimonialsReducer = (state, action) => {
 
   switch (status) {
     case requestStatus.LOADING:
-      return {
-        loading: true
-      }
+      return { ...state, loading: true }
 
     case requestStatus.SUCCESS:
       if (payload.length < 3) return state
       totalTestimonials = payload.length
 
-      return {
-        loading: false,
-        testimonialsList: payload
-      }
+      return { ...state, loading: false, testimonialsList: payload }
 
     case requestStatus.ERROR:
-      return {
-        loading: false,
-        error: action.error
-      }
+      return { ...state, error: action.error }
 
     default:
       return state

@@ -6,7 +6,6 @@ import NetworkView from './NetworkView'
 import { SITE_URL, requestStatus } from '../global'
 
 const initialNetwork = {
-  status: requestStatus.LOADING,
   loading: true,
   places: [],
   error: null
@@ -15,13 +14,13 @@ const initialNetwork = {
 const networkReducer = (state, action) => {
   switch (action.status) {
     case requestStatus.LOADING:
-      return { loading: true }
+      return { ...state, loading: true }
 
     case requestStatus.SUCCESS:
-      return { loading: false, places: action.payload }
+      return { ...state, loading: false, places: action.payload }
 
     case requestStatus.ERROR:
-      return { error: action.errorMessage }
+      return { ...state, error: action.errorMessage }
 
     default:
       return state
