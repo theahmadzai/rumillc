@@ -9,7 +9,7 @@ const Header = () => {
 
   const links = menuLinks.map(({ name, path }, index) => (
     <Link
-      getProps={({ isCurrent }) => ({ className: isCurrent && 'app-navbar-active' })}
+      getProps={({ isCurrent }) => ({ className: isCurrent ? 'app-navbar-active' : '' })}
       key={index}
       to={path}>{name}</Link>
   ))
