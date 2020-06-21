@@ -18,6 +18,8 @@ const categoriesReducer = (state, action) => {
       return { ...state, loading: true }
 
     case requestStatus.SUCCESS:
+      if (!action.payload.length) return state
+
       return { ...state, loading: false, branches: action.payload }
 
     case requestStatus.ERROR:

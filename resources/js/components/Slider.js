@@ -15,6 +15,8 @@ const sliderReducer = (state, action) => {
       return { ...state, loading: true }
 
     case requestStatus.SUCCESS:
+      if (!action.payload.length) return state
+
       return { ...state, loading: false, slides: action.payload }
 
     case requestStatus.ERROR:

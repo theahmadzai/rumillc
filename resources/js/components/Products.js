@@ -16,6 +16,8 @@ const productsReducer = (state, action) => {
       return { ...state, loading: true }
 
     case requestStatus.SUCCESS:
+      if (!action.payload.length) return state
+
       return { ...state, loading: false, productsList: action.payload }
 
     case requestStatus.ERROR:

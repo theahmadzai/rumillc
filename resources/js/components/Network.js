@@ -17,6 +17,8 @@ const networkReducer = (state, action) => {
       return { ...state, loading: true }
 
     case requestStatus.SUCCESS:
+      if (!action.payload.length) return state
+
       return { ...state, loading: false, places: action.payload }
 
     case requestStatus.ERROR:

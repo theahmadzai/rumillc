@@ -16,6 +16,8 @@ const galleryReducer = (state, action) => {
       return { ...state, loading: true }
 
     case requestStatus.SUCCESS:
+      if (!action.payload.length) return state
+
       return { ...state, loading: false, images: action.payload }
 
     case requestStatus.ERROR:
