@@ -80,12 +80,20 @@ export default function Gallery () {
 
   return (
     <Layout>
-      <Layout.Content style={{ padding: '2rem', background: '#fff' }}>
+      <Layout.Content style={{
+        padding: '2rem',
+        background: '#fff'
+      }}>
         <ImageGallery
           items={images}
           thumbnailPosition="left" />
       </Layout.Content>
-      <Layout.Footer style={{ display: 'flex', justifyContent: 'center', background: '#fff', borderTop: '2px solid #f9f9f9' }}>
+      <Layout.Footer style={{
+        display: 'flex',
+        justifyContent: 'center',
+        background: '#fff',
+        borderTop: '2px solid #f9f9f9'
+      }}>
         <Pagination
           onChange={onPageChange}
           current={currentPage}

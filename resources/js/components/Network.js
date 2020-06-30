@@ -55,7 +55,7 @@ const Network = () => {
     <Layout.Content>
       <Row>
         <Col md={12}>
-          <Row gutter={[24, 24]} style={{ padding: '1.5rem 1.5rem 0 1.5rem' }}>
+          <Row gutter={[24, 24]} style={{ padding: '1.5rem 1.5rem 0' }}>
             {places.map(n => (
               <Col key={n.id} span={12} md={8}>
                 <Card
@@ -74,7 +74,10 @@ const Network = () => {
             ))}
           </Row>
         </Col>
-        <Col md={12} style={{ width: '100%', background: '#fff' }}>
+        <Col md={12} style={{
+          width: '100%',
+          background: '#fff'
+        }}>
           {currentPlace
             ? <NetworkView network={places.find(n => n.id === currentPlace)} />
             : <div style={{ padding: '32px' }}><Skeleton /></div>

@@ -10,7 +10,10 @@ const ProductsPage = () => {
 
   return (
     <Layout style={{ background: '#fff' }}>
-      <Layout.Sider style={{ background: '#fff', paddingTop: '1.5rem' }} breakpoint="lg" width={250}>
+      <Layout.Sider style={{
+        background: '#fff',
+        paddingTop: '1.5rem'
+      }} breakpoint="lg" width={250}>
         <Categories onCategoryChange={handleCategoryChange} />
       </Layout.Sider>
       <Layout>

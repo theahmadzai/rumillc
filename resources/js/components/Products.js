@@ -75,7 +75,10 @@ const Products = ({ category }) => {
 
   return (
     <Fragment>
-      <Layout.Content style={{ background: '#fff', padding: '1.5rem 1.5rem 0 1.5rem' }}>
+      <Layout.Content style={{
+        background: '#fff',
+        padding: '1.5rem 1.5rem 0'
+      }}>
         <Row gutter={[24, 24]}>
           {productsList.map(p => (
             <Col key={p.id} sm={12} md={8} lg={6}>
@@ -84,7 +87,12 @@ const Products = ({ category }) => {
           ))}
         </Row>
       </Layout.Content>
-      <Layout.Footer style={{ display: 'flex', justifyContent: 'center', background: '#fff', borderTop: '2px solid #f9f9f9' }}>
+      <Layout.Footer style={{
+        display: 'flex',
+        justifyContent: 'center',
+        background: '#fff',
+        borderTop: '2px solid #f9f9f9'
+      }}>
         <Pagination
           onChange={onPageChange}
           current={currentPage}

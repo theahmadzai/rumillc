@@ -57,7 +57,10 @@ const Slider = () => {
       {slides.map(s => (
         <figure key={s.id}>
           <img
-            style={{ width: '100%', height: '400px' }}
+            style={{
+              width: '100%',
+              height: '400px'
+            }}
             alt={s.title}
             src={s.image} />
         </figure>

@@ -11,9 +11,19 @@ const NetworkView = ({ network: { name, image, info } }) => {
 
   return (
     <div>
-      <img alt={name} src={image} style={{ width: '100%', height: '200px' }} />
-      <h1 style={{ padding: '16px', color: '#fff', background: 'rgb(216, 165, 80)' }}>{name}</h1>
-      <div style={{ padding: '16px', fontSize: '1rem' }}>{blocks}</div>
+      <img alt={name} src={image} style={{
+        width: '100%',
+        height: '200px'
+      }} />
+      <h1 style={{
+        padding: '16px',
+        color: '#fff',
+        background: 'rgb(216, 165, 80)'
+      }}>{name}</h1>
+      <div style={{
+        padding: '16px',
+        fontSize: '1rem'
+      }}>{blocks}</div>
     </div>
   )
 }
