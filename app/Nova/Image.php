@@ -8,7 +8,6 @@ use Laravel\Nova\Fields\Select as SelectField;
 use Laravel\Nova\Fields\Text as TextField;
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Intervention\Image\ImageManagerStatic;
 use Storage;
 
 class Image extends Resource
@@ -47,33 +46,26 @@ class Image extends Resource
         return [
             IDField::make()->sortable(),
 
-            ImageField::make('Image')->store(function(Request $request, $model) {
-
-                $imageName = basename(Storage::disk('public')->putFile('images', $request->file('image')));
-
-                $thumbnail = ImageManagerStatic::make($request->file('image'))->fit(200, 200, function ($constraint) {
-                    $constraint->upsize();
-                    $constraint->aspectRatio();
-                })->encode();
-
-                Storage::disk('public')->put('thumbnails/' . $imageName, $thumbnail);
-
-                return [
-                    'image' => $imageName,
-                ];
-            })->preview(function($image) {
-                return Storage::disk('public')->url('images/' . $image);
-            })->thumbnail(function($image) {
-                return Storage::disk('public')->url('thumbnails/' . $image);
-            }),
+            ImageField::make('Image')
+                ->store(new StoreImage(1600, 500))
+                ->preview(function($image) {
+                    return Storage::disk('public')->url('images/' . $image);
+                })
+                ->thumbnail(function($image) {
+                    return Storage::disk('public')->url('thumbnails/' . $image);
+                }),
 
             TextField::make('Title'),
 
-            SelectField::make('Type')->options([
-                'slider' => 'Slider',
-                'gallery' => 'Gallery',
-                'other' => 'Other',
-            ])->sortable()->displayUsingLabels(),
+            SelectField::make('Type')
+                ->options([
+                    'slider' => 'Slider',
+                    'gallery' => 'Gallery',
+                    'other' => 'Other',
+                ])
+                ->sortable()
+                ->rules('required')
+                ->displayUsingLabels(),
         ];
     }
 

@@ -45,9 +45,9 @@ class Category extends Resource
         return [
             IDField::make()->sortable(),
 
-            TextField::make('Name'),
+            TextField::make('Name')->rules('required'),
 
-            TextField::make('Slug')->hideFromIndex(),
+            TextField::make('Slug')->rules('required')->hideFromIndex(),
 
             BelongsToField::make('Branch'),
 

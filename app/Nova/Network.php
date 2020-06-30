@@ -47,27 +47,16 @@ class Network extends Resource
         return [
             IDField::make()->sortable(),
 
-            ImageField::make('Image')->store(function(Request $request, $model) {
+            ImageField::make('Image')
+                ->store(new StoreImage(800, 200))
+                ->preview(function($image) {
+                    return Storage::disk('public')->url('images/' . $image);
+                })
+                ->thumbnail(function($image) {
+                    return Storage::disk('public')->url('thumbnails/' . $image);
+                }),
 
-                $url = basename(Storage::disk('public')->putFile('images', $request->file('image')));
-
-                $thumbnail = ImageManagerStatic::make($request->file('image'))->fit(200, 200, function ($constraint) {
-                    $constraint->upsize();
-                    $constraint->aspectRatio();
-                })->encode();
-
-                Storage::disk('public')->put('thumbnails/' . $url, $thumbnail);
-
-                return [
-                    'image' => $url,
-                ];
-            })->preview(function($url) {
-                return Storage::disk('public')->url('images/' . $url);
-            })->thumbnail(function($url) {
-                return Storage::disk('public')->url('thumbnails/' . $url);
-            }),
-
-            TextField::make('Name'),
+            TextField::make('Name')->rules('required'),
 
             CodeField::make('info')->language('javascript'),
         ];

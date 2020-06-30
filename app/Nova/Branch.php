@@ -44,7 +44,9 @@ class Branch extends Resource
         return [
             IDField::make()->sortable(),
 
-            TextField::make('Name'),
+            TextField::make('Name')->rules('required'),
+
+            TextField::make('Slug')->rules('required')->hideFromIndex(),
 
             HasManyField::make('Categories'),
         ];

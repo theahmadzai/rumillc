@@ -49,29 +49,18 @@ class Product extends Resource
         return [
             IDField::make()->sortable(),
 
-            ImageField::make('Image')->store(function(Request $request, $model) {
+            ImageField::make('Image')
+                ->store(new StoreImage(500, 500))
+                ->preview(function($image) {
+                    return Storage::disk('public')->url('images/' . $image);
+                })
+                ->thumbnail(function($image) {
+                    return Storage::disk('public')->url('thumbnails/' . $image);
+                }),
 
-                $url = basename(Storage::disk('public')->putFile('images', $request->file('image')));
+            TextField::make('Name')->rules('required'),
 
-                $thumbnail = ImageManagerStatic::make($request->file('image'))->fit(200, 200, function ($constraint) {
-                    $constraint->upsize();
-                    $constraint->aspectRatio();
-                })->encode();
-
-                Storage::disk('public')->put('thumbnails/' . $url, $thumbnail);
-
-                return [
-                    'image' => $url,
-                ];
-            })->preview(function($url) {
-                return Storage::disk('public')->url('images/' . $url);
-            })->thumbnail(function($url) {
-                return Storage::disk('public')->url('thumbnails/' . $url);
-            }),
-
-            TextField::make('Name'),
-
-            TextField::make('Slug')->hideFromIndex(),
+            TextField::make('Slug')->rules('required')->hideFromIndex(),
 
             NumberField::make('Price'),
 
