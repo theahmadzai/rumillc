@@ -1,45 +1,60 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useReducer } from 'react'
+import { Button, Spin } from 'antd'
 import axios from 'axios'
-import { Card, Statistic, Row, Col, Rate } from 'antd'
-import { LikeOutlined } from '@ant-design/icons'
-import { SITE_URL } from '../global'
+import { SITE_URL, requestStatus } from '../global'
 
-const Product = ({ info }) => {
-  const { id, name, image } = info
+const initialProduct = {
+  loading: true,
+  details: {},
+  error: null
+}
 
-  const [rating, setRating] = useState(null)
+const productReducer = (state, action) => {
+  switch (action.status) {
+    case requestStatus.LOADING:
+      return { ...state, loading: true }
+
+    case requestStatus.SUCCESS:
+      return { ...state, loading: false, details: action.payload }
+
+    case requestStatus.ERROR:
+      return { ...state, loading: false, error: action.error }
+
+    default:
+      return state
+  }
+}
+
+const ProductView = ({ slug }) => {
+  const [product, dispatchProduct] = useReducer(productReducer, initialProduct)
 
   useEffect(() => {
-    axios.get(SITE_URL + '/api/feedbacks/', {
-      params: {
-        product: id
-      }
-    }).then(res => {
-      if (res.data.data.length >= 1) {
-        setRating(res.data.data
-          .map(f => Number.parseFloat(f.rating))
-          .reduce((t, f) => t + f))
-      }
-    })
-  }, [id])
+    axios.get(SITE_URL + '/api/products/' + slug)
+      .then(res => {
+        dispatchProduct({
+          status: requestStatus.SUCCESS,
+          payload: res.data.data
+        })
+      }).catch(err => {
+        dispatchProduct({
+          status: requestStatus.ERROR,
+          error: err.message
+        })
+      })
+  }, [slug])
+
+  const { loading, error, details: { name, image } } = product
+
+  if (loading) return <Spin />
+
+  if (error) return <div>{error}</div>
 
   return (
-    <Card
-      hoverable
-      loading={!rating}
-      cover={<img alt={name} src={image} style={{ width: '100%' }} />}>
-      <Card.Meta title={name} />
-      <Row gutter={16}>
-        <Col span={12}>
-          <Statistic title="Feedback" value={rating} prefix={<LikeOutlined />} />
-        </Col>
-        <Col span={12}>
-          <Statistic title="Available" value={100} suffix="/100" />
-        </Col>
-      </Row>
-      <Rate disabled allowHalf defaultValue={5} value={rating} />
-    </Card>
+    <div>
+      <h1>{name}</h1>
+      <img src={image} alt={name}/>
+    </div>
   )
 }
 
-export default Product
+export default ProductView
