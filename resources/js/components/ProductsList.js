@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer, useState, Fragment } from 'react'
 import axios from 'axios'
 import { Layout, Row, Col, Pagination, Spin } from 'antd'
-import Product from './Product'
+import ProductPreview from './ProductPreview'
 import { SITE_URL, requestStatus } from '../global'
 
 const initialProducts = {
@@ -46,6 +46,7 @@ const ProductsList = ({ category }) => {
         page: currentPage
       }
     }).then(res => {
+      console.log(res.data.data)
       dispatchProducts({
         status: requestStatus.SUCCESS,
         payload: res.data.data
@@ -64,7 +65,7 @@ const ProductsList = ({ category }) => {
     })
   }, [perPage, currentPage, category])
 
-  const onPageChange = (page) => setPaginationMeta(state => ({
+  const onPageChange = page => setPaginationMeta(state => ({
     ...state,
     currentPage: page
   }))
@@ -82,7 +83,7 @@ const ProductsList = ({ category }) => {
         <Row gutter={[24, 24]}>
           {productsList.map(p => (
             <Col key={p.id} sm={12} md={8} lg={6}>
-              <Product info={p} />
+              <ProductPreview {...p} />
             </Col>
           ))}
         </Row>
