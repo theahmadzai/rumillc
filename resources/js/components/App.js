@@ -5,6 +5,7 @@ import Header from './Header'
 import Footer from './Footer'
 import Home from './Home'
 import Products from './Products'
+import Product from './Product'
 import About from './About'
 import Network from './Network'
 import Gallery from './Gallery'
@@ -20,6 +21,7 @@ const App = () => {
           <Home path="/" />
           <About path="/about" />
           <Products path="/products" />
+          <Product path="/products/:slug" />
           <Network path="/network" />
           <Gallery path="/gallery" />
           <Contact path="/contact" />
