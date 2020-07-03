@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer } from 'react'
-import { Button, Spin } from 'antd'
+import { Spin } from 'antd'
 import axios from 'axios'
 import { SITE_URL, requestStatus } from '../global'
 
