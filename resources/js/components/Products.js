@@ -6,7 +6,7 @@ import ProductsList from './ProductsList'
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState(null)
 
-  const handleCategoryChange = (category) => setSelectedCategory(category)
+  const handleCategoryChange = category => setSelectedCategory(category)
 
   return (
     <Layout style={{ background: '#fff' }}>
