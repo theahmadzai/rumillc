@@ -4,7 +4,7 @@ import { Layout, BackTop } from 'antd'
 import Header from './Header'
 import Footer from './Footer'
 import Home from './Home'
-import ProductsPage from './ProductsPage'
+import Products from './Products'
 import About from './About'
 import Network from './Network'
 import Gallery from './Gallery'
@@ -19,7 +19,7 @@ const App = () => {
         <Router>
           <Home path="/" />
           <About path="/about" />
-          <ProductsPage path="/products" />
+          <Products path="/products" />
           <Network path="/network" />
           <Gallery path="/gallery" />
           <Contact path="/contact" />
