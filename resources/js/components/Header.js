@@ -18,10 +18,8 @@ const Header = () => {
     <header className="app-header">
       <Row>
         <Col span={20} md={6}>
-          <Link
-            to="/"
-            className="app-logo">
-            <img src={logoPath} alt={title} /> <span>RumiLLC</span>
+          <Link to="/">
+            <img src={logoPath} alt={title} className="app-logo" />
           </Link>
         </Col>
 
