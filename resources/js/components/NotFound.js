@@ -1,16 +1,14 @@
 import React from 'react'
 import { Result, Button } from 'antd'
 
-const NotFound = () => {
+const NotFound = ({ message }) => {
   return (
-    <div>
-      <Result
-        status="404"
-        title="404"
-        subTitle="Sorry, the page you visited does not exist."
-        extra={<Button type="primary" onClick={() => window.history.back()}>Go Back</Button>}
-      />
-    </div>
+    <Result
+      status="404"
+      title="404"
+      subTitle={message || 'Sorry, the page you visited does not exist.'}
+      extra={<Button type="primary" onClick={() => window.history.back()}>Go Back</Button>}
+    />
   )
 }
 
