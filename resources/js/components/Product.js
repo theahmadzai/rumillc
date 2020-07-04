@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer } from 'react'
-import { Spin } from 'antd'
+import { Layout, Spin, PageHeader, Statistic, Row, Button, Tag } from 'antd'
 import axios from 'axios'
+import NotFound from './NotFound'
 import { SITE_URL, requestStatus } from '../global'
 
 const initialProduct = {
@@ -38,22 +39,58 @@ const ProductView = ({ slug }) => {
       }).catch(err => {
         dispatchProduct({
           status: requestStatus.ERROR,
-          error: err.message
+          error: `Requested product does't exist, ${err.message}`
         })
       })
   }, [slug])
 
-  const { loading, error, details: { name, image } } = product
+  const { loading, error, details } = product
+  const { name, image, category, content } = details
 
   if (loading) return <Spin />
 
-  if (error) return <div>{error}</div>
+  if (error) return <NotFound message={error} />
 
   return (
-    <div>
-      <h1>{name}</h1>
-      <img src={image} alt={name}/>
-    </div>
+    <Layout.Content>
+      <PageHeader
+        onBack={() => window.history.back()}
+        title={name}
+        subTitle={category.name}
+        avatar={{ src: image }}
+        tags={<Tag color="red">Top Rated</Tag>}
+        extra={[
+          <Button key="3">Operation</Button>,
+          <Button key="2">Operation</Button>,
+          <Button key="1" type="primary">
+          Primary
+          </Button>
+        ]}
+      >
+      </PageHeader>
+      <Row>
+        <Statistic title="Status" value="Pending" />
+        <Statistic
+          title="Price"
+          prefix="$"
+          value={568.08}
+          style={{
+            margin: '0 32px'
+          }}
+        />
+        <Statistic title="Balance" prefix="$" value={3345.08} />
+      </Row>
+      <Row>
+        <div style={{ flex: 1 }}>{content}</div>
+        <div className="image">
+          <img
+            src={image}
+            alt="content"
+            width="100%"
+          />
+        </div>
+      </Row>
+    </Layout.Content>
   )
 }
 
