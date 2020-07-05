@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useState } from 'react'
 import axios from 'axios'
-import { Row, Col, Card, Layout, Skeleton, Spin } from 'antd'
+import { Row, Col, Card, Layout, Empty, Skeleton, Spin } from 'antd'
 import { AimOutlined } from '@ant-design/icons'
 import NetworkView from './NetworkView'
 import { SITE_URL, requestStatus } from '../global'
@@ -55,7 +55,10 @@ const Network = () => {
     <Layout.Content>
       <Row>
         <Col md={12}>
-          <Row gutter={[24, 24]} style={{ padding: '1.5rem 1.5rem 0' }}>
+          <Row gutter={[24, 24]} style={{
+            margin: 0,
+            padding: '1rem'
+          }}>
             {places.map(n => (
               <Col key={n.id} span={12} md={8}>
                 <Card
@@ -64,8 +67,7 @@ const Network = () => {
                   bordered={false}
                   size="small"
                   cover={<img alt={n.name} src={n.thumbnail} />}
-                  onClick={() => setCurrentPlace(n.id)}
-                >
+                  onClick={() => setCurrentPlace(n.id)}>
                   <Card.Meta
                     title={n.name}
                     avatar={<AimOutlined />} />
@@ -80,7 +82,7 @@ const Network = () => {
         }}>
           {currentPlace
             ? <NetworkView network={places.find(n => n.id === currentPlace)} />
-            : <div style={{ padding: '32px' }}><Skeleton /></div>
+            : <Empty style={{ margin: '2rem ' }} description="No city selected."><Skeleton/></Empty>
           }
         </Col>
       </Row>
