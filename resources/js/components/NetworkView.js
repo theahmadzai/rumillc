@@ -1,9 +1,10 @@
 import React from 'react'
+import { Empty } from 'antd'
 
 const NetworkView = ({ network: { name, image, info } }) => {
   const m = JSON.parse(info)
 
-  const blocks = !m ? <p>No Info</p> : m.map(i => Object.keys(i).map(k => (
+  const blocks = !m ? <Empty /> : m.map(i => Object.keys(i).map(k => (
     <p key={k}>
       <b>{k}</b>: {i[k]}
     </p>
