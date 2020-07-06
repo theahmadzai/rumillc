@@ -46,7 +46,6 @@ const ProductsList = ({ category }) => {
         page: currentPage
       }
     }).then(res => {
-      console.log(res.data.data)
       dispatchProducts({
         status: requestStatus.SUCCESS,
         payload: res.data.data
