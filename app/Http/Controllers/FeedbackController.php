@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Feedback;
 use App\Http\Resources\FeedbackResource;
+use App\Http\Requests\StoreFeedbackRequest;
 use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
@@ -40,9 +41,11 @@ class FeedbackController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFeedbackRequest $request)
     {
-        //
+        Feedback::create($request->validated());
+
+        return ['status' => 'Thanks for your feedback.'];
     }
 
     /**
