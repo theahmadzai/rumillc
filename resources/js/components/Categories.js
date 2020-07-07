@@ -4,7 +4,7 @@ import { Menu, Spin } from 'antd'
 import {
   ShoppingOutlined
 } from '@ant-design/icons'
-import { SITE_URL, requestStatus } from '../global'
+import { requestStatus } from '../global'
 
 const initialCategories = {
   loading: true,
@@ -34,7 +34,7 @@ const Categories = ({ onCategoryChange }) => {
   const [categories, dispatchCategories] = useReducer(categoriesReducer, initialCategories)
 
   useEffect(() => {
-    axios.get(SITE_URL + '/api/branches').then(res => {
+    axios.get('/api/branches').then(res => {
       dispatchCategories({
         status: requestStatus.SUCCESS,
         payload: res.data.data

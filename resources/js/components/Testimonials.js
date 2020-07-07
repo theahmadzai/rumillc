@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from 'react'
 import axios from 'axios'
 import { Spin } from 'antd'
-import { SITE_URL, requestStatus, movement } from '../global'
+import { requestStatus, movement } from '../global'
 
 let totalTestimonials = 0
 
@@ -73,7 +73,7 @@ const Testimonials = () => {
   const handleNextTestimonial = () => dispatchSelectedTestimonial(movement.NEXT)
 
   useEffect(() => {
-    axios.get(SITE_URL + '/api/testimonials').then(res => {
+    axios.get('/api/testimonials').then(res => {
       dispatchTestimonials({
         status: requestStatus.SUCCESS,
         payload: res.data.data

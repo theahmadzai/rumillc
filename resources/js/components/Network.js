@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Row, Col, Card, Layout, Empty, Skeleton, Spin } from 'antd'
 import { AimOutlined } from '@ant-design/icons'
 import NetworkView from './NetworkView'
-import { SITE_URL, requestStatus } from '../global'
+import { requestStatus } from '../global'
 
 const initialNetwork = {
   loading: true,
@@ -34,7 +34,7 @@ const Network = () => {
   const [currentPlace, setCurrentPlace] = useState(null)
 
   useEffect(() => {
-    axios.get(SITE_URL + '/api/networks').then(res => {
+    axios.get('/api/networks').then(res => {
       dispatchNetwork({
         status: requestStatus.SUCCESS,
         payload: res.data.data

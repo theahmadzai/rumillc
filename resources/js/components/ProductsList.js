@@ -2,7 +2,7 @@ import React, { useEffect, useReducer, useState, Fragment } from 'react'
 import axios from 'axios'
 import { Layout, Row, Col, Pagination, Spin } from 'antd'
 import ProductPreview from './ProductPreview'
-import { SITE_URL, requestStatus } from '../global'
+import { requestStatus } from '../global'
 
 const initialProducts = {
   loading: true,
@@ -39,7 +39,7 @@ const ProductsList = ({ category }) => {
   const { currentPage, perPage, totalItems } = paginationMeta
 
   useEffect(() => {
-    axios.get(SITE_URL + '/api/products', {
+    axios.get('/api/products', {
       params: {
         category,
         offset: perPage,

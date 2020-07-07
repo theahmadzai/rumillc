@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from 'react'
 import { Carousel, Spin } from 'antd'
 import axios from 'axios'
-import { SITE_URL, requestStatus } from '../global'
+import { requestStatus } from '../global'
 
 const initialSlider = {
   loading: true,
@@ -31,7 +31,7 @@ const Slider = () => {
   const [slider, dispatchSlider] = useReducer(sliderReducer, initialSlider)
 
   useEffect(() => {
-    axios.get(SITE_URL + '/api/images', {
+    axios.get('/api/images', {
       params: {
         type: 'slider'
       }

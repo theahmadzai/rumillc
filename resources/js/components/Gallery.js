@@ -2,7 +2,7 @@ import React, { useState, useReducer, useEffect } from 'react'
 import axios from 'axios'
 import { Layout, Pagination, Spin } from 'antd'
 import ImageGallery from 'react-image-gallery'
-import { SITE_URL, requestStatus } from '../global'
+import { requestStatus } from '../global'
 
 const initialGallery = {
   loading: true,
@@ -39,7 +39,7 @@ export default function Gallery () {
   const { currentPage, perPage, totalItems } = paginationMeta
 
   useEffect(() => {
-    axios.get(SITE_URL + '/api/images', {
+    axios.get('/api/images', {
       params: {
         type: 'gallery',
         offset: perPage,

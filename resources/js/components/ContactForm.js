@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { SITE_URL } from '../global'
 import axios from 'axios'
 
 const ContactForm = () => {
@@ -13,7 +12,7 @@ const ContactForm = () => {
 
     const formData = new FormData(e.target)
 
-    axios.post(SITE_URL + '/api/contact', formData).then(res => {
+    axios.post('/api/contact', formData).then(res => {
       window.alert(res.data.status)
     }).catch(err => {
       const errors = err.response.data.errors
