@@ -5,7 +5,7 @@ namespace App\Nova;
 use Laravel\Nova\Fields\ID as IDField;
 use Laravel\Nova\Fields\Image as ImageField;
 use Laravel\Nova\Fields\Text as TextField;
-use Laravel\Nova\Fields\TextArea as TextAreaField;
+use Laravel\Nova\Fields\Textarea as TextareaField;
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Intervention\Image\ImageManagerStatic;
@@ -58,7 +58,7 @@ class Testimonial extends Resource
 
             TextField::make('Name')->rules('required'),
 
-            TextAreaField::make('Message')->rules('required')->hideFromIndex(),
+            TextareaField::make('Message')->rules('required')->hideFromIndex(),
         ];
     }
 
