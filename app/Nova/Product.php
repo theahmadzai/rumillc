@@ -6,7 +6,7 @@ use Laravel\Nova\Fields\ID as IDField;
 use Laravel\Nova\Fields\Text as TextField;
 use Laravel\Nova\Fields\Image as ImageField;
 use Laravel\Nova\Fields\Number as NumberField;
-use Laravel\Nova\Fields\TextArea as TextAreaField;
+use Laravel\Nova\Fields\Textarea as TextareaField;
 use Laravel\Nova\Fields\BelongsTo as BelongsToField;
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -66,7 +66,7 @@ class Product extends Resource
 
             TextField::make('Tags')->hideFromIndex(),
 
-            TextAreaField::make('Content'),
+            TextareaField::make('Content'),
 
             BelongsToField::make('Category'),
         ];
