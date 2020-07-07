@@ -21,5 +21,5 @@ Route::resource('testimonials', 'TestimonialController')->only(['index', 'show']
 Route::resource('branches', 'BranchController')->only(['index', 'show']);
 Route::resource('categories', 'CategoryController')->only(['index', 'show']);
 Route::resource('products', 'ProductController')->only(['index', 'show']);
-Route::resource('feedbacks', 'FeedbackController')->only(['index', 'show']);
+Route::resource('feedbacks', 'FeedbackController')->only(['index', 'show', 'store']);
 Route::resource('networks', 'NetworkController')->only(['index', 'show']);
