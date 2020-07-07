@@ -23,7 +23,7 @@ class Product extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($request)
     {
         $this->email        = $request['email'];
         $this->name         = $request['name'];
