@@ -3,34 +3,35 @@ import axios from 'axios'
 
 const ContactForm = () => {
   const [loading, setLoading] = useState(false)
-  const [errors, setErrors] = useState({})
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async e => {
     e.preventDefault()
-
     setLoading(true)
 
-    const formData = new FormData(e.target)
-
-    axios.post('/api/contact', formData).then(res => {
+    try {
+      const res = await axios.post('/api/contact', new FormData(e.target))
       window.alert(res.data.status)
-    }).catch(err => {
+    } catch (err) {
       const errors = err.response.data.errors
-
       for (const k in errors) errors[k] = errors[k][0]
-
-      setErrors(errors)
-    }).finally(() => setLoading(false))
+      setErrors(state => ({ ...state, ...errors }))
+    } finally {
+      setLoading(false)
+    }
   }
 
-  const handleClear = (e) => {
-    delete errors[e.target.name]
-
-    setErrors(errors)
+  const handleClear = e => {
+    errors[e.target.name] = ''
+    setErrors(Object.create(errors))
   }
 
-  const { name, email, subject, message } = errors
-  const hasErrors = Object.keys(errors).length > 0
+  console.log(errors)
 
   return (
     <form noValidate
@@ -40,25 +41,21 @@ const ContactForm = () => {
 
       <label htmlFor="name">Your Name</label>
       <input type="text" name="name" />
-      <span>{name}</span>
+      <span>{errors.name}</span>
 
       <label htmlFor="email">Your Email</label>
       <input type="email" name="email" />
-      <span>{email}</span>
+      <span>{errors.email}</span>
 
       <label htmlFor="subject">Subject</label>
       <input type="text" name="subject" />
-      <span>{subject}</span>
+      <span>{errors.subject}</span>
 
       <label htmlFor="message">Your Message</label>
       <textarea name="message" />
-      <span>{message}</span>
+      <span>{errors.message}</span>
 
-      {loading
-        ? <div className="process-button">
-          <div className="loading left"></div>
-        </div>
-        : <input type="submit" value="Send" disabled={hasErrors} />}
+      {loading || <input type="submit" value="Send" />}
     </form >
   )
 }
