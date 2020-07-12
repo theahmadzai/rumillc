@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Network;
 use App\Http\Resources\NetworkResource;
+use App\Network;
 use Illuminate\Http\Request;
 
 class NetworkController extends Controller
@@ -25,24 +25,20 @@ class NetworkController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Network  $network
      * @return \Illuminate\Http\Response
      */
     public function show(Network $network)
@@ -53,34 +49,27 @@ class NetworkController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Network  $network
      * @return \Illuminate\Http\Response
      */
     public function edit(Network $network)
     {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Network  $network
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Network $network)
     {
-        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Network  $network
      * @return \Illuminate\Http\Response
      */
     public function destroy(Network $network)
     {
-        //
     }
 }

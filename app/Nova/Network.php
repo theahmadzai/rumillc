@@ -2,13 +2,11 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\ID as IDField;
-use Laravel\Nova\Fields\Text as TextField;
-use Laravel\Nova\Fields\Image as ImageField;
-use Laravel\Nova\Fields\Code as CodeField;
 use Illuminate\Http\Request;
-use Laravel\Nova\Http\Requests\NovaRequest;
-use Intervention\Image\ImageManagerStatic;
+use Laravel\Nova\Fields\Code as CodeField;
+use Laravel\Nova\Fields\ID as IDField;
+use Laravel\Nova\Fields\Image as ImageField;
+use Laravel\Nova\Fields\Text as TextField;
 use Storage;
 
 class Network extends Resource
@@ -39,25 +37,21 @@ class Network extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function fields(Request $request)
     {
         return [
             IDField::make()->sortable(),
-
             ImageField::make('Image')
                 ->store(new StoreImage(800, 200))
-                ->preview(function($image) {
-                    return Storage::disk('public')->url('images/' . $image);
+                ->preview(function ($image) {
+                    return Storage::disk('public')->url('images/'.$image);
                 })
-                ->thumbnail(function($image) {
-                    return Storage::disk('public')->url('thumbnails/' . $image);
+                ->thumbnail(function ($image) {
+                    return Storage::disk('public')->url('thumbnails/'.$image);
                 }),
-
             TextField::make('Name')->rules('required'),
-
             CodeField::make('info')->language('javascript'),
         ];
     }
@@ -65,7 +59,6 @@ class Network extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function cards(Request $request)
@@ -76,7 +69,6 @@ class Network extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function filters(Request $request)
@@ -87,7 +79,6 @@ class Network extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function lenses(Request $request)
@@ -98,7 +89,6 @@ class Network extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function actions(Request $request)

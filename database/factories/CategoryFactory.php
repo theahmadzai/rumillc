@@ -2,8 +2,8 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Category;
 use App\Branch;
+use App\Category;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 

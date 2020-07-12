@@ -2,12 +2,11 @@
 
 namespace App\Nova;
 
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID as IDField;
 use Laravel\Nova\Fields\Image as ImageField;
 use Laravel\Nova\Fields\Select as SelectField;
 use Laravel\Nova\Fields\Text as TextField;
-use Illuminate\Http\Request;
-use Laravel\Nova\Http\Requests\NovaRequest;
 use Storage;
 
 class Image extends Resource
@@ -38,25 +37,21 @@ class Image extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function fields(Request $request)
     {
         return [
             IDField::make()->sortable(),
-
             ImageField::make('Image')
-                ->store(new StoreImage(1600, 500))
-                ->preview(function($image) {
-                    return Storage::disk('public')->url('images/' . $image);
+                ->store(new StoreImage())
+                ->preview(function ($image) {
+                    return Storage::disk('public')->url('images/'.$image);
                 })
-                ->thumbnail(function($image) {
-                    return Storage::disk('public')->url('thumbnails/' . $image);
+                ->thumbnail(function ($image) {
+                    return Storage::disk('public')->url('thumbnails/'.$image);
                 }),
-
             TextField::make('Title'),
-
             SelectField::make('Type')
                 ->options([
                     'slider' => 'Slider',
@@ -72,7 +67,6 @@ class Image extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function cards(Request $request)
@@ -83,7 +77,6 @@ class Image extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function filters(Request $request)
@@ -94,7 +87,6 @@ class Image extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function lenses(Request $request)
@@ -105,7 +97,6 @@ class Image extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function actions(Request $request)

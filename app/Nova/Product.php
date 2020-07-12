@@ -2,16 +2,14 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\ID as IDField;
-use Laravel\Nova\Fields\Text as TextField;
-use Laravel\Nova\Fields\Image as ImageField;
-use Laravel\Nova\Fields\Number as NumberField;
-use Laravel\Nova\Fields\Textarea as TextareaField;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo as BelongsToField;
 use Laravel\Nova\Fields\HasMany as HasManyField;
-use Illuminate\Http\Request;
-use Laravel\Nova\Http\Requests\NovaRequest;
-use Intervention\Image\ImageManagerStatic;
+use Laravel\Nova\Fields\ID as IDField;
+use Laravel\Nova\Fields\Image as ImageField;
+use Laravel\Nova\Fields\Number as NumberField;
+use Laravel\Nova\Fields\Text as TextField;
+use Laravel\Nova\Fields\Textarea as TextareaField;
 use Storage;
 
 class Product extends Resource
@@ -42,35 +40,26 @@ class Product extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function fields(Request $request)
     {
         return [
             IDField::make()->sortable(),
-
             ImageField::make('Image')
-                ->store(new StoreImage(500, 500))
+                ->store(new StoreImage())
                 ->preview(function ($image) {
-                    return Storage::disk('public')->url('images/' . $image);
+                    return Storage::disk('public')->url('images/'.$image);
                 })
                 ->thumbnail(function ($image) {
-                    return Storage::disk('public')->url('thumbnails/' . $image);
+                    return Storage::disk('public')->url('thumbnails/'.$image);
                 }),
-
             TextField::make('Name')->rules('required'),
-
             TextField::make('Slug')->rules('required')->hideFromIndex(),
-
             NumberField::make('Price'),
-
             TextField::make('Tags')->hideFromIndex(),
-
             TextareaField::make('Content'),
-
             BelongsToField::make('Category'),
-
             HasManyField::make('Feedbacks'),
         ];
     }
@@ -78,7 +67,6 @@ class Product extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function cards(Request $request)
@@ -89,7 +77,6 @@ class Product extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function filters(Request $request)
@@ -100,7 +87,6 @@ class Product extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function lenses(Request $request)
@@ -111,7 +97,6 @@ class Product extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function actions(Request $request)

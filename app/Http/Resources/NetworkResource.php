@@ -10,7 +10,8 @@ class NetworkResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
     public function toArray($request)
@@ -23,8 +24,8 @@ class NetworkResource extends JsonResource
             'info' => $this->info,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'image' => asset(Storage::url('images/' . $this->image)),
-            'thumbnail' => asset(Storage::url('thumbnails/' . $this->image))
+            'image' => asset(Storage::url('images/'.$this->image)),
+            'thumbnail' => asset(Storage::url('thumbnails/'.$this->image)),
         ];
     }
 }

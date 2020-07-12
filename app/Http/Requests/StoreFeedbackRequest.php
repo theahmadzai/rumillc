@@ -24,10 +24,10 @@ class StoreFeedbackRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'    => 'required',
-            'title'   => 'required',
+            'name' => 'required',
+            'title' => 'required',
             'message' => 'required',
-            'rating'  => 'required|numeric|between:1,5',
+            'rating' => 'required|numeric|between:1,5',
             'product_id' => 'required|exists:products,id',
         ];
     }

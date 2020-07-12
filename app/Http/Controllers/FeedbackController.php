@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Feedback;
-use App\Http\Resources\FeedbackResource;
 use App\Http\Requests\StoreFeedbackRequest;
+use App\Http\Resources\FeedbackResource;
 use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
@@ -16,7 +16,7 @@ class FeedbackController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->has('product')) {
+        if ($request->has('product')) {
             return FeedbackResource::collection(
                 Feedback::where('product_id', $request->query('product'))->latest()->get()
             );
@@ -32,13 +32,13 @@ class FeedbackController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(StoreFeedbackRequest $request)
@@ -51,7 +51,6 @@ class FeedbackController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Feedback  $feedback
      * @return \Illuminate\Http\Response
      */
     public function show(Feedback $feedback)
@@ -62,34 +61,27 @@ class FeedbackController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Feedback  $feedback
      * @return \Illuminate\Http\Response
      */
     public function edit(Feedback $feedback)
     {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Feedback  $feedback
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Feedback $feedback)
     {
-        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Feedback  $feedback
      * @return \Illuminate\Http\Response
      */
     public function destroy(Feedback $feedback)
     {
-        //
     }
 }

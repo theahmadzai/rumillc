@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Image::class, function (Faker $faker) {
     return [
-        'title'         => $faker->sentence(4),
-        'type'          => $faker->randomElement(['slider', 'gallery', 'other']),
+        'title' => $faker->sentence(4),
+        'type' => $faker->randomElement(['slider', 'gallery', 'other']),
     ];
 });

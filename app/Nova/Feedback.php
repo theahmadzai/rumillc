@@ -3,12 +3,11 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo as BelongsToField;
 use Laravel\Nova\Fields\ID as IDField;
+use Laravel\Nova\Fields\Number as NumberField;
 use Laravel\Nova\Fields\Text as TextField;
 use Laravel\Nova\Fields\Textarea as TextareaField;
-use Laravel\Nova\Fields\Number as NumberField;
-use Laravel\Nova\Fields\BelongsTo as BelongsToField;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Feedback extends Resource
 {
@@ -38,22 +37,16 @@ class Feedback extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function fields(Request $request)
     {
         return [
             IDField::make()->sortable(),
-
             NumberField::make('Rating')->rules('required'),
-
             TextField::make('Name')->rules('required'),
-
             TextField::make('Title')->rules('required'),
-
             TextareaField::make('Message')->rules('required'),
-
             BelongsToField::make('Product'),
         ];
     }
@@ -61,7 +54,6 @@ class Feedback extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function cards(Request $request)
@@ -72,7 +64,6 @@ class Feedback extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function filters(Request $request)
@@ -83,7 +74,6 @@ class Feedback extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function lenses(Request $request)
@@ -94,7 +84,6 @@ class Feedback extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function actions(Request $request)
