@@ -2,33 +2,29 @@
 
 namespace App\Nova;
 
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID as IDField;
 use Laravel\Nova\Fields\Text as TextField;
-use Laravel\Nova\Fields\Image as ImageField;
-use Laravel\Nova\Fields\Number as NumberField;
 use Laravel\Nova\Fields\Textarea as TextareaField;
+use Laravel\Nova\Fields\Number as NumberField;
 use Laravel\Nova\Fields\BelongsTo as BelongsToField;
-use Laravel\Nova\Fields\HasMany as HasManyField;
-use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Intervention\Image\ImageManagerStatic;
-use Storage;
 
-class Product extends Resource
+class Feedback extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\Product';
+    public static $model = 'App\Feedback';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -50,28 +46,15 @@ class Product extends Resource
         return [
             IDField::make()->sortable(),
 
-            ImageField::make('Image')
-                ->store(new StoreImage(500, 500))
-                ->preview(function ($image) {
-                    return Storage::disk('public')->url('images/' . $image);
-                })
-                ->thumbnail(function ($image) {
-                    return Storage::disk('public')->url('thumbnails/' . $image);
-                }),
+            NumberField::make('Rating')->rules('required'),
 
             TextField::make('Name')->rules('required'),
 
-            TextField::make('Slug')->rules('required')->hideFromIndex(),
+            TextField::make('Title')->rules('required'),
 
-            NumberField::make('Price'),
+            TextareaField::make('Message')->rules('required'),
 
-            TextField::make('Tags')->hideFromIndex(),
-
-            TextareaField::make('Content'),
-
-            BelongsToField::make('Category'),
-
-            HasManyField::make('Feedbacks'),
+            BelongsToField::make('Product'),
         ];
     }
 
