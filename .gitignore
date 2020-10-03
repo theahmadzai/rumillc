@@ -3,6 +3,6 @@ vendor
 .env*
 .cache
 public
+.vscode
 node_modules
 .DS_Store
-.vscode
