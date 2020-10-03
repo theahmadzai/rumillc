@@ -26,7 +26,7 @@ const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <Row gutter={24} className={styles.footerItems}>
+      <Row className={styles.footerItems}>
         <Col span={24} md={8} className={styles.footerItem}>
           <Title level={3} className={styles.footerHeading}>
             About {name}

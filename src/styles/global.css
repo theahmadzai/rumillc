@@ -14,84 +14,6 @@ body {
   font-size: 16px;
 }
 
-.app-header {
-  background: #fff;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05);
-  padding: 0 3rem;
-  z-index: 1;
-}
-
-.app-logo {
-  color: var(--primary-color);
-  display: block;
-  font-size: 1.4rem;
-  font-weight: bold;
-  height: 84px;
-  margin: 0.5rem 0;
-  transition: all 300ms ease;
-  width: 84px;
-
-  &:hover {
-    transform: rotate(365deg);
-  }
-}
-
-.app-navbar {
-  align-items: stretch;
-  display: flex;
-}
-
-.app-navbar-vertical {
-  flex-direction: column;
-}
-
-.app-navbar {
-  a {
-    align-items: center;
-    color: var(--secondary-color);
-    display: flex;
-    font-size: 1rem;
-    font-weight: 500;
-    padding: 0 1rem;
-    transition: all 0.5s ease-in-out;
-  }
-
-  a:hover {
-    background: var(--secondary-color);
-    color: #fff;
-  }
-}
-
-.app-navbar-vertical a {
-  padding: 0.5rem 1rem;
-}
-
-.app-navbar-active {
-  background: var(--secondary-color);
-  color: #fff !important;
-}
-
-.app-menu-icon {
-  align-self: center;
-  color: var(var(--primary-color));
-  display: none;
-  font-size: 2rem;
-}
-
-@media (max-width: 768px) {
-  .app-navbar {
-    display: none;
-  }
-
-  .app-navbar-vertical {
-    display: flex;
-  }
-
-  .app-menu-icon {
-    display: block;
-  }
-}
-
 .slick-slider {
   height: 400px;
   margin: 0;
@@ -114,32 +36,6 @@ body {
 
 /* ================== About ===================== */
 
-.app-about {
-  background: #fff;
-  background-image: url('/img/about.jpeg');
-  background-repeat: no-repeat;
-  background-size: 100% 500px;
-  filter: grayscale(60%);
-}
-
-.app-about-title {
-  color: #fff;
-  padding: 3rem;
-  position: relative;
-  text-align: center;
-}
-
-.app-about-title::after {
-  background: #fff;
-  bottom: 1rem;
-  content: '';
-  height: 4px;
-  left: 50%;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  width: 40%;
-}
-
 .app-about-row {
   background: var(--secondary-color);
 }
@@ -151,7 +47,7 @@ body {
   font-style: italic;
   line-height: 2rem;
   margin-bottom: 2rem;
-  padding: 32px;
+  padding: 2rem;
   text-align: justify;
 }
 

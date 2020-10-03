@@ -3,6 +3,18 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 module.exports = {
+  plugins: [
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: 'images',
+      },
+    },
+  ],
   siteMetadata: {
     name: 'Rumi',
     title: 'Rumi Saffron, Dried Fruits & Nuts Company',

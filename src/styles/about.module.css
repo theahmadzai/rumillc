@@ -1,0 +1,27 @@
+.background {
+  background-position: top 30%;
+  background-size: cover;
+  height: 35vh;
+  margin: 0;
+  filter: grayscale(40%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  padding: 1.5rem 3rem;
+  color: #fff !important;
+  position: relative;
+}
+
+.title::after {
+  content: '';
+  left: 50%;
+  top: calc(50% + 3.5rem);
+  height: 4px;
+  background: #fff;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 60%;
+}

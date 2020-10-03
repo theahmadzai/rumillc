@@ -1,0 +1,56 @@
+.header {
+  display: flex;
+  background: #fff;
+  z-index: 3000;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05);
+  padding: 0.5rem 3rem;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    position: sticky;
+    top: 0;
+    /* padding: 0 calc((100vw - 1000px - 1rem) / 2); */
+  }
+}
+
+.logo {
+  height: 84px;
+  transition: all 300ms ease;
+  width: 84px;
+}
+
+.logo:hover {
+  transform: rotate(365deg);
+}
+
+.toggleNav {
+  display: block;
+  font-size: 2rem;
+}
+
+.navMobile {
+  display: flex;
+  flex-direction: column;
+}
+
+.navDesktop {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .toggleNav {
+    display: none !important;
+  }
+
+  .navMobile {
+    display: none;
+  }
+
+  .navDesktop {
+    display: flex;
+  }
+}
