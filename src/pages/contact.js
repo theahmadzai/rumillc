@@ -18,9 +18,22 @@ const { Paragraph, Title } = Typography
 export default () => {
   const { address, contacts } = useSiteMetadata()
 
-  const handleClick = () => {
-    const form = document.getElementById('contact')
-    form.submit()
+  const handleFinish = values => {
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        'form-name': 'contact',
+        ...values,
+      }).toString(),
+    })
+      .then(() => {
+        window.alert('Thankyou, your message has been sent!')
+        window.history.go()
+      })
+      .catch(() => {
+        window.alert('Please try again later!')
+      })
   }
 
   return (
@@ -48,14 +61,8 @@ export default () => {
             size="large"
             scrollToFirstError
             noValidate
-            id="contact"
-            name="contact"
-            method="post"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
+            onFinish={handleFinish}
           >
-            <input type="hidden" name="form-name" value="contact" />
-
             <Item
               label="Full Name"
               name="name"
@@ -88,9 +95,7 @@ export default () => {
             </Item>
 
             <Item>
-              <button type="submit" onClick={handleClick}>
-                Send
-              </button>
+              <Button type="submit">Send</Button>
             </Item>
           </Form>
         </Col>
