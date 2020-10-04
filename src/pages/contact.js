@@ -19,6 +19,7 @@ export default () => {
   const { address, contacts } = useSiteMetadata()
 
   const handleFinish = values => {
+    console.log(values)
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -95,7 +96,9 @@ export default () => {
             </Item>
 
             <Item>
-              <Button type="submit">Send</Button>
+              <Button type="submit" htmlType="submit">
+                Send
+              </Button>
             </Item>
           </Form>
         </Col>
