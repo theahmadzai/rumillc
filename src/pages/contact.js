@@ -18,6 +18,11 @@ const { Paragraph, Title } = Typography
 export default () => {
   const { address, contacts } = useSiteMetadata()
 
+  const handleClick = () => {
+    const form = document.getElementById('contact')
+    form.submit()
+  }
+
   return (
     <Layout>
       <Row>
@@ -43,6 +48,7 @@ export default () => {
             size="large"
             scrollToFirstError
             noValidate
+            id="contact"
             name="contact"
             method="post"
             data-netlify="true"
@@ -82,7 +88,9 @@ export default () => {
             </Item>
 
             <Item>
-              <button type="submit">Send</button>
+              <button type="submit" onClick={handleClick}>
+                Send
+              </button>
             </Item>
           </Form>
         </Col>
