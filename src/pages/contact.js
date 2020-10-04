@@ -19,7 +19,6 @@ export default () => {
   const { address, contacts } = useSiteMetadata()
 
   const handleFinish = values => {
-    console.log(values)
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
