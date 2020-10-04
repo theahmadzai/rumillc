@@ -14,12 +14,6 @@ body {
   font-size: 16px;
 }
 
-.slick-slider {
-  height: 400px;
-  margin: 0;
-  padding: 0;
-}
-
 @keyframes pulse {
   from {
     transform: scale3d(1, 1, 1);
@@ -33,68 +27,6 @@ body {
     transform: scale3d(1, 1, 1);
   }
 }
-
-/* ================== About ===================== */
-
-.app-about-row {
-  background: var(--secondary-color);
-}
-
-.app-about-paragraph {
-  background: #fff;
-  color: #111;
-  font-size: 1.2rem;
-  font-style: italic;
-  line-height: 2rem;
-  margin-bottom: 2rem;
-  padding: 2rem;
-  text-align: justify;
-}
-
-.app-about-figure {
-  background: #eaeaea;
-  margin: 0;
-  padding: 2rem;
-}
-
-.app-about-image {
-  box-shadow: 0 6px 20px 2px rgba(135, 84, 0, 0.9);
-  height: 300px;
-  width: 100%;
-}
-
-/* ================== Contact ===================== */
-
-.app-contact {
-  background: #fff;
-  padding: 2rem;
-}
-
-.app-contact h3 {
-  border-bottom: 4px solid var(--secondary-color);
-  color: #444;
-  font-size: 2rem;
-  font-weight: 400;
-  margin-bottom: 2rem;
-  padding: 1rem;
-}
-
-.app-contact div {
-  background: linear-gradient(
-    to left,
-    var(--primary-color) 16%,
-    var(--secondary-color)
-  );
-  border-radius: 5px;
-  color: #fff;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  word-wrap: break-word;
-}
-
-/* ================== Testimonials ===================== */
 
 .app-testimonials {
   align-items: center;
@@ -228,70 +160,6 @@ body {
   color: #555;
   font-weight: 400;
   margin-top: 2rem;
-}
-
-/* ================== ContactForm ===================== */
-
-.app-contact-form {
-  background: #f9f9f9;
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
-}
-
-.app-contact-form label {
-  color: #333;
-  margin-bottom: 0.3rem;
-}
-
-.app-contact-form span {
-  color: #f00;
-  font-size: 0.8rem;
-  margin-bottom: 1rem;
-}
-
-.app-contact-form .error {
-  border: 1px solid #f00 !important;
-}
-
-.app-contact-form input {
-  height: 40px;
-}
-
-.app-contact-form input:not([type='submit']),
-.app-contact-form textarea {
-  border: 1px solid #875400;
-  color: #333;
-  font-weight: 400;
-  margin-bottom: 0.3rem;
-  outline: 0;
-  padding: 0.25rem 1rem;
-}
-
-.app-contact-form textarea {
-  height: 180px;
-  padding-top: 0.5rem;
-}
-
-.app-contact-form input[type='submit'] {
-  background: #875400;
-  border: 0;
-  color: #fff;
-  cursor: pointer;
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-top: 1rem;
-  outline: 0;
-  text-transform: uppercase;
-  width: 150px;
-}
-
-.app-contact-form input[type='submit']:hover {
-  background: #d39a3b;
-}
-
-.app-contact-form input[type='submit'].disabled {
-  background: #d39a3b;
 }
 
 /* ================== Subscribe ===================== */

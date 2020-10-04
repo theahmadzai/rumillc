@@ -13,7 +13,6 @@
   .header {
     position: sticky;
     top: 0;
-    /* padding: 0 calc((100vw - 1000px - 1rem) / 2); */
   }
 }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
+import Img from 'gatsby-image'
 import { Row, Col, Typography } from 'antd'
 import Layout from '../components/Layout/Layout'
 import styles from '../styles/about.module.css'
@@ -8,11 +9,32 @@ import styles from '../styles/about.module.css'
 const { Title, Paragraph } = Typography
 
 export default () => {
-  const { image } = useStaticQuery(graphql`
+  const { about, almonds, raisins, saffron } = useStaticQuery(graphql`
     query {
-      image: file(relativePath: { eq: "about.jpeg" }) {
+      about: file(relativePath: { eq: "about.jpeg" }) {
         sharp: childImageSharp {
-          fluid(cropFocus: NORTH, maxHeight: 200) {
+          fluid {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      almonds: file(relativePath: { eq: "almonds.jpeg" }) {
+        sharp: childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      raisins: file(relativePath: { eq: "raisins.jpeg" }) {
+        sharp: childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      saffron: file(relativePath: { eq: "saffron.jpeg" }) {
+        sharp: childImageSharp {
+          fluid {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
@@ -22,14 +44,14 @@ export default () => {
 
   return (
     <Layout>
-      <BackgroundImage className={styles.background} fluid={image.sharp.fluid}>
+      <BackgroundImage className={styles.background} fluid={about.sharp.fluid}>
         <Title className={styles.title}>
           Rumi Saffron, Dried Fruits & Nuts Company
         </Title>
       </BackgroundImage>
 
-      <Row className="app-about-row">
-        <Col sm={16} className="app-about-paragraph">
+      <Row>
+        <Col span={24} sm={14} md={16} className={styles.paragraph}>
           <Paragraph>
             Rumi Saffron, Dried Fruits &amp; Nuts Company ®, Rumi Saffron ™,
             Rumi Dry Fruits ™ and Mawlana Saffron ™ is trading and exporting
@@ -41,16 +63,16 @@ export default () => {
             expected to be more than 50 acres.
           </Paragraph>
         </Col>
-        <Col sm={8} className="app-about-figure">
-          <img
-            className="app-about-image"
-            src="/badam.jpeg"
-            alt="rumi almonds"
+        <Col span={24} sm={10} md={8} className={styles.figure}>
+          <Img
+            fluid={almonds.sharp.fluid}
+            alt="Rumi Almonds"
+            className={styles.image}
           />
         </Col>
       </Row>
-      <Row className="app-about-row">
-        <Col sm={16} className="app-about-paragraph">
+      <Row>
+        <Col span={24} sm={14} md={16} className={styles.paragraph}>
           <Paragraph>
             The Company is buying its dried fruits and Nuts directly from
             growers/farmers connected through Afghan ministry of agriculture.
@@ -63,16 +85,16 @@ export default () => {
             in destination countries, which we meet in B2B events.
           </Paragraph>
         </Col>
-        <Col sm={8} className="app-about-figure">
-          <img
-            className="app-about-image"
-            src="/kishmish.jpeg"
-            alt="rumi kishmish"
+        <Col span={24} sm={10} md={8} className={styles.figure}>
+          <Img
+            fluid={raisins.sharp.fluid}
+            className={styles.image}
+            alt="Rumi Raisins"
           />
         </Col>
       </Row>
-      <Row className="app-about-row">
-        <Col sm={16} className="app-about-paragraph">
+      <Row>
+        <Col span={24} sm={14} md={16} className={styles.paragraph}>
           <Paragraph>
             Our advantage in Saffron is that we grow it ourselves, we sell it
             with a very competitive price, high and assured quality and improved
@@ -81,11 +103,11 @@ export default () => {
             quality.
           </Paragraph>
         </Col>
-        <Col sm={8} className="app-about-figure">
-          <img
-            className="app-about-image"
-            src="/zafran.jpeg"
-            alt="rumi saffron"
+        <Col span={24} sm={10} md={8} className={styles.figure}>
+          <Img
+            fluid={saffron.sharp.fluid}
+            className={styles.image}
+            alt="Rumi Saffron"
           />
         </Col>
       </Row>

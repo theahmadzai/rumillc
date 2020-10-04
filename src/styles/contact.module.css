@@ -1,0 +1,54 @@
+.contactInfo {
+  padding: 1.5rem 3rem;
+}
+
+.contactInfo h1 {
+  border-bottom: 4px solid var(--secondary-color);
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.contactInfo div {
+  background: linear-gradient(
+    to left,
+    var(--primary-color) 16%,
+    var(--secondary-color)
+  );
+  border-radius: 5px;
+  color: #fff;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.form {
+  background: #f9f9f9;
+  padding: 1.5rem 3rem;
+}
+
+.form input,
+.form textarea,
+.form button {
+  border: 1px solid var(--secondary-color);
+}
+
+.form button {
+  background: var(--secondary-color);
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.5rem 2rem;
+  border: 0;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.icon {
+  color: var(--primary-color);
+}
