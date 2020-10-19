@@ -4,7 +4,7 @@ import BackgroundImage from 'gatsby-background-image'
 import Img from 'gatsby-image'
 import { Row, Col, Typography } from 'antd'
 import Layout from '../components/Layout/Layout'
-import styles from '../styles/about.module.css'
+import styles from './about.module.css'
 
 const { Title, Paragraph } = Typography
 

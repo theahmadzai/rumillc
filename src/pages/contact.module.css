@@ -33,7 +33,7 @@
   border: 1px solid var(--secondary-color);
 }
 
-.form button {
+/* .form button {
   background: var(--secondary-color);
   color: #fff;
   text-transform: uppercase;
@@ -45,7 +45,7 @@
 .form button:hover {
   background: var(--primary-color);
   color: #fff;
-}
+} */
 
 .icon {
   color: var(--primary-color);

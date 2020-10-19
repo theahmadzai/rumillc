@@ -1,4 +1,5 @@
 const dotenv = require('dotenv')
+const lessToJson = require('less-to-json')
 
 dotenv.config()
 
@@ -8,10 +9,32 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
+      resolve: 'gatsby-plugin-antd',
+      options: {
+        style: true
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-less',
+      options: {
+        lessOptions: {
+          javascriptEnabled: true,
+          modifyVars: lessToJson('src/styles/vars.less')
+        }
+      }
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
         path: 'images',
+      },
+    },
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        spaceId: '56ui7hp0ualt',
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
   ],
