@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 import { Row, Col, Card } from 'antd'
+import { AimOutlined } from '@ant-design/icons'
 import Layout from '../components/Layout/Layout'
 
 export default () => {
@@ -15,7 +16,7 @@ export default () => {
             json
           }
           image {
-            fluid(maxHeight: 100, maxWidth: 100) {
+            fluid(maxHeight: 250, maxWidth: 250) {
               ...GatsbyContentfulFluid_withWebp
             }
           }
@@ -27,11 +28,11 @@ export default () => {
   return (
     <Layout>
       <Row>
-        <Col span={14}>
+        <Col span={12}>
           <Row
             gutter={[24, 24]}
             style={{
-              padding: '3rem',
+              padding: '1.5rem 3rem 0',
             }}
           >
             {networks.nodes.map((network, i) => (
@@ -40,10 +41,11 @@ export default () => {
                   hoverable
                   bordered={true}
                   size="small"
+                  type="inner"
                   cover={<Img fluid={network.image.fluid} />}
                   // onClick={() => setCurrentPlace(n.id)}
                 >
-                  <Card.Meta title={network.name} />
+                  <Card.Meta title={network.name} avatar={<AimOutlined />} />
                 </Card>
               </Col>
             ))}

@@ -9,7 +9,7 @@ import {
 import useSiteMetadata from '../hooks/use-sitemetadata'
 import Layout from '../components/Layout/Layout'
 import Map from '../components/Map/Map'
-import styles from '../styles/contact.module.css'
+import styles from './contact.module.css'
 
 const { Item } = Form
 const { TextArea } = Input
