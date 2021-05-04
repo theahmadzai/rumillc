@@ -10,6 +10,7 @@ export default function Subscribe() {
         name="subscribers"
         className={styles.form}
       >
+        <input type="hidden" name="form-name" value="subscribers" />
         <input
           type="email"
           name="email"
