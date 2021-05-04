@@ -7,6 +7,7 @@ module.exports = {
     siteUrl: 'https://rumillc.com',
     description:
       'Rumi Saffron, Dried Fruits & Nuts Company is registered with ACBR (Afghanistan Central Business Registry) of the ministry of commerce & industries of Afghanistan, a member of Afghanistan Chamber of Commerce & Industries, Women Chamber of Commerce & Industries, and Afghanistan Exporters Club operate as Afghanistan’s leading export company in Saffron, Dried Fruits and Nuts industries.',
+    logoUrl: 'static/logo.png',
     address: 'Qalai Amir, Qargha Lake Area, Kabul.',
     contacts: {
       phone: '+93 (0) 784516129',
@@ -60,6 +61,7 @@ module.exports = {
         },
       },
     },
+    'gatsby-plugin-minify-classnames',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -69,9 +71,10 @@ module.exports = {
         background_color: '#d8a550',
         theme_color: '#875400',
         display: 'standalone',
-        icon: 'src/images/icon.png',
+        icon: 'static/logo.png',
       },
     },
     'gatsby-plugin-sitemap',
+    'gatsby-plugin-offline',
   ],
 }
