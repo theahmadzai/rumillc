@@ -62,6 +62,7 @@ export default function ContactPage() {
         <Col span={24} md={12}>
           <Form
             data-netlify={true}
+            name="contact"
             className={styles.form}
             layout="vertical"
             size="large"
