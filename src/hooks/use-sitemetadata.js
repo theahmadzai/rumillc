@@ -7,6 +7,7 @@ export default function useSiteMetadata() {
         siteMetadata {
           name
           title
+          siteUrl
           description
           address
           contacts {
