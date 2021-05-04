@@ -17,13 +17,11 @@ export default function ContactPage() {
   const { address, contacts } = useSiteMetadata()
 
   const handleFinish = values => {
+    console.log(values)
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({
-        'form-name': 'contact',
-        ...values,
-      }).toString(),
+      body: new URLSearchParams(values).toString(),
     })
       .then(() => {
         window.alert('Thankyou, your message has been sent!')
@@ -63,6 +61,7 @@ export default function ContactPage() {
         </Col>
         <Col span={24} md={12}>
           <Form
+            netlify
             className={styles.form}
             layout="vertical"
             size="large"
@@ -70,6 +69,7 @@ export default function ContactPage() {
             noValidate
             onFinish={handleFinish}
           >
+            <input type="hidden" name="form-name" value="contact" />
             <Form.Item
               label="Full Name"
               name="name"
