@@ -70,7 +70,9 @@ export default function ContactPage() {
             noValidate
             onFinish={handleFinish}
           >
-            <input type="hidden" name="form-name" value="contact" />
+            <Form.Item hidden name="form-name" initialValue="contact">
+              <Input type="hidden" />
+            </Form.Item>
             <Form.Item
               label="Full Name"
               name="name"
