@@ -16,22 +16,6 @@ const { Paragraph, Title } = Typography
 export default function ContactPage() {
   const { address, contacts } = useSiteMetadata()
 
-  const handleFinish = values => {
-    console.log(values)
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(values).toString(),
-    })
-      .then(() => {
-        window.alert('Thankyou, your message has been sent!')
-        window.history.go()
-      })
-      .catch(() => {
-        window.alert('Please try again later!')
-      })
-  }
-
   return (
     <Layout>
       <Row>
@@ -68,10 +52,9 @@ export default function ContactPage() {
             size="large"
             scrollToFirstError
             noValidate
-            onFinish={handleFinish}
           >
-            <Form.Item hidden name="form-name" initialValue="contact">
-              <Input type="hidden" />
+            <Form.Item hidden>
+              <Input name="form-name" value="contact" type="hidden" />
             </Form.Item>
             <Form.Item
               label="Full Name"
