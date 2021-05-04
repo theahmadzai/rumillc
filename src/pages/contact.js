@@ -61,7 +61,7 @@ export default function ContactPage() {
         </Col>
         <Col span={24} md={12}>
           <Form
-            netlify
+            data-netlify={true}
             className={styles.form}
             layout="vertical"
             size="large"
