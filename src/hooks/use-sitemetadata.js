@@ -1,0 +1,28 @@
+import { graphql, useStaticQuery } from 'gatsby'
+
+export default function useSiteMetadata() {
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          name
+          title
+          description
+          address
+          contacts {
+            phone
+            whatsapp
+            email
+          }
+          social {
+            facebook
+            twitter
+            instagram
+          }
+        }
+      }
+    }
+  `)
+
+  return data.site.siteMetadata
+}

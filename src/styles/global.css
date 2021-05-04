@@ -1,0 +1,221 @@
+:root {
+  --primary-color: rgb(216, 165, 80);
+  --secondary-color: rgb(135, 84, 0);
+}
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.spaceRow {
+  padding: 1rem !important;
+}
+
+@media screen and (min-width: 768px) {
+  .spaceRow {
+    padding: 3rem !important;
+  }
+}
+
+.app-testimonials {
+  align-items: center;
+  background: #d8a550;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 1rem;
+}
+
+@media (min-width: 66em) {
+  .app-testimonials {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 4rem;
+  }
+}
+
+.app-testimonials .prev,
+.app-testimonials .next {
+  box-shadow: 0 6px 35px 3px rgba(135, 84, 0, 0.9);
+  cursor: pointer;
+}
+
+.app-testimonials .prev:hover,
+.app-testimonials .next:hover {
+  border: 5px solid #fff;
+  box-shadow: 0 0 60px 10px rgba(135, 84, 0, 0.9);
+  height: 120px;
+  transition: all 500ms ease;
+  width: 120px;
+}
+
+.app-testimonials img {
+  border: 5px solid #fff;
+  border-radius: 100%;
+  height: 100px;
+  margin-bottom: 1rem;
+  transition: all 500ms ease;
+  width: 100px;
+}
+
+@media (min-width: 40em) {
+  .app-testimonials img {
+    border: 0;
+    height: 140px;
+    width: 140px;
+  }
+}
+
+.app-testimonials .testimonial {
+  background: #fff;
+  box-shadow: 0 6px 35px 3px rgba(135, 84, 0, 0.9);
+  margin-bottom: 2rem;
+  max-width: 600px;
+  min-height: 300px;
+  order: -1;
+  overflow: hidden;
+  padding: 1rem 2rem;
+  perspective: 1px;
+  position: relative;
+  text-align: center;
+}
+
+@media (min-width: 772px) {
+  .app-testimonials .testimonial {
+    margin-bottom: 0;
+    order: initial;
+    padding: 2rem;
+  }
+}
+
+.app-testimonials .testimonial:hover {
+  animation: pulse 300ms;
+}
+
+.app-testimonials .testimonial::before {
+  background: #f1f1f1;
+  content: '';
+  height: 130px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: prespective-3d;
+  transform: 0;
+  z-index: -10;
+}
+
+@media (min-width: 40em) {
+  .app-testimonials .testimonial::before {
+    height: 100px;
+    transform: rotateX(45deg);
+  }
+}
+
+.app-testimonials .testimonial i {
+  color: #555;
+  display: block;
+
+  &.fa-quote-left {
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+
+  &.fa-quote-right {
+    margin-top: 1rem;
+    text-align: right;
+  }
+}
+
+.app-testimonials .testimonial img {
+  border: 10px solid #fff;
+  z-index: 10;
+}
+
+.app-testimonials .testimonial p {
+  color: #555;
+  font-weight: 300;
+  line-height: 2rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 40em) {
+  .app-testimonials .testimonial p {
+    padding: 0 3rem;
+  }
+}
+
+.app-testimonials .testimonial h3 {
+  color: #555;
+  font-weight: 400;
+  margin-top: 2rem;
+}
+
+/* ================== Subscribe ===================== */
+
+.app-subscribe {
+  background: rgb(216, 165, 80);
+  display: block;
+  overflow: hidden;
+  padding: 6rem 3rem;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.app-subscribe::before {
+  background: linear-gradient(-90deg, rgb(216, 165, 80), #875400);
+  content: '';
+  height: 200px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: skewY(170deg);
+  width: 100%;
+  z-index: -100;
+}
+
+.app-subscribe form {
+  border: 6px solid #fff;
+  display: flex;
+  margin: 0 auto;
+  max-width: 500px;
+  z-index: 100;
+}
+
+.app-subscribe input[type='email'] {
+  border: 0;
+  color: #333;
+  font-size: 1.3rem;
+  font-style: italic;
+  outline: none;
+  padding: 0.6rem;
+  width: 100%;
+}
+
+.app-subscribe input[type='submit'] {
+  background: rgb(122, 87, 27);
+  border: 2px solid rgb(122, 87, 27);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 800;
+  outline: none;
+  padding: 0.6rem 2rem;
+  text-transform: uppercase;
+}
+
+.app-subscribe input[type='submit']:hover {
+  animation: pulse 400ms;
+  background: #fff;
+  border: 2px solid rgb(122, 87, 27);
+  color: rgb(122, 87, 27);
+}
