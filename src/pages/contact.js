@@ -78,7 +78,7 @@ export default function ContactPage() {
               name="name"
               rules={[{ required: true }]}
             >
-              <Input type="text" placeholder="Your name" />
+              <Input type="text" name="name" placeholder="Your name" />
             </Form.Item>
 
             <Form.Item
@@ -86,11 +86,19 @@ export default function ContactPage() {
               name="email"
               rules={[{ required: true }, { type: 'email' }]}
             >
-              <Input type="email" placeholder="youremail@example.com" />
+              <Input
+                type="email"
+                name="email"
+                placeholder="youremail@example.com"
+              />
             </Form.Item>
 
             <Form.Item label="Subject" name="subject">
-              <Input type="text" placeholder="Subject of discussion" />
+              <Input
+                type="text"
+                name="subject"
+                placeholder="Subject of discussion"
+              />
             </Form.Item>
 
             <Form.Item
@@ -98,7 +106,7 @@ export default function ContactPage() {
               name="message"
               rules={[{ required: true }]}
             >
-              <TextArea placeholder="Your message..." rows={5} />
+              <TextArea name="message" placeholder="Your message..." rows={5} />
             </Form.Item>
 
             <Button type="primary" htmlType="submit">
