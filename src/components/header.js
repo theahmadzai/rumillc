@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'gatsby'
-import { Drawer } from 'antd'
-import { MenuOutlined, CloseOutlined } from '@ant-design/icons'
+import { Image, Drawer } from 'antd'
+import { MenuOutlined } from '@ant-design/icons'
 import useSiteMetadata from '../hooks/use-sitemetadata'
 import NavLink from './nav-link'
 import * as styles from './header.module.css'
@@ -17,34 +17,33 @@ const NavLinks = props => (
   </nav>
 )
 
-const ToggleIcon = ({ visible, ...props }) =>
-  !visible ? <MenuOutlined {...props} /> : <CloseOutlined {...props} />
-
 export default function Header() {
   const { name, title } = useSiteMetadata()
   const [visible, setVisible] = useState(false)
 
-  const toggleVisible = () => setVisible(visible => !visible)
-
   return (
     <header className={styles.header}>
       <Link to="/">
-        <img src="/logo.png" alt={title} className={styles.logo} />
+        <Image
+          src="/logo.png"
+          alt={title}
+          preview={false}
+          className={styles.logo}
+        />
       </Link>
 
       <NavLinks className={styles.navDesktop} />
 
-      <ToggleIcon
-        visible={visible}
+      <MenuOutlined
         className={styles.toggleNav}
-        onClick={toggleVisible}
+        onClick={() => setVisible(true)}
       />
 
       <Drawer
         title={name}
         visible={visible}
         closeable={false}
-        onClose={toggleVisible}
+        onClose={() => setVisible(false)}
       >
         <NavLinks className={styles.navMobile} />
       </Drawer>
