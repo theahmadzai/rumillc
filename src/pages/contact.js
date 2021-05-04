@@ -7,15 +7,13 @@ import {
   MailOutlined,
 } from '@ant-design/icons'
 import useSiteMetadata from '../hooks/use-sitemetadata'
-import Layout from '../components/Layout/Layout'
-import Map from '../components/Map/Map'
-import styles from './contact.module.css'
+import Layout from '../components/layout'
+import * as styles from './contact.module.css'
 
-const { Item } = Form
 const { TextArea } = Input
 const { Paragraph, Title } = Typography
 
-export default () => {
+export default function ContactPage() {
   const { address, contacts } = useSiteMetadata()
 
   const handleFinish = values => {
@@ -40,19 +38,28 @@ export default () => {
     <Layout>
       <Row>
         <Col span={24} md={12} className={styles.contactInfo}>
-          <Title>Where can you find us?</Title>
-          <Paragraph>
+          <Title className={styles.title}>Where can you find us?</Title>
+          <Paragraph className={styles.aboutItem}>
             <CompassOutlined title="Office Address" /> {address}
           </Paragraph>
-          <Paragraph>
+          <Paragraph className={styles.aboutItem}>
             <PhoneOutlined title="Phone" /> {contacts.phone}
           </Paragraph>
-          <Paragraph>
+          <Paragraph className={styles.aboutItem}>
             <WhatsAppOutlined title="WhatsApp/Telegram" /> {contacts.whatsapp}
           </Paragraph>
-          <Paragraph>
+          <Paragraph className={styles.aboutItem}>
             <MailOutlined title="Email" /> {contacts.email}
           </Paragraph>
+
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3287.953839920866!2d69.24426731454042!3d34.50405450123365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38d16b8ea717bc9f%3A0x7c484ae0501e67de!2sRumi%20Trading%20LLC!5e0!3m2!1sen!2s!4v1586981874220!5m2!1sen!2s"
+            className={styles.map}
+            title="Gogle Map"
+            frameBorder="0"
+            allowFullScreen=""
+            aria-hidden="false"
+          />
         </Col>
         <Col span={24} md={12}>
           <Form
@@ -63,46 +70,40 @@ export default () => {
             noValidate
             onFinish={handleFinish}
           >
-            <Item
+            <Form.Item
               label="Full Name"
               name="name"
               rules={[{ required: true }]}
-              required
             >
               <Input type="text" placeholder="Your name" />
-            </Item>
+            </Form.Item>
 
-            <Item
+            <Form.Item
               label="Email"
               name="email"
               rules={[{ required: true }, { type: 'email' }]}
-              required
             >
               <Input type="email" placeholder="youremail@example.com" />
-            </Item>
+            </Form.Item>
 
-            <Item label="Subject" name="subject">
+            <Form.Item label="Subject" name="subject">
               <Input type="text" placeholder="Subject of discussion" />
-            </Item>
+            </Form.Item>
 
-            <Item
+            <Form.Item
               label="Message"
               name="message"
               rules={[{ required: true }]}
-              required
             >
               <TextArea placeholder="Your message..." rows={5} />
-            </Item>
+            </Form.Item>
 
-            <Item>
-              <Button type="submit" htmlType="submit">
-                Send
-              </Button>
-            </Item>
+            <Button type="primary" htmlType="submit">
+              Send
+            </Button>
           </Form>
         </Col>
       </Row>
-      <Map />
     </Layout>
   )
 }

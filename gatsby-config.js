@@ -1,45 +1,8 @@
-const dotenv = require('dotenv')
-const lessToJson = require('less-to-json')
-
-dotenv.config()
+require('dotenv').config()
 
 module.exports = {
-  plugins: [
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
-    {
-      resolve: 'gatsby-plugin-antd',
-      options: {
-        style: true
-      }
-    },
-    {
-      resolve: 'gatsby-plugin-less',
-      options: {
-        lessOptions: {
-          javascriptEnabled: true,
-          modifyVars: lessToJson('src/styles/vars.less')
-        }
-      }
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'images',
-        path: 'images',
-      },
-    },
-    {
-      resolve: 'gatsby-source-contentful',
-      options: {
-        spaceId: '56ui7hp0ualt',
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-      },
-    },
-  ],
   siteMetadata: {
-    name: 'Rumi',
+    name: 'RumiLLC',
     title: 'Rumi Saffron, Dried Fruits & Nuts Company',
     description:
       'Rumi Saffron, Dried Fruits & Nuts Company is registered with ACBR (Afghanistan Central Business Registry) of the ministry of commerce & industries of Afghanistan, a member of Afghanistan Chamber of Commerce & Industries, Women Chamber of Commerce & Industries, and Afghanistan Exporters Club operate as Afghanistan’s leading export company in Saffron, Dried Fruits and Nuts industries.',
@@ -54,7 +17,54 @@ module.exports = {
       twitter: 'https://www.twitter.com',
       instagram: 'https://www.instagram.com',
     },
-    copyrights:
-      'Copyright 2017-2020 - Rumi Saffron, Dried Fruits & Nuts Company',
   },
+  plugins: [
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: './src/images/',
+      },
+      __key: 'images',
+    },
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        spaceId: '56ui7hp0ualt',
+      },
+    },
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    {
+      resolve: 'gatsby-plugin-import',
+      options: {
+        libraryName: 'antd',
+        style: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-less',
+      options: {
+        lessOptions: {
+          javascriptEnabled: true,
+          modifyVars: {
+            '@primary-color': 'rgb(135, 84, 0)',
+            '@link-color': 'rgb(135, 84, 0)',
+            '@font-size-base': '18px',
+            '@font-family': 'Work Sans',
+          },
+        },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        icon: 'src/images/icon.png',
+      },
+    },
+    'gatsby-plugin-sitemap',
+  ],
 }

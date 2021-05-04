@@ -1,42 +1,24 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import BackgroundImage from 'gatsby-background-image'
-import Img from 'gatsby-image'
+import { StaticImage, getImage } from 'gatsby-plugin-image'
+import { convertToBgImage } from 'gbimage-bridge'
 import { Row, Col, Typography } from 'antd'
-import Layout from '../components/Layout/Layout'
-import styles from './about.module.css'
+import Layout from '../components/layout'
+import * as styles from './about.module.css'
+import BackgroundImage from 'gatsby-background-image'
 
 const { Title, Paragraph } = Typography
 
-export default () => {
-  const { about, almonds, raisins, saffron } = useStaticQuery(graphql`
+export default function AboutPage() {
+  const { about } = useStaticQuery(graphql`
     query {
       about: file(relativePath: { eq: "about.jpeg" }) {
-        sharp: childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-      almonds: file(relativePath: { eq: "almonds.jpeg" }) {
-        sharp: childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-      raisins: file(relativePath: { eq: "raisins.jpeg" }) {
-        sharp: childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-      saffron: file(relativePath: { eq: "saffron.jpeg" }) {
-        sharp: childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+        childImageSharp {
+          gatsbyImageData(
+            layout: FULL_WIDTH
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+          )
         }
       }
     }
@@ -44,9 +26,12 @@ export default () => {
 
   return (
     <Layout>
-      <BackgroundImage className={styles.background} fluid={about.sharp.fluid}>
+      <BackgroundImage
+        className={styles.background}
+        {...convertToBgImage(getImage(about))}
+      >
         <Title className={styles.title}>
-          Rumi Saffron, Dried Fruits & Nuts Company
+          Rumi Saffron, Dried Fruits &amp; Nuts Company
         </Title>
       </BackgroundImage>
 
@@ -64,9 +49,10 @@ export default () => {
           </Paragraph>
         </Col>
         <Col span={24} sm={10} md={8} className={styles.figure}>
-          <Img
-            fluid={almonds.sharp.fluid}
+          <StaticImage
+            src="../images/almonds.jpeg"
             alt="Rumi Almonds"
+            placeholder="tracedSVG"
             className={styles.image}
           />
         </Col>
@@ -86,10 +72,11 @@ export default () => {
           </Paragraph>
         </Col>
         <Col span={24} sm={10} md={8} className={styles.figure}>
-          <Img
-            fluid={raisins.sharp.fluid}
-            className={styles.image}
+          <StaticImage
+            src="../images/raisins.jpeg"
             alt="Rumi Raisins"
+            placeholder="tracedSVG"
+            className={styles.image}
           />
         </Col>
       </Row>
@@ -104,10 +91,11 @@ export default () => {
           </Paragraph>
         </Col>
         <Col span={24} sm={10} md={8} className={styles.figure}>
-          <Img
-            fluid={saffron.sharp.fluid}
-            className={styles.image}
+          <StaticImage
+            src="../images/saffron.jpeg"
             alt="Rumi Saffron"
+            placeholder="tracedSVG"
+            className={styles.image}
           />
         </Col>
       </Row>

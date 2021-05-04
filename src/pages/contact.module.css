@@ -1,16 +1,23 @@
 .contactInfo {
-  padding: 1.5rem 3rem;
+  padding: 1.5rem 1rem;
+  background: #f9f9f9;
 }
 
-.contactInfo h1 {
+@media screen and (min-width: 768px) {
+  .contactInfo {
+    padding: 1.5rem 3rem;
+  }
+}
+
+h1.title {
   border-bottom: 4px solid var(--secondary-color);
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: normal;
   margin-bottom: 2rem;
-  padding: 1rem;
+  padding-bottom: 1rem;
 }
 
-.contactInfo div {
+.aboutItem {
   background: linear-gradient(
     to left,
     var(--primary-color) 16%,
@@ -23,30 +30,19 @@
 }
 
 .form {
-  background: #f9f9f9;
-  padding: 1.5rem 3rem;
+  padding: 1.5rem 1rem;
 }
 
-.form input,
-.form textarea,
-.form button {
-  border: 1px solid var(--secondary-color);
+@media screen and (min-width: 768px) {
+  .form {
+    padding: 1.5rem 3rem;
+  }
 }
 
-/* .form button {
-  background: var(--secondary-color);
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: 600;
-  padding: 0.5rem 2rem;
-  margin-top: 1rem;
-}
-
-.form button:hover {
-  background: var(--primary-color);
-  color: #fff;
-} */
-
-.icon {
-  color: var(--primary-color);
+.map {
+  width: 100%;
+  height: 300px;
+  border: 0;
+  margin: 0;
+  padding: 0;
 }

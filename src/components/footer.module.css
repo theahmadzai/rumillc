@@ -1,0 +1,37 @@
+.footer {
+  background: #fff;
+  border-top: 2px solid rgb(135, 84, 0);
+  padding: 1.5rem 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    padding: 1.5rem 3rem;
+  }
+}
+
+.heading {
+  color: var(--secondary-color) !important;
+}
+
+.icons {
+  display: flex;
+  font-size: 2rem;
+}
+
+.icon {
+  margin-right: 1rem;
+  color: var(--secondary-color);
+}
+
+.icon:hover {
+  color: var(--primary-color);
+}
+
+.copyrights {
+  background: var(--secondary-color);
+  color: #fff;
+  font-size: 0.85rem;
+  padding: 1.5rem;
+  text-align: center;
+}

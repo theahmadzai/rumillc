@@ -1,0 +1,30 @@
+.link {
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  font-weight: bold;
+  margin: 0.4rem;
+  color: #000;
+  transition: all 800ms ease;
+}
+
+.link:hover {
+  color: #fff;
+  background: var(--primary-color);
+}
+
+.active {
+  background: var(--secondary-color);
+  color: #fff;
+  margin-left: 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .link {
+    margin: 0 0.4rem;
+  }
+
+  .link:last-child {
+    margin-right: 0;
+  }
+}
