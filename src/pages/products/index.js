@@ -15,7 +15,11 @@ export default function ProductsPage() {
         animated={true}
         defaultActiveKey="1"
         size="large"
-        tabPosition={window.screen.availWidth >= 768 ? 'left' : 'top'}
+        tabPosition={
+          typeof window !== `undefined` && window.screen.availWidth >= 768
+            ? 'left'
+            : 'top'
+        }
       >
         <TabPane tab="All" key="all">
           <Row gutter={[24, 24]}>

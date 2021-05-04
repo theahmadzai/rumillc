@@ -17,13 +17,11 @@ export default function ContactPage() {
   const { address, contacts } = useSiteMetadata()
 
   const handleFinish = values => {
+    console.log(values)
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({
-        'form-name': 'contact',
-        ...values,
-      }).toString(),
+      body: new URLSearchParams(values).toString(),
     })
       .then(() => {
         window.alert('Thankyou, your message has been sent!')
@@ -63,6 +61,8 @@ export default function ContactPage() {
         </Col>
         <Col span={24} md={12}>
           <Form
+            data-netlify={true}
+            name="contact"
             className={styles.form}
             layout="vertical"
             size="large"
@@ -70,12 +70,15 @@ export default function ContactPage() {
             noValidate
             onFinish={handleFinish}
           >
+            <Form.Item hidden name="form-name" initialValue="contact">
+              <Input type="hidden" />
+            </Form.Item>
             <Form.Item
               label="Full Name"
               name="name"
               rules={[{ required: true }]}
             >
-              <Input type="text" placeholder="Your name" />
+              <Input type="text" name="name" placeholder="Your name" />
             </Form.Item>
 
             <Form.Item
@@ -83,11 +86,19 @@ export default function ContactPage() {
               name="email"
               rules={[{ required: true }, { type: 'email' }]}
             >
-              <Input type="email" placeholder="youremail@example.com" />
+              <Input
+                type="email"
+                name="email"
+                placeholder="youremail@example.com"
+              />
             </Form.Item>
 
             <Form.Item label="Subject" name="subject">
-              <Input type="text" placeholder="Subject of discussion" />
+              <Input
+                type="text"
+                name="subject"
+                placeholder="Subject of discussion"
+              />
             </Form.Item>
 
             <Form.Item
@@ -95,7 +106,7 @@ export default function ContactPage() {
               name="message"
               rules={[{ required: true }]}
             >
-              <TextArea placeholder="Your message..." rows={5} />
+              <TextArea name="message" placeholder="Your message..." rows={5} />
             </Form.Item>
 
             <Button type="primary" htmlType="submit">
