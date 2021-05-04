@@ -1,0 +1,54 @@
+.testimonials {
+  background: #d8a550;
+  padding: 1.5rem 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .testimonials {
+    padding: 3rem;
+  }
+}
+
+.control {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  border-radius: 100%;
+  border: 5px solid #fff;
+  transition: all 500ms ease;
+  cursor: pointer;
+}
+
+.control:hover {
+  box-shadow: 0 0 60px 10px rgba(135, 84, 0, 0.9);
+  height: 120px;
+  width: 120px;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 3rem auto;
+}
+
+.testimonial {
+  background: #fff;
+  box-shadow: 0 6px 35px 3px rgba(135, 84, 0, 0.9);
+  perspective: 1px;
+  position: relative;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.testimonial::before {
+  background: #f1f1f1;
+  content: '';
+  height: 130px;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  transform: rotateX(45deg);
+}

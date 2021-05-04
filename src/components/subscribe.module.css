@@ -1,0 +1,54 @@
+.subscribe {
+  background: rgb(216, 165, 80);
+  display: block;
+  overflow: hidden;
+  padding: 6rem 3rem;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.subscribe::before {
+  background: linear-gradient(-90deg, rgb(216, 165, 80), #875400);
+  content: '';
+  height: 200px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: skewY(170deg);
+  width: 100%;
+  z-index: -100;
+}
+
+.form {
+  border: 6px solid #fff;
+  display: flex;
+  margin: 0 auto;
+  max-width: 500px;
+  z-index: 100;
+}
+
+.input {
+  border: 0;
+  color: #333;
+  outline: none;
+  padding: 0.6rem;
+  width: 100%;
+}
+
+.button {
+  background: rgb(122, 87, 27);
+  border: 2px solid rgb(122, 87, 27);
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  outline: none;
+  padding: 0.6rem 2rem;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  animation: pulse 400ms;
+  background: #fff;
+  border: 2px solid rgb(122, 87, 27);
+  color: rgb(122, 87, 27);
+}
