@@ -29,7 +29,12 @@ export default function NetworkPage() {
           closable={true}
           onClose={onClose}
           visible={visible}
-          width="80%"
+          getContainer={false}
+          width={
+            typeof window !== `undefined` && window.screen.availWidth >= 768
+              ? '40%'
+              : '100%'
+          }
         >
           <GatsbyImage
             style={{ height: '300px', marginBottom: '1.5rem' }}
